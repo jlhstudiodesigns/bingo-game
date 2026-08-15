@@ -375,3 +375,28 @@ window.SEED_ART = [
       "It's named for a real incident: a performance artist once fired a gun through a stack of Warhol's Marilyn canvases in his studio — though this particular blue version wasn't the one struck.",
       "August 6, 1928","Pittsburgh, Pennsylvania, USA","February 22, 1987","New York City, USA","O"]
   ];
+
+  // Maps a SEED_ART title to a preloaded image in images/, for the
+  // default set's out-of-the-box experience. Titles without an entry
+  // here just have no image until one is uploaded (or added later).
+  window.SEED_IMAGES = {
+    "Mona Lisa": "images/mona-lisa.jpg",
+    "The Starry Night": "images/the-starry-night.jpg",
+    "Whistler's Mother": "images/whistlers-mother.jpg",
+    "American Gothic": "images/american-gothic.jpg",
+    "The Scream": "images/the-scream.jpg",
+    "The Creation of Adam": "images/the-creation-of-adam.jpg",
+    "The Persistence of Memory": "images/the-persistence-of-memory.jpg",
+    "Girl with a Pearl Earring": "images/girl-with-a-pearl-earring.jpg",
+    "The Birth of Venus": "images/the-birth-of-venus.jpg",
+    "The Night Watch": "images/the-night-watch.jpg",
+    "The Kiss": "images/the-kiss.jpg",
+    "The Garden of Earthly Delights": "images/the-garden-of-earthly-delights.jpg",
+    "Les Demoiselles d'Avignon": "images/les-demoiselles-davignon.jpg",
+    "The Last Supper": "images/the-last-supper.jpg",
+    "The Raft of the Medusa": "images/the-raft-of-the-medusa.jpg",
+    "The School of Athens": "images/the-school-of-athens.jpg",
+    "The Girl with a Balloon": "images/the-girl-with-a-balloon.jpg",
+    "The Great Wave off Kanagawa": "images/the-great-wave-off-kanagawa.jpg",
+    "Sunflowers": "images/sunflowers.jpg"
+  };

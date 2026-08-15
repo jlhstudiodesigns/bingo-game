@@ -200,13 +200,16 @@
   // Sets management
   // ============================================================
   function defaultArtItems(){
-    return SEED_ART.map(([t,a,fAuction,fPeriod,fUnique,born,place,died,diedPlace,col]) => ({
-      id: uid(), title:t, subtitle:a,
-      subtitleBorn: born||"", subtitlePlace: place||"", subtitleDied: died||"", subtitleDiedPlace: diedPlace||"",
-      factAuction: fAuction||"", factPeriod: fPeriod||"", factUnique: fUnique||"",
-      paintedPlace: "", currentPlace: "",
-      column: col||"", hasImage:false
-    }));
+    return SEED_ART.map(([t,a,fAuction,fPeriod,fUnique,born,place,died,diedPlace,col]) => {
+      const imageUrl = (window.SEED_IMAGES && window.SEED_IMAGES[t]) || "";
+      return {
+        id: uid(), title:t, subtitle:a,
+        subtitleBorn: born||"", subtitlePlace: place||"", subtitleDied: died||"", subtitleDiedPlace: diedPlace||"",
+        factAuction: fAuction||"", factPeriod: fPeriod||"", factUnique: fUnique||"",
+        paintedPlace: "", currentPlace: "",
+        column: col||"", hasImage: !!imageUrl, imageUrl
+      };
+    });
   }
 
   const DEFAULT_SET_ID = 'default-art';
@@ -644,6 +647,7 @@
   }
 
   async function getImageDataUrl(item){
+    if(item.imageUrl) return item.imageUrl;
     if(!item.hasImage) return null;
     if(imgCache.has(item.id)) return imgCache.get(item.id);
     const raw = await storeGet(imgKey(activeSetId, item.id));
@@ -940,7 +944,7 @@
           }
           imgCache.set(id, dataUrl);
           const item = items.find(i=>i.id===id);
-          if(item) item.hasImage = true;
+          if(item){ item.hasImage = true; item.imageUrl = ""; }
           await saveItems();
           renderItemsTable();
           toast('Image saved');
@@ -953,7 +957,7 @@
         await storeDelete(imgKey(activeSetId, id));
         imgCache.delete(id);
         const item = items.find(i=>i.id===id);
-        if(item) item.hasImage = false;
+        if(item){ item.hasImage = false; item.imageUrl = ""; }
         await saveItems();
         renderItemsTable();
       });
