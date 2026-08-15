@@ -231,10 +231,30 @@
     activeSetId = (rawActive && sets.find(s=>s.id===rawActive)) ? rawActive : sets[0].id;
   }
 
+  function backfillDefaultImages(list){
+    let changed = false;
+    list.forEach(it=>{
+      if(!it.hasImage && window.SEED_IMAGES && window.SEED_IMAGES[it.title]){
+        it.imageUrl = window.SEED_IMAGES[it.title];
+        it.hasImage = true;
+        changed = true;
+      }
+    });
+    return changed;
+  }
+
   async function loadItemsFor(setId){
     const raw = await storeGet(itemsKey(setId));
     if(raw){
-      try{ const parsed = JSON.parse(raw); if(Array.isArray(parsed)) return parsed; }catch(e){}
+      try{
+        const parsed = JSON.parse(raw);
+        if(Array.isArray(parsed)){
+          if(setId === DEFAULT_SET_ID && backfillDefaultImages(parsed)){
+            await storeSet(itemsKey(setId), JSON.stringify(parsed));
+          }
+          return parsed;
+        }
+      }catch(e){}
     }
     // Storage unavailable or empty (e.g. the file was downloaded and opened
     // directly, with no persistence backend) — still seed the default topic
