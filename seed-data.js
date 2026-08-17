@@ -431,7 +431,8 @@ window.SEED_ART = [
     "Luncheon of the Boating Party||Pierre-Auguste Renoir": "images/luncheon-of-the-boating-party.jpg",
     "Liberty Leading the People||Eugène Delacroix": "images/liberty-leading-the-people.jpg",
     "Napoleon Crossing the Alps||Jacques-Louis David": "images/napoleon-crossing-the-alps.jpg",
-    "Self-Portrait||Vincent Van Gogh": "images/self-portrait-.jpg"
+    "Self-Portrait||Vincent Van Gogh": "images/self-portrait-.jpg",
+    "Madonna della Seggiola||Raphael": "images/madonna-della-seggoila.png"
   };
 
   // Same "Title||Artist" keying, giving each seed item a clean display
