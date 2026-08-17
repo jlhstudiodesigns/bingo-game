@@ -449,7 +449,9 @@ window.SEED_ART = [
     "Looking Down Yosemite Valley||Albert Bierstadt": "images/looking-down-yosemite-valley.jpg",
     "Nighthawks||Edward Hopper": "images/nighthawks.jpg",
     "Deposition of Christ||Caravaggio": "images/Deposition-of-Christ.jpg",
-    "The Sleeping Gypsy||Henri Rousseau": "images/the-sleeping-gypsy.jpg"
+    "The Sleeping Gypsy||Henri Rousseau": "images/the-sleeping-gypsy.jpg",
+    "Breezing Up||Winslow Homer": "images/breezing-up.jpg",
+    "The Third of May||Francisco de Goya": "images/the-third-of-may.jpg"
   };
 
   // Same "Title||Artist" keying, giving each seed item a clean display
