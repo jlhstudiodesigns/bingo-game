@@ -442,7 +442,12 @@ window.SEED_ART = [
     "Still Life with Skull||Paul Cézanne": "images/still-life-with-skull.jpg",
     "The Kiss||Francesco Hayez": "images/the-kiss-by-hayez.jpg",
     "Untitled, 1982||Jean-Michel Basquiat": "images/untitled-1982.jpg",
-    "Violin and Candlestick||Georges Braque": "images/violin-and-candlestick.jpg"
+    "Violin and Candlestick||Georges Braque": "images/violin-and-candlestick.jpg",
+    "Self-Portrait in the Green Bugatti||Tamara de Lempicka": "images/Self-Portrait-in-the-Green-Bugatti.jpg",
+    "Birds of America||John James Audubon": "images/birds-of-america-red-necked-grebe.jpg",
+    "Lady with an Ermine||Leonardo da Vinci": "images/lady-with-an-ermine.jpg",
+    "Looking Down Yosemite Valley||Albert Bierstadt": "images/looking-down-yosemite-valley.jpg",
+    "Nighthawks||Edward Hopper": "images/nighthawks.jpg"
   };
 
   // Same "Title||Artist" keying, giving each seed item a clean display
