@@ -1139,7 +1139,10 @@
   resetBtn.addEventListener('click', ()=>resetGame(true));
   winnerBtn.addEventListener('click', openLeaderCardModal);
   document.addEventListener('keydown', (e)=>{
-    if(editorView.classList.contains('show')) return;
+    if(editorView.classList.contains('show')){
+      if(e.code === 'Escape'){ closeEditor(); }
+      return;
+    }
     if(e.code === 'Space' || e.code === 'Enter'){
       const active = document.activeElement;
       if(active && (active.tagName==='INPUT'||active.tagName==='TEXTAREA'||active.tagName==='BUTTON')) return;
