@@ -431,7 +431,7 @@ window.SEED_ART = [
     "Luncheon of the Boating Party||Pierre-Auguste Renoir": "images/luncheon-of-the-boating-party.jpg",
     "Liberty Leading the People||Eugène Delacroix": "images/liberty-leading-the-people.jpg",
     "Napoleon Crossing the Alps||Jacques-Louis David": "images/napoleon-crossing-the-alps.jpg",
-    "Self-Portrait||Vincent Van Gogh": "images/self-portrait-.jpg",
+    "Self-Portrait||Vincent Van Gogh": "images/self-portrait-by-vincent-van-gogh.jpg",
     "Madonna della Seggiola||Raphael": "images/madonna-della-seggoila.png",
     "The Angelus||Jean-François Millet": "images/the-angelus.jpg",
     "The Dance Class||Edgar Degas": "images/the-dance-class.jpg",
@@ -447,7 +447,9 @@ window.SEED_ART = [
     "Birds of America||John James Audubon": "images/birds-of-america-red-necked-grebe.jpg",
     "Lady with an Ermine||Leonardo da Vinci": "images/lady-with-an-ermine.jpg",
     "Looking Down Yosemite Valley||Albert Bierstadt": "images/looking-down-yosemite-valley.jpg",
-    "Nighthawks||Edward Hopper": "images/nighthawks.jpg"
+    "Nighthawks||Edward Hopper": "images/nighthawks.jpg",
+    "Deposition of Christ||Caravaggio": "images/Deposition-of-Christ.jpg",
+    "The Sleeping Gypsy||Henri Rousseau": "images/the-sleeping-gypsy.jpg"
   };
 
   // Same "Title||Artist" keying, giving each seed item a clean display
