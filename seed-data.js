@@ -437,7 +437,12 @@ window.SEED_ART = [
     "The Dance Class||Edgar Degas": "images/the-dance-class.jpg",
     "The Gleaners||Jean-François Millet": "images/the-gleaners.jpg",
     "The Milkmaid||Johannes Vermeer": "images/the-milkmaid.jpg",
-    "The Skiff||Pierre-Auguste Renoir": "images/the-skiff.jpg"
+    "The Skiff||Pierre-Auguste Renoir": "images/the-skiff.jpg",
+    "Composition 8||Wassily Kandinsky": "images/composition-8.jpg",
+    "Still Life with Skull||Paul Cézanne": "images/still-life-with-skull.jpg",
+    "The Kiss||Francesco Hayez": "images/the-kiss-by-hayez.jpg",
+    "Untitled, 1982||Jean-Michel Basquiat": "images/untitled-1982.jpg",
+    "Violin and Candlestick||Georges Braque": "images/violin-and-candlestick.jpg"
   };
 
   // Same "Title||Artist" keying, giving each seed item a clean display
