@@ -81,7 +81,11 @@ the matching entry to `window.SEED_IMAGES` in `seed-data.js` and push to `main`
 3. Add the entry: `"Title||Artist": "images/filename.ext"`.
 4. If a filename clearly doesn't match any seed entry, note it to the user
    rather than guessing.
-5. Commit and push to `main`.
+5. Bump the cache-busting version on the `seed-data.js` script tag in `index.html`
+   (e.g. `?v=20260817` → today's date `YYYYMMDD`). The browser treats a changed
+   query string as a new URL, so users see updated images on a plain refresh
+   without needing to clear cache or open incognito.
+6. Commit and push to `main`.
 
 ## Planned but not built yet
 
