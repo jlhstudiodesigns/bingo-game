@@ -57,7 +57,7 @@ constraint (see "Session/tooling constraints" below). Don't recombine it.
 
 ## Preloaded artwork images (`images/`)
 
-19 of the 75 seed artworks currently have a bundled image; the other 56 show the
+Most of the 75 seed artworks now have a bundled image; any that don't show the
 "no image" placeholder until images are added. Filenames are kebab-case slugs of
 the title (e.g. `the-great-wave-off-kanagawa.jpg`), not the raw filenames the
 images arrived with — several needed renaming to fix typos/spaces/apostrophes
@@ -65,8 +65,23 @@ from the original uploads. Keep using that naming convention for consistency,
 and remember to add the corresponding `SEED_IMAGES["Title||Artist"]` entry — a
 file dropped in `images/` does nothing on its own.
 
-The remaining 56 images are expected to arrive from the user directly (pasted
-into the Claude conversation), not sourced from the web.
+Images are expected to arrive from the user directly, not sourced from the web.
+
+## Standing instruction: auto-wire new images
+
+**Whenever a new file appears in `images/` that is not yet in `SEED_IMAGES`**
+(detected via `git pull`, a user message, or any other means), immediately add
+the matching entry to `window.SEED_IMAGES` in `seed-data.js` and push to `main`
+— without waiting to be asked. Steps:
+
+1. `git pull origin main` to get the new file(s).
+2. Cross-reference every unwired filename against the `SEED_ART` titles and
+   artists to find the correct `"Title||Artist"` key. Use the composite key —
+   never a plain title (two artworks share "The Kiss").
+3. Add the entry: `"Title||Artist": "images/filename.ext"`.
+4. If a filename clearly doesn't match any seed entry, note it to the user
+   rather than guessing.
+5. Commit and push to `main`.
 
 ## Planned but not built yet
 
