@@ -432,7 +432,12 @@ window.SEED_ART = [
     "Liberty Leading the People||Eugène Delacroix": "images/liberty-leading-the-people.jpg",
     "Napoleon Crossing the Alps||Jacques-Louis David": "images/napoleon-crossing-the-alps.jpg",
     "Self-Portrait||Vincent Van Gogh": "images/self-portrait-.jpg",
-    "Madonna della Seggiola||Raphael": "images/madonna-della-seggoila.png"
+    "Madonna della Seggiola||Raphael": "images/madonna-della-seggoila.png",
+    "The Angelus||Jean-François Millet": "images/the-angelus.jpg",
+    "The Dance Class||Edgar Degas": "images/the-dance-class.jpg",
+    "The Gleaners||Jean-François Millet": "images/the-gleaners.jpg",
+    "The Milkmaid||Johannes Vermeer": "images/the-milkmaid.jpg",
+    "The Skiff||Pierre-Auguste Renoir": "images/the-skiff.jpg"
   };
 
   // Same "Title||Artist" keying, giving each seed item a clean display
