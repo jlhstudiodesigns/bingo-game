@@ -995,6 +995,7 @@
 
   function resizeImageFile(file, maxDim, quality){
     maxDim = maxDim || 1000; quality = quality || 0.82;
+    const hasAlpha = file.type === 'image/png' || file.type === 'image/webp';
     return new Promise((resolve,reject)=>{
       const reader = new FileReader();
       reader.onload = e=>{
@@ -1006,7 +1007,7 @@
           const canvas = document.createElement('canvas');
           canvas.width=w; canvas.height=h;
           canvas.getContext('2d').drawImage(img,0,0,w,h);
-          resolve(canvas.toDataURL('image/jpeg', quality));
+          resolve(hasAlpha ? canvas.toDataURL('image/png') : canvas.toDataURL('image/jpeg', quality));
         };
         img.onerror = ()=>reject(new Error('bad image'));
         img.src = e.target.result;
