@@ -326,13 +326,10 @@
   .btn-ghost:hover{ color: var(--ivory); border-color: rgba(0,0,0,0.4); }
   .btn-ghost:disabled{ color:#b5b5b0; border-color:rgba(0,0,0,0.08); cursor:not-allowed; }
 
-  /* Controls row buttons — 40% smaller than the global button baseline */
-  .controls button{ font-size:11px; padding:11px 21px; }
-
-  /* Buttons/hints that sit directly on the dark outer page background */
-  .controls .btn-ghost{ color: var(--chrome-text-dim); border-color: rgba(244,239,226,0.28); }
-  .controls .btn-ghost:hover{ color: var(--chrome-text); border-color: rgba(244,239,226,0.5); }
-  .controls .btn-ghost:disabled{ color:#5c665a; border-color:rgba(168,182,164,0.14); }
+  /* Controls row buttons — 25% smaller, all yellow like Draw */
+  .controls button{ font-size:11px; padding:11px 21px; background: linear-gradient(180deg, #d9b45e, var(--frame)); color:#241a0c; border-color:transparent; }
+  .controls button:hover{ filter:brightness(1.06); }
+  .controls button:disabled{ background:#e3e3df; color:#9a9a93; filter:none; border-color:transparent; }
   .btn-danger{ background: transparent; color: var(--chrome-danger); border-color: rgba(165,67,46,0.5); }
   .btn-danger:hover{ background: rgba(165,67,46,0.15); color: var(--chrome-danger-hover); }
 
