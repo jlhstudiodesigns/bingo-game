@@ -444,7 +444,7 @@
     gap:10px; font-family: sans-serif;
   }
   .lightbox-badge{
-    flex-shrink:0; font-size:22px; font-weight:800; width:40px; height:40px;
+    flex-shrink:0; font-size:28px; font-weight:800; width:48px; height:48px;
     border-radius:50%; display:flex; align-items:center; justify-content:center;
     font-family:'Playfair Display', serif; color:#fff;
   }
@@ -456,14 +456,14 @@
   .lightbox-text{ display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; }
   .lightbox-title{
     font-family:'Playfair Display', serif !important;
-    font-size:21px; font-weight:900; letter-spacing:0.01em;
+    font-size:26px; font-weight:900; letter-spacing:0.01em;
   }
   .lightbox-artist{
-    font-size:13px; font-weight:400; opacity:0.75;
+    font-size:16px; font-weight:400; opacity:0.75;
   }
-  .lightbox-dot{ opacity:0.35; font-size:13px; }
+  .lightbox-dot{ opacity:0.35; font-size:16px; }
   .lightbox-year{
-    font-size:13px; font-weight:400; opacity:0.6;
+    font-size:16px; font-weight:400; opacity:0.6;
   }
 
   /* ---------- modal (for revisiting past draws) ---------- */
