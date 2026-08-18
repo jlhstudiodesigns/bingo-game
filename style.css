@@ -329,7 +329,7 @@
   /* Controls row buttons — 25% smaller, all yellow like Draw */
   .controls button{ font-size:11px; padding:11px 21px; background: linear-gradient(180deg, #d9b45e, var(--frame)); color:#241a0c; border-color:transparent; }
   .controls button:hover{ filter:brightness(1.06); }
-  .controls button:disabled{ background:#e3e3df; color:#9a9a93; filter:none; border-color:transparent; }
+  .controls button:disabled{ background: linear-gradient(180deg, #d9b45e, var(--frame)); color:#241a0c; opacity:0.5; filter:none; border-color:transparent; cursor:not-allowed; }
   .btn-danger{ background: transparent; color: var(--chrome-danger); border-color: rgba(165,67,46,0.5); }
   .btn-danger:hover{ background: rgba(165,67,46,0.15); color: var(--chrome-danger-hover); }
 
