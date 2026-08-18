@@ -462,6 +462,9 @@
   .lightbox-artist{
     font-size:19px; font-weight:400; opacity:0.75;
   }
+  .lightbox-medium{
+    font-size:19px; font-weight:400; opacity:0.6; font-style:italic;
+  }
   .lightbox-dot{ opacity:0.35; font-size:19px; }
   .lightbox-year{
     font-size:19px; font-weight:400; opacity:0.6;

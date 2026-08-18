@@ -786,9 +786,11 @@
         : `<div class="lightbox-no-img">🖼️</div>`;
       const year = item.dateText ? item.dateText : '';
       const artist = item.subtitle ? escapeHtml(item.subtitle) : '';
+      const medium = item.mediumText ? escapeHtml(item.mediumText) : '';
       const yearPart = year ? `<span class="lightbox-year">${escapeHtml(year)}</span>` : '';
       const dotSep = (artist && year) ? `<span class="lightbox-dot">·</span>` : '';
       const dotTitle = artist ? `<span class="lightbox-dot">·</span>` : '';
+      const dotMedium = (artist && medium) ? `<span class="lightbox-dot">·</span>` : '';
       const col = (item.column || '').trim().toUpperCase();
       const badgeHtml = ['B','I','N','G','O'].includes(col)
         ? `<div class="lightbox-badge letter-${col.toLowerCase()}">${col}</div>` : '';
@@ -802,6 +804,7 @@
               <span class="lightbox-title">${escapeHtml(item.title)}</span>
               ${dotTitle}
               ${artist ? `<span class="lightbox-artist">${artist}</span>` : ''}
+              ${dotMedium}${medium ? `<span class="lightbox-medium">${medium}</span>` : ''}
               ${dotSep}${yearPart}
             </div>
           </div>
