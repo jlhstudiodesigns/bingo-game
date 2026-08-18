@@ -451,7 +451,8 @@ window.SEED_ART = [
     "Deposition of Christ||Caravaggio": "images/Deposition-of-Christ.jpg",
     "The Sleeping Gypsy||Henri Rousseau": "images/the-sleeping-gypsy.jpg",
     "Breezing Up||Winslow Homer": "images/breezing-up.jpg",
-    "The Third of May||Francisco de Goya": "images/the-third-of-may.jpg"
+    "The Third of May||Francisco de Goya": "images/the-third-of-may.jpg",
+    "Nafeaffaa Ipolpo (When Will You Marry)||Paul Gauguin": "images/nafeaffaa-ipolpo.jpg"
   };
 
   // Same "Title||Artist" keying, giving each seed item a clean display
