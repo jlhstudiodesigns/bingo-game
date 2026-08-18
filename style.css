@@ -406,6 +406,52 @@
     display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;
   }
 
+  /* ---------- fullscreen lightbox (bingo column card click) ---------- */
+  .lightbox-backdrop{
+    position:fixed; inset:0; background:rgba(0,0,0,0.88); backdrop-filter:blur(4px);
+    display:flex; align-items:center; justify-content:center; z-index:60; padding:20px;
+    cursor:zoom-out;
+  }
+  .lightbox-box{
+    display:flex; flex-direction:column; align-items:center;
+    max-width:min(90vw, 900px); max-height:90vh; cursor:default;
+    gap:0;
+  }
+  .lightbox-close{
+    align-self:flex-end; background:rgba(255,255,255,0.12); border:none;
+    color:#fff; font-size:24px; line-height:1; width:36px; height:36px;
+    border-radius:50%; cursor:pointer; margin-bottom:10px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-close:hover{ background:rgba(255,255,255,0.25); }
+  .lightbox-frame{
+    background:#fff; padding:10%;
+    display:flex; align-items:center; justify-content:center;
+    max-width:100%; flex-shrink:1; overflow:hidden;
+  }
+  .lightbox-img{
+    display:block; max-width:100%; max-height:calc(80vh - 100px);
+    object-fit:contain; width:auto; height:auto;
+  }
+  .lightbox-no-img{
+    font-size:80px; opacity:0.4; padding:40px;
+  }
+  .lightbox-caption{
+    background:rgba(0,0,0,0.6); color:#fff; width:100%;
+    padding:12px 18px; display:flex; flex-wrap:wrap; align-items:baseline;
+    gap:6px; font-family:'Playfair Display', serif;
+  }
+  .lightbox-title{
+    font-size:16px; font-weight:700; letter-spacing:0.01em;
+  }
+  .lightbox-artist{
+    font-size:13px; font-weight:400; opacity:0.8;
+  }
+  .lightbox-dot{ opacity:0.4; font-size:13px; }
+  .lightbox-year{
+    font-size:13px; font-weight:400; opacity:0.65;
+  }
+
   /* ---------- modal (for revisiting past draws) ---------- */
   .modal-backdrop{
     position:fixed; inset:0; background:rgba(10,14,11,0.72); backdrop-filter: blur(2px);

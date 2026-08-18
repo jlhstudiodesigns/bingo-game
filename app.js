@@ -775,27 +775,29 @@
     if(!item) return;
     getImageDataUrl(item).then(dataUrl=>{
       const backdrop = document.createElement('div');
-      backdrop.className = 'modal-backdrop';
-      const mediaHtml = dataUrl
-        ? `<img class="reveal-img" style="max-height:44vh;" src="${dataUrl}" alt="${escapeHtml(item.title)}">`
-        : `<div class="placeholder-icon">🖼️</div>
-           <div class="placeholder-text">No image uploaded</div>
-           <a class="view-link secondary" href="${imageLinkFor(item)}" target="_blank" rel="noopener">View Image ↗</a>`;
+      backdrop.className = 'lightbox-backdrop';
+      const imgHtml = dataUrl
+        ? `<img class="lightbox-img" src="${dataUrl}" alt="${escapeHtml(item.title)}">`
+        : `<div class="lightbox-no-img">🖼️</div>`;
+      const year = item.dateText ? item.dateText : '';
+      const artist = item.subtitle ? escapeHtml(item.subtitle) : '';
+      const yearPart = year ? `<span class="lightbox-year">${escapeHtml(year)}</span>` : '';
+      const dotSep = (artist && year) ? `<span class="lightbox-dot">·</span>` : '';
       backdrop.innerHTML = `
-        <div class="modal-card">
-          <button class="modal-close" aria-label="Close">×</button>
-          ${mediaHtml}
-          <div class="modal-info-row">
-            ${letterBadgeHtml(item, true)}
-            <div class="modal-info-text">
-              <div class="art-title" style="color:var(--ivory);">${escapeHtml(item.title)}</div>
-              ${item.dateText ? `<div class="art-date">${escapeHtml(item.dateText)}</div>` : ''}
-              ${item.subtitle ? `<div class="art-subtitle">${escapeHtml(item.subtitle)}</div>` : ''}
-            </div>
+        <div class="lightbox-box">
+          <button class="lightbox-close" aria-label="Close">×</button>
+          <div class="lightbox-frame">${imgHtml}</div>
+          <div class="lightbox-caption">
+            <span class="lightbox-title">${escapeHtml(item.title)}</span>
+            ${artist ? `<span class="lightbox-artist">${artist}</span>` : ''}
+            ${dotSep}${yearPart}
           </div>
         </div>`;
       backdrop.addEventListener('click', e=>{ if(e.target===backdrop) backdrop.remove(); });
-      backdrop.querySelector('.modal-close').addEventListener('click', ()=>backdrop.remove());
+      backdrop.querySelector('.lightbox-close').addEventListener('click', ()=>backdrop.remove());
+      document.addEventListener('keydown', function escLightbox(e){
+        if(e.code==='Escape'){ backdrop.remove(); document.removeEventListener('keydown', escLightbox); }
+      });
       document.body.appendChild(backdrop);
     });
   }
