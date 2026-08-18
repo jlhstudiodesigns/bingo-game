@@ -455,8 +455,8 @@
   .lightbox-badge.letter-o{ background:#4a1a7a; }
   .lightbox-text{ display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; }
   .lightbox-title{
-    font-family:'Playfair Display', serif;
-    font-size:16px; font-weight:700; letter-spacing:0.01em;
+    font-family:'Playfair Display', serif !important;
+    font-size:18px; font-weight:900; letter-spacing:0.01em;
   }
   .lightbox-artist{
     font-size:13px; font-weight:400; opacity:0.75;
