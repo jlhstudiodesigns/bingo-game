@@ -327,9 +327,9 @@
   .btn-ghost:disabled{ color:#b5b5b0; border-color:rgba(0,0,0,0.08); cursor:not-allowed; }
 
   /* Controls row buttons — 25% smaller, all yellow like Draw */
-  .controls button{ font-size:12.6px; padding:12.6px 25px; background: linear-gradient(180deg, #d9b45e, var(--frame)); color:#241a0c; border-color:transparent; }
-  .controls button:hover{ filter:brightness(1.06); }
-  .controls button:disabled{ background: linear-gradient(180deg, #d9b45e, var(--frame)); color:#241a0c; opacity:0.5; filter:none; border-color:transparent; cursor:not-allowed; }
+  .controls button{ font-size:12.6px; padding:12.6px 25px; background:#397a2a; color:#fff; border-color:transparent; }
+  .controls button:hover{ background:#2c5c33; filter:none; }
+  .controls button:disabled{ background:#397a2a; color:#fff; opacity:0.5; filter:none; border-color:transparent; cursor:not-allowed; }
   .btn-danger{ background: transparent; color: var(--chrome-danger); border-color: rgba(165,67,46,0.5); }
   .btn-danger:hover{ background: rgba(165,67,46,0.15); color: var(--chrome-danger-hover); }
 
