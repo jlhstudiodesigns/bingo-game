@@ -783,14 +783,20 @@
       const artist = item.subtitle ? escapeHtml(item.subtitle) : '';
       const yearPart = year ? `<span class="lightbox-year">${escapeHtml(year)}</span>` : '';
       const dotSep = (artist && year) ? `<span class="lightbox-dot">·</span>` : '';
+      const col = (item.column || '').trim().toUpperCase();
+      const badgeHtml = ['B','I','N','G','O'].includes(col)
+        ? `<div class="lightbox-badge letter-${col.toLowerCase()}">${col}</div>` : '';
       backdrop.innerHTML = `
         <div class="lightbox-box">
           <button class="lightbox-close" aria-label="Close">×</button>
           <div class="lightbox-frame">${imgHtml}</div>
           <div class="lightbox-caption">
-            <span class="lightbox-title">${escapeHtml(item.title)}</span>
-            ${artist ? `<span class="lightbox-artist">${artist}</span>` : ''}
-            ${dotSep}${yearPart}
+            ${badgeHtml}
+            <div class="lightbox-text">
+              <span class="lightbox-title">${escapeHtml(item.title)}</span>
+              ${artist ? `<span class="lightbox-artist">${artist}</span>` : ''}
+              ${dotSep}${yearPart}
+            </div>
           </div>
         </div>`;
       backdrop.addEventListener('click', e=>{ if(e.target===backdrop) backdrop.remove(); });
