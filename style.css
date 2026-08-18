@@ -459,11 +459,11 @@
     font-size:26px; font-weight:900; letter-spacing:0.01em;
   }
   .lightbox-artist{
-    font-size:16px; font-weight:400; opacity:0.75;
+    font-size:19px; font-weight:400; opacity:0.75;
   }
-  .lightbox-dot{ opacity:0.35; font-size:16px; }
+  .lightbox-dot{ opacity:0.35; font-size:19px; }
   .lightbox-year{
-    font-size:16px; font-weight:400; opacity:0.6;
+    font-size:19px; font-weight:400; opacity:0.6;
   }
 
   /* ---------- modal (for revisiting past draws) ---------- */
