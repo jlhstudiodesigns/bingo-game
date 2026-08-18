@@ -455,7 +455,8 @@ window.SEED_ART = [
     "Nafeaffaa Ipolpo (When Will You Marry)||Paul Gauguin": "images/nafeaffaa-ipolpo.jpg",
     "Card Players||Paul Cézanne": "images/card-players.jpg",
     "Interchange||Willem de Kooning": "images/interchange.jpg",
-    "Portrait of Dora Maar||Pablo Picasso": "images/portrait-of-dora.jpg"
+    "Portrait of Dora Maar||Pablo Picasso": "images/portrait-of-dora.jpg",
+    "Shot Sage Blue Marilyn||Andy Warhol": "images/shot-sage-blue-marilyn.jpg"
   };
 
   // Same "Title||Artist" keying, giving each seed item a clean display
