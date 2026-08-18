@@ -233,14 +233,7 @@
     letter-spacing:0.04em; color: var(--stone-dim);
     font-style:italic;
   }
-  .art-medium{
-    margin-top:5px;
-    font-size: clamp(11px, 1.2vw, 13px);
-    letter-spacing:0.03em; color: var(--stone-dim);
-  }
-  .art-medium-label{
-    font-weight:600; font-style:normal; opacity:0.75;
-  }
+  .art-date-dot{ opacity:0.45; font-style:normal; }
   .art-subtitle{
     margin-top:12px;
     font-size: clamp(12.5px, 1.5vw, 16px);

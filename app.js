@@ -756,8 +756,7 @@
         <div class="reveal-info">
           <div class="draw-index">Draw ${drawNum} of ${items.length}</div>
           <div class="art-title">${escapeHtml(item.title)}</div>
-          ${item.dateText ? `<div class="art-date">${escapeHtml(item.dateText)}</div>` : ''}
-          ${item.mediumText ? `<div class="art-medium"><span class="art-medium-label">Medium:</span> ${escapeHtml(item.mediumText)}</div>` : ''}
+          ${(item.dateText || item.mediumText) ? `<div class="art-date">${item.dateText ? escapeHtml(item.dateText) : ''}${item.dateText && item.mediumText ? ' <span class="art-date-dot">·</span> ' : ''}${item.mediumText ? escapeHtml(item.mediumText) : ''}</div>` : ''}
           ${artistBlockHtml(item)}
           ${hasAnyFact(item) ? `<div class="fact-panel">${factsBlocksHtml(item)}</div>` : ''}
         </div>
