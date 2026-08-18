@@ -326,6 +326,9 @@
   .btn-ghost:hover{ color: var(--ivory); border-color: rgba(0,0,0,0.4); }
   .btn-ghost:disabled{ color:#b5b5b0; border-color:rgba(0,0,0,0.08); cursor:not-allowed; }
 
+  /* Controls row buttons — 40% smaller than the global button baseline */
+  .controls button{ font-size:8px; padding:8px 17px; }
+
   /* Buttons/hints that sit directly on the dark outer page background */
   .controls .btn-ghost{ color: var(--chrome-text-dim); border-color: rgba(244,239,226,0.28); }
   .controls .btn-ghost:hover{ color: var(--chrome-text); border-color: rgba(244,239,226,0.5); }
