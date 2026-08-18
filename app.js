@@ -204,12 +204,13 @@
       const key = t + '||' + a;
       const imageUrl = (window.SEED_IMAGES && window.SEED_IMAGES[key]) || "";
       const dateText = (window.SEED_DATES && window.SEED_DATES[key]) || "";
+      const mediumText = (window.SEED_MEDIUM && window.SEED_MEDIUM[key]) || "";
       return {
         id: uid(), title:t, subtitle:a,
         subtitleBorn: born||"", subtitlePlace: place||"", subtitleDied: died||"", subtitleDiedPlace: diedPlace||"",
         factAuction: fAuction||"", factPeriod: fPeriod||"", factUnique: fUnique||"",
         paintedPlace: "", currentPlace: "",
-        column: col||"", hasImage: !!imageUrl, imageUrl, dateText
+        column: col||"", hasImage: !!imageUrl, imageUrl, dateText, mediumText
       };
     });
   }
@@ -244,6 +245,10 @@
       }
       if(!it.dateText && window.SEED_DATES && window.SEED_DATES[key]){
         it.dateText = window.SEED_DATES[key];
+        changed = true;
+      }
+      if(!it.mediumText && window.SEED_MEDIUM && window.SEED_MEDIUM[key]){
+        it.mediumText = window.SEED_MEDIUM[key];
         changed = true;
       }
     });
@@ -752,6 +757,7 @@
           <div class="draw-index">Draw ${drawNum} of ${items.length}</div>
           <div class="art-title">${escapeHtml(item.title)}</div>
           ${item.dateText ? `<div class="art-date">${escapeHtml(item.dateText)}</div>` : ''}
+          ${item.mediumText ? `<div class="art-medium"><span class="art-medium-label">Medium:</span> ${escapeHtml(item.mediumText)}</div>` : ''}
           ${artistBlockHtml(item)}
           ${hasAnyFact(item) ? `<div class="fact-panel">${factsBlocksHtml(item)}</div>` : ''}
         </div>
