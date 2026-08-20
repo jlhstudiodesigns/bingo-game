@@ -4,24 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Bingo Caller</title>
-<link rel="stylesheet" href="style.css?v=20260818s">
+<link rel="stylesheet" href="style.css?v=20260820a">
 </head>
 <body>
 
 <div class="app-shell" id="appShell">
-
-<header>
-  <div class="brand">
-    <span class="eyebrow">Now Playing</span>
-    <h1 id="setTitle">Loading…</h1>
-  </div>
-  <div class="head-right">
-    <select class="set-select" id="setSwitcher" title="Switch topic set"></select>
-    <div class="tally"><b id="drawnCount">0</b> of <b id="totalCount">0</b> called</div>
-    <button class="icon-btn" id="setupBtn">⚙ Setup</button>
-    <button class="icon-btn" id="fsBtn">⛶ Fullscreen</button>
-  </div>
-</header>
 
 <main id="mainView">
   <div class="stage">
@@ -44,6 +31,19 @@
     <button class="btn-ghost" id="winnerBtn" disabled title="Predicted winner among the 32 printed cards">No calls yet</button>
   </div>
 </main>
+
+<header>
+  <div class="brand">
+    <span class="eyebrow">Now Playing</span>
+    <h1 id="setTitle">Loading…</h1>
+  </div>
+  <div class="head-right">
+    <select class="set-select" id="setSwitcher" title="Switch topic set"></select>
+    <div class="tally"><b id="drawnCount">0</b> of <b id="totalCount">0</b> called</div>
+    <button class="icon-btn" id="setupBtn">⚙ Setup</button>
+    <button class="icon-btn" id="fsBtn">⛶ Fullscreen</button>
+  </div>
+</header>
 
 <!-- ---------------- SETUP / EDITOR VIEW ---------------- -->
 <div class="editor" id="editorView">
