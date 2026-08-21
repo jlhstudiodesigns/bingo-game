@@ -533,14 +533,7 @@
     backdrop.className = 'modal-backdrop';
     backdrop.innerHTML = `
       <div class="card-modal">
-        <div class="card-modal-nav">
-          <button class="cm-nav-btn" id="cmPrevBtn" title="Previous card">‹</button>
-          <span class="cm-nav-count" id="cmNavCount"></span>
-          <button class="cm-nav-btn" id="cmNextBtn" title="Next card">›</button>
-          <button class="modal-close" aria-label="Close">×</button>
-        </div>
-        <div class="card-modal-title">Art History BINGO</div>
-        <div class="card-modal-subtitle" id="cmSubtitle"></div>
+        <button class="modal-close" aria-label="Close">×</button>
         <div class="bingo-strip">
           <div class="bingo-strip-letter col-b">B</div>
           <div class="bingo-strip-letter col-i">I</div>
@@ -549,7 +542,11 @@
           <div class="bingo-strip-letter col-o">O</div>
         </div>
         <div class="card-grid" id="cmGrid"></div>
-        <div class="card-modal-status" id="cmStatus"></div>
+        <div class="card-modal-bottom">
+          <button class="cm-nav-btn" id="cmPrevBtn" title="Previous card">‹</button>
+          <span class="card-modal-status" id="cmStatus"></span>
+          <button class="cm-nav-btn" id="cmNextBtn" title="Next card">›</button>
+        </div>
       </div>
     `;
 
@@ -591,25 +588,16 @@
         ? `🏆 BINGO! Card ${cand.cardNum} completed ${lineLabel}.`
         : `Card ${cand.cardNum} is leading — ${calledOnLine}/5 called on ${lineLabel}.`;
 
-      backdrop.querySelector('#cmSubtitle').textContent = `Card ${cand.cardNum}`;
       backdrop.querySelector('#cmGrid').innerHTML = cells.map(cellHtml).join('');
       const statusEl = backdrop.querySelector('#cmStatus');
       statusEl.textContent = statusText;
       statusEl.classList.toggle('win', isWin);
 
-      const countEl = backdrop.querySelector('#cmNavCount');
       const prevBtn = backdrop.querySelector('#cmPrevBtn');
       const nextBtn = backdrop.querySelector('#cmNextBtn');
-      if(candidates.length > 1){
-        countEl.textContent = `${idx+1} / ${candidates.length}`;
-        countEl.style.display = '';
-        prevBtn.style.display = '';
-        nextBtn.style.display = '';
-      } else {
-        countEl.style.display = 'none';
-        prevBtn.style.display = 'none';
-        nextBtn.style.display = 'none';
-      }
+      const show = candidates.length > 1;
+      prevBtn.style.visibility = show ? '' : 'hidden';
+      nextBtn.style.visibility = show ? '' : 'hidden';
 
       cells.forEach(async c=>{
         if(c.free || !c.called || !c.item || !c.item.hasImage) return;
