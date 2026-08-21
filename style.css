@@ -348,7 +348,10 @@
     font-size: clamp(13px,1.5vw,15px); line-height:1.5; color: var(--ivory); opacity:0.92;
   }
 
-  .controls{ flex-shrink:0; display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:center; }
+  .controls{ flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+  .controls-left{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .controls-right{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-left:auto; }
+  .controls-now-playing{ font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--chrome-frame); font-weight:600; white-space:nowrap; }
   button{
     font-family:'Inter', sans-serif; font-weight:700; font-size:14px; letter-spacing:0.03em;
     border-radius: 3px; padding: 14px 28px; cursor:pointer; border:1px solid transparent;

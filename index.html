@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Bingo Caller</title>
-<link rel="stylesheet" href="style.css?v=20260821k">
+<link rel="stylesheet" href="style.css?v=20260821m">
 </head>
 <body>
 
@@ -32,24 +32,28 @@
   </div>
 
   <div class="controls">
-    <button class="btn-primary" id="drawBtn">Draw</button>
-    <button class="btn-ghost" id="backBtn" disabled>← Back</button>
-    <button class="btn-ghost" id="forwardBtn" disabled>Forward →</button>
-    <button class="btn-danger" id="resetBtn">Reset Game</button>
-    <button class="btn-ghost" id="winnerBtn" disabled title="Predicted winner among the 32 printed cards">🏆</button>
+    <div class="controls-left">
+      <button class="btn-primary" id="drawBtn">Draw</button>
+      <button class="btn-ghost" id="backBtn" disabled>← Back</button>
+      <button class="btn-ghost" id="forwardBtn" disabled>Forward →</button>
+      <button class="btn-danger" id="resetBtn">Reset Game</button>
+      <button class="btn-ghost" id="winnerBtn" disabled title="Predicted winner among the 32 printed cards">🏆</button>
+    </div>
+    <div class="controls-right">
+      <span class="controls-now-playing">Now Playing</span>
+      <select class="set-select" id="setSwitcher" title="Switch topic set"></select>
+      <button class="icon-btn" id="setupBtn" title="Setup">⚙</button>
+      <button class="icon-btn" id="fsBtn" title="Fullscreen">⛶</button>
+    </div>
   </div>
 </main>
 
-<header>
+<header style="display:none">
   <div class="brand">
-    <span class="eyebrow">Now Playing</span>
-    <h1 id="setTitle">Loading…</h1>
+    <h1 id="setTitle"></h1>
   </div>
   <div class="head-right">
-    <select class="set-select" id="setSwitcher" title="Switch topic set"></select>
     <div class="tally"><b id="drawnCount">0</b><b id="totalCount">0</b></div>
-    <button class="icon-btn" id="setupBtn" title="Setup">⚙</button>
-    <button class="icon-btn" id="fsBtn" title="Fullscreen">⛶</button>
   </div>
 </header>
 
