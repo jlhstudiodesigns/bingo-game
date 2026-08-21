@@ -476,27 +476,27 @@
 
     if(status.mode === 'unavailable'){
       winnerBtn.disabled = true;
-      winnerBtn.textContent = 'N/A';
+      winnerBtn.textContent = '🏆';
       winnerBtn.title = 'Only available for the default Famous Artwork set';
       return;
     }
     if(status.mode === 'empty'){
       winnerBtn.disabled = true;
-      winnerBtn.textContent = 'No calls yet';
+      winnerBtn.textContent = '🏆';
       winnerBtn.title = 'Predicted winner among the 32 printed cards';
       return;
     }
     winnerBtn.disabled = false;
     if(status.mode === 'winning'){
       const nums = status.winners.map(w=>w.cardNum);
-      winnerBtn.textContent = nums.length===1 ? `🏆 Card ${nums[0]}` : `🏆 Cards ${nums.join(', ')}`;
+      winnerBtn.textContent = '🏆';
       winnerBtn.classList.add('winning');
       winnerBtn.title = nums.length===1
         ? `BINGO! Click to view card ${nums[0]} and see the winning line.`
         : `BINGO! ${nums.length} cards won at once: ${nums.join(', ')}. Click to browse them.`;
     } else {
       const n = status.leaders.length;
-      winnerBtn.textContent = `Leading: Card ${status.leaderCard}`;
+      winnerBtn.textContent = '🏆';
       winnerBtn.classList.add('leading');
       winnerBtn.title = n===1
         ? `Card ${status.leaderCard} has ${status.leaderCount}/5 in its best line (${lineLabelFor(status.leaderLineIdx)}). Click to view the card.`
