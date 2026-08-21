@@ -348,8 +348,16 @@
     plaque.classList.remove('show','revealed');
     void plaque.offsetWidth;
     plaqueInner.innerHTML = items.length
-      ? '<div class="placeholder">Press "Draw" to begin</div>'
-      : '<div class="placeholder">This topic has no items yet — open Setup to add some.</div>';
+      ? `<div class="placeholder">
+           <div class="game-title">
+             <div class="game-title-top">ART HISTORY</div>
+             <div class="game-title-bingo">
+               <span class="gt-b">B</span><span class="gt-i">I</span><span class="gt-n">N</span><span class="gt-g">G</span><span class="gt-o">O</span>
+             </div>
+           </div>
+           <div class="placeholder-hint">Press "Draw" to begin</div>
+         </div>`
+      : '<div class="placeholder"><div class="placeholder-hint">This topic has no items yet — open Setup to add some.</div></div>';
     plaque.classList.add('show');
   }
 
