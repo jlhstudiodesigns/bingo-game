@@ -69,6 +69,7 @@
     font-variant-numeric: tabular-nums;
     font-size:13px; color: var(--chrome-text-dim);
     letter-spacing:0.04em; white-space:nowrap;
+    display:none;
   }
   .tally b{ color:var(--chrome-text); font-weight:700; }
 
