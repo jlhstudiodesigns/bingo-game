@@ -263,7 +263,7 @@
     font-size: clamp(28px,5vw,72px);
     letter-spacing:0.12em;
     text-transform:uppercase;
-    color: var(--chrome-text);
+    color: #111111;
     line-height:1.1;
   }
   .game-title-bingo{
