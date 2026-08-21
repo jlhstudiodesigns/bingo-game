@@ -84,6 +84,7 @@
   }
   .icon-btn{ color: var(--stone); }
   .icon-btn:hover{ color: var(--ivory); border-color: rgba(0,0,0,0.35); }
+  #setupBtn{ font-size:17px; }
 
   /* ---------- stage ---------- */
   main{
