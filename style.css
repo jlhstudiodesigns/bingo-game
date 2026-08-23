@@ -494,11 +494,11 @@
     border-radius:50%; display:flex; align-items:center; justify-content:center;
     font-family:'Playfair Display', serif; color:#fff;
   }
-  .lightbox-badge.letter-b{ background:#1a4a8a; }
-  .lightbox-badge.letter-i{ background:#8a1a1a; }
-  .lightbox-badge.letter-n{ background:#1a6e2e; }
-  .lightbox-badge.letter-g{ background:#7a4a1a; }
-  .lightbox-badge.letter-o{ background:#4a1a7a; }
+  .lightbox-badge.letter-b{ background: linear-gradient(155deg, #d24a3c, #a8291d); }
+  .lightbox-badge.letter-i{ background: linear-gradient(155deg, #e0912f, #b6691a); }
+  .lightbox-badge.letter-n{ background: linear-gradient(155deg, #ffd200, #d1a900); color:#222; text-shadow: 0 1px 3px rgba(0,0,0,0.55); }
+  .lightbox-badge.letter-g{ background: linear-gradient(155deg, #3f9d64, #256b3f); }
+  .lightbox-badge.letter-o{ background: linear-gradient(155deg, #3f77c2, #24518f); }
   .lightbox-text{ display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; }
   .lightbox-title{
     font-family:'Playfair Display', serif !important;
