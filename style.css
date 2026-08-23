@@ -378,7 +378,6 @@
   .btn-danger{ background: transparent; color: var(--chrome-danger); border-color: rgba(165,67,46,0.5); }
   .btn-danger:hover{ background: rgba(165,67,46,0.15); color: var(--chrome-danger-hover); }
 
-  #leadingBtn.leading{ color: var(--chrome-frame); border-color: rgba(200,162,74,0.45); background: rgba(200,162,74,0.18); }
   #winnersBtn.winning{
     background: linear-gradient(180deg, #d9b45e, var(--frame));
     color: #241a0c; border-color: transparent; font-weight:800;
@@ -752,5 +751,5 @@
     .plaque, .frame-corner, .bcard, .reveal-img, .action-row, .view-hint, .fact-panel{ transition:none; animation:none; opacity:1; transform:none; }
     .flip-inner{ transition:none; transform:rotateY(180deg) !important; }
     .card-back-glyph{ animation:none; }
-    #leadingBtn.leading, #winnersBtn.winning{ animation:none; }
+    #winnersBtn.winning{ animation:none; }
   }
