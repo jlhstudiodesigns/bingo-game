@@ -500,10 +500,11 @@
     if(status.mode === 'winning'){
       const nums = status.winners.map(w=>w.cardNum);
       winnersBtn.disabled = false;
-      winnersBtn.classList.add('winning');
       winnersBtn.title = nums.length===1
         ? `BINGO! Click to view card ${nums[0]} and see the winning line.`
         : `BINGO! ${nums.length} cards won at once: ${nums.join(', ')}. Click to browse them.`;
+      leadingBtn.disabled = false;
+      leadingBtn.classList.add('leading');
       leadingBtn.title = 'Leading card';
     } else {
       const n = status.leaders.length;
