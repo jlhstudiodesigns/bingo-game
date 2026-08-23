@@ -1,4 +1,6 @@
 (function(){
+  const BINGO_CARD_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" style="height:1.6em;width:auto;vertical-align:middle"><rect x="1" y="1" width="98" height="118" rx="3" fill="white" stroke="#bbb" stroke-width="2"/><text x="50" y="26" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="22" fill="black">BINGO</text><rect x="7" y="32" width="15" height="15" fill="#b0b0b0"/><rect x="25" y="32" width="15" height="15" fill="#b0b0b0"/><rect x="43" y="32" width="15" height="15" fill="#b0b0b0"/><rect x="61" y="32" width="15" height="15" fill="#b0b0b0"/><rect x="79" y="32" width="15" height="15" fill="#b0b0b0"/><rect x="7" y="50" width="15" height="15" fill="#b0b0b0"/><rect x="25" y="50" width="15" height="15" fill="#b0b0b0"/><rect x="43" y="50" width="15" height="15" fill="#b0b0b0"/><rect x="61" y="50" width="15" height="15" fill="#b0b0b0"/><rect x="79" y="50" width="15" height="15" fill="#b0b0b0"/><rect x="7" y="68" width="15" height="15" fill="#b0b0b0"/><rect x="25" y="68" width="15" height="15" fill="#b0b0b0"/><rect x="43" y="68" width="15" height="15" fill="#b0b0b0"/><rect x="61" y="68" width="15" height="15" fill="#b0b0b0"/><rect x="79" y="68" width="15" height="15" fill="#b0b0b0"/><rect x="7" y="86" width="15" height="15" fill="#b0b0b0"/><rect x="25" y="86" width="15" height="15" fill="#b0b0b0"/><rect x="43" y="86" width="15" height="15" fill="#b0b0b0"/><rect x="61" y="86" width="15" height="15" fill="#b0b0b0"/><rect x="79" y="86" width="15" height="15" fill="#b0b0b0"/><rect x="7" y="104" width="15" height="15" fill="#b0b0b0"/><rect x="25" y="104" width="15" height="15" fill="#b0b0b0"/><rect x="43" y="104" width="15" height="15" fill="#b0b0b0"/><rect x="61" y="104" width="15" height="15" fill="#b0b0b0"/><rect x="79" y="104" width="15" height="15" fill="#b0b0b0"/></svg>`;
+
   // ============================================================
   // Seed data: the 75 pieces from the original art binder.
   // Used only to create the default set the first time the app runs.
@@ -484,27 +486,27 @@
 
     if(status.mode === 'unavailable'){
       winnerBtn.disabled = true;
-      winnerBtn.textContent = '🏆';
+      winnerBtn.innerHTML = BINGO_CARD_ICON;
       winnerBtn.title = 'Only available for the default Famous Artwork set';
       return;
     }
     if(status.mode === 'empty'){
       winnerBtn.disabled = true;
-      winnerBtn.textContent = '🏆';
+      winnerBtn.innerHTML = BINGO_CARD_ICON;
       winnerBtn.title = 'Predicted winner among the 32 printed cards';
       return;
     }
     winnerBtn.disabled = false;
     if(status.mode === 'winning'){
       const nums = status.winners.map(w=>w.cardNum);
-      winnerBtn.textContent = '🏆';
+      winnerBtn.innerHTML = BINGO_CARD_ICON;
       winnerBtn.classList.add('winning');
       winnerBtn.title = nums.length===1
         ? `BINGO! Click to view card ${nums[0]} and see the winning line.`
         : `BINGO! ${nums.length} cards won at once: ${nums.join(', ')}. Click to browse them.`;
     } else {
       const n = status.leaders.length;
-      winnerBtn.textContent = '🏆';
+      winnerBtn.innerHTML = BINGO_CARD_ICON;
       winnerBtn.classList.add('leading');
       winnerBtn.title = n===1
         ? `Card ${status.leaderCard} has ${status.leaderCount}/5 in its best line (${lineLabelFor(status.leaderLineIdx)}). Click to view the card.`
