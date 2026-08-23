@@ -461,6 +461,10 @@
       perCardBest.push({ cardNum: ci+1, lineIdx: bestLineIdx, count: bestCount });
     });
 
+    const maxCount = Math.max(...perCardBest.map(r=>r.count));
+    const leaders = perCardBest.filter(r=>r.count===maxCount).sort((a,b)=>a.cardNum-b.cardNum);
+    const leaderInfo = { leaders, leaderCard: leaders[0].cardNum, leaderLineIdx: leaders[0].lineIdx, leaderCount: maxCount };
+
     if(winnersRaw.length > 0){
       // one entry per card (first winning line found), sorted by card number
       const seen = new Set();
@@ -469,15 +473,10 @@
         if(!seen.has(w.cardNum)){ seen.add(w.cardNum); winners.push(w); }
       });
       winners.sort((a,b)=>a.cardNum-b.cardNum);
-      return { mode:'winning', winners };
+      return { mode:'winning', winners, ...leaderInfo };
     }
 
-    const maxCount = Math.max(...perCardBest.map(r=>r.count));
-    const leaders = perCardBest.filter(r=>r.count===maxCount).sort((a,b)=>a.cardNum-b.cardNum);
-    return {
-      mode:'leading', leaders,
-      leaderCard: leaders[0].cardNum, leaderLineIdx: leaders[0].lineIdx, leaderCount: maxCount
-    };
+    return { mode:'leading', ...leaderInfo };
   }
 
   function renderBingoWinner(){
@@ -497,6 +496,18 @@
       winnersBtn.title = 'Winner — no calls yet';
       return;
     }
+
+    // Leading btn: always show who's in front once a card has 2+ in its best line
+    if(status.leaderCount >= 2){
+      const n = status.leaders.length;
+      leadingBtn.disabled = false;
+      leadingBtn.title = n===1
+        ? `Card ${status.leaderCard} has ${status.leaderCount}/5 in its best line (${lineLabelFor(status.leaderLineIdx)}). Click to view the card.`
+        : `${n} cards are tied for the lead with ${status.leaderCount}/5. Click to browse all ${n}.`;
+    } else {
+      leadingBtn.title = 'Leading card — not enough calls yet';
+    }
+
     if(status.mode === 'winning'){
       const nums = status.winners.map(w=>w.cardNum);
       winnersBtn.disabled = false;
@@ -504,13 +515,7 @@
       winnersBtn.title = nums.length===1
         ? `BINGO! Click to view card ${nums[0]} and see the winning line.`
         : `BINGO! ${nums.length} cards won at once: ${nums.join(', ')}. Click to browse them.`;
-      leadingBtn.title = 'Leading card';
     } else {
-      const n = status.leaders.length;
-      leadingBtn.disabled = false;
-      leadingBtn.title = n===1
-        ? `Card ${status.leaderCard} has ${status.leaderCount}/5 in its best line (${lineLabelFor(status.leaderLineIdx)}). Click to view the card.`
-        : `${n} cards are tied for the lead with ${status.leaderCount}/5. Click to browse all ${n}.`;
       winnersBtn.title = 'Winner — no BINGO yet';
     }
   }
