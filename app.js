@@ -461,10 +461,6 @@
       perCardBest.push({ cardNum: ci+1, lineIdx: bestLineIdx, count: bestCount });
     });
 
-    const maxCount = Math.max(...perCardBest.map(r=>r.count));
-    const leaders = perCardBest.filter(r=>r.count===maxCount).sort((a,b)=>a.cardNum-b.cardNum);
-    const leaderInfo = { leaders, leaderCard: leaders[0].cardNum, leaderLineIdx: leaders[0].lineIdx, leaderCount: maxCount };
-
     if(winnersRaw.length > 0){
       // one entry per card (first winning line found), sorted by card number
       const seen = new Set();
@@ -473,10 +469,22 @@
         if(!seen.has(w.cardNum)){ seen.add(w.cardNum); winners.push(w); }
       });
       winners.sort((a,b)=>a.cardNum-b.cardNum);
+
+      // leaders = non-winning cards only, so the leading btn never shows winners
+      const winningNums = new Set(winners.map(w=>w.cardNum));
+      const nonWinners = perCardBest.filter(r=>!winningNums.has(r.cardNum));
+      let leaderInfo = { leaders:[], leaderCard:null, leaderLineIdx:null, leaderCount:0 };
+      if(nonWinners.length > 0){
+        const maxNW = Math.max(...nonWinners.map(r=>r.count));
+        const leaders = nonWinners.filter(r=>r.count===maxNW).sort((a,b)=>a.cardNum-b.cardNum);
+        leaderInfo = { leaders, leaderCard: leaders[0].cardNum, leaderLineIdx: leaders[0].lineIdx, leaderCount: maxNW };
+      }
       return { mode:'winning', winners, ...leaderInfo };
     }
 
-    return { mode:'leading', ...leaderInfo };
+    const maxCount = Math.max(...perCardBest.map(r=>r.count));
+    const leaders = perCardBest.filter(r=>r.count===maxCount).sort((a,b)=>a.cardNum-b.cardNum);
+    return { mode:'leading', leaders, leaderCard: leaders[0].cardNum, leaderLineIdx: leaders[0].lineIdx, leaderCount: maxCount };
   }
 
   function renderBingoWinner(){
