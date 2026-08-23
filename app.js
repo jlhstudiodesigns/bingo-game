@@ -494,6 +494,8 @@
     winnersBtn.classList.remove('winning');
     leadingBtn.disabled = true;
     winnersBtn.disabled = true;
+    leadingBtn.textContent = 'Leading';
+    winnersBtn.textContent = '🏆';
 
     if(status.mode === 'unavailable'){
       leadingBtn.title = winnersBtn.title = 'Only available for the default Famous Artwork set';
@@ -509,6 +511,7 @@
     if(status.leaderCount >= 2){
       const n = status.leaders.length;
       leadingBtn.disabled = false;
+      leadingBtn.textContent = `Leading ${n}`;
       leadingBtn.title = n===1
         ? `Card ${status.leaderCard} has ${status.leaderCount}/5 in its best line (${lineLabelFor(status.leaderLineIdx)}). Click to view the card.`
         : `${n} cards are tied for the lead with ${status.leaderCount}/5. Click to browse all ${n}.`;
@@ -520,6 +523,7 @@
       const nums = status.winners.map(w=>w.cardNum);
       winnersBtn.disabled = false;
       winnersBtn.classList.add('winning');
+      winnersBtn.textContent = `🏆 ${nums.length}`;
       winnersBtn.title = nums.length===1
         ? `BINGO! Click to view card ${nums[0]} and see the winning line.`
         : `BINGO! ${nums.length} cards won at once: ${nums.join(', ')}. Click to browse them.`;
