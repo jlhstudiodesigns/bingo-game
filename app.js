@@ -89,7 +89,8 @@
   const backBtn = $('#backBtn');
   const forwardBtn = $('#forwardBtn');
   const resetBtn = $('#resetBtn');
-  const winnerBtn = $('#winnerBtn');
+  const leadingBtn = $('#leadingBtn');
+  const winnersBtn = $('#winnersBtn');
   const plaque = $('#plaque');
   const plaqueInner = $('#plaqueInner');
   const columnsWrap = $('#columnsWrap');
@@ -482,46 +483,48 @@
   function renderBingoWinner(){
     const status = computeBingoStatus();
     lastBingoStatus = status;
-    winnerBtn.classList.remove('leading','winning');
+    leadingBtn.classList.remove('leading');
+    winnersBtn.classList.remove('winning');
+    leadingBtn.disabled = true;
+    winnersBtn.disabled = true;
 
     if(status.mode === 'unavailable'){
-      winnerBtn.disabled = true;
-      winnerBtn.innerHTML = BINGO_CARD_ICON;
-      winnerBtn.title = 'Only available for the default Famous Artwork set';
+      leadingBtn.title = winnersBtn.title = 'Only available for the default Famous Artwork set';
       return;
     }
     if(status.mode === 'empty'){
-      winnerBtn.disabled = true;
-      winnerBtn.innerHTML = BINGO_CARD_ICON;
-      winnerBtn.title = 'Predicted winner among the 32 printed cards';
+      leadingBtn.title = 'Leading card — no calls yet';
+      winnersBtn.title = 'Winner — no calls yet';
       return;
     }
-    winnerBtn.disabled = false;
     if(status.mode === 'winning'){
       const nums = status.winners.map(w=>w.cardNum);
-      winnerBtn.innerHTML = BINGO_CARD_ICON;
-      winnerBtn.classList.add('winning');
-      winnerBtn.title = nums.length===1
+      winnersBtn.disabled = false;
+      winnersBtn.classList.add('winning');
+      winnersBtn.title = nums.length===1
         ? `BINGO! Click to view card ${nums[0]} and see the winning line.`
         : `BINGO! ${nums.length} cards won at once: ${nums.join(', ')}. Click to browse them.`;
+      leadingBtn.title = 'Leading card';
     } else {
       const n = status.leaders.length;
-      winnerBtn.innerHTML = BINGO_CARD_ICON;
-      winnerBtn.classList.add('leading');
-      winnerBtn.title = n===1
+      leadingBtn.disabled = false;
+      leadingBtn.classList.add('leading');
+      leadingBtn.title = n===1
         ? `Card ${status.leaderCard} has ${status.leaderCount}/5 in its best line (${lineLabelFor(status.leaderLineIdx)}). Click to view the card.`
         : `${n} cards are tied for the lead with ${status.leaderCount}/5. Click to browse all ${n}.`;
+      winnersBtn.title = 'Winner — no BINGO yet';
     }
   }
 
-  function openLeaderCardModal(){
+  function openLeaderCardModal(forceMode){
     if(!lastBingoStatus) return;
+    const mode = forceMode || lastBingoStatus.mode;
     let candidates, isWin;
-    if(lastBingoStatus.mode === 'winning'){
-      candidates = lastBingoStatus.winners;   // [{cardNum, lineIdx}]
+    if(mode === 'winning'){
+      candidates = lastBingoStatus.winners;
       isWin = true;
-    } else if(lastBingoStatus.mode === 'leading'){
-      candidates = lastBingoStatus.leaders;   // [{cardNum, lineIdx, count}]
+    } else if(mode === 'leading'){
+      candidates = lastBingoStatus.leaders;
       isWin = false;
     } else {
       return;
@@ -1153,7 +1156,8 @@
   backBtn.addEventListener('click', goBack);
   forwardBtn.addEventListener('click', goForward);
   resetBtn.addEventListener('click', ()=>resetGame(true));
-  winnerBtn.addEventListener('click', openLeaderCardModal);
+  leadingBtn.addEventListener('click', ()=>openLeaderCardModal('leading'));
+  winnersBtn.addEventListener('click', ()=>openLeaderCardModal('winning'));
   document.addEventListener('keydown', (e)=>{
     if(editorView.classList.contains('show')){
       if(e.code === 'Escape'){ closeEditor(); }
