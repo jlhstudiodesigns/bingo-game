@@ -375,6 +375,7 @@
   /* Controls row: green gradient, white text up; black text hover; 10% shrink + 40% darker on click */
   .controls button, .controls .icon-btn{
     box-sizing:border-box; height:36px; padding-top:0; padding-bottom:0;
+    display:inline-flex; align-items:center; justify-content:center;
     background:linear-gradient(155deg, #3f9d64, #256b3f); color:#ffffff; border-color:transparent;
   }
   .controls button{ font-size:12.6px; padding-left:18px; padding-right:18px; }
