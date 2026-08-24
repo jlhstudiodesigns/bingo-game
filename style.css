@@ -693,21 +693,21 @@
   .item-row{ display:flex; flex-direction:column; background:var(--panel); border:1px solid rgba(200,162,74,0.15); border-radius:4px; margin-bottom:4px; overflow:hidden; }
   .acc-header{
     display:flex; align-items:center; gap:10px; padding:9px 12px;
-    background:var(--panel); border:none; width:100%; text-align:left; cursor:pointer;
-    color:var(--ivory); font-family:'Inter',sans-serif;
+    background:#787878; border:none; width:100%; text-align:left; cursor:pointer;
+    color:#ffffff; font-family:'Inter',sans-serif;
     transition: background 120ms ease;
   }
-  .acc-header:hover{ background: rgba(200,162,74,0.08); }
-  .acc-num{ font-size:11px; font-weight:700; color:var(--frame); min-width:18px; text-align:right; flex-shrink:0; }
+  .acc-header:hover{ background: #686868; }
+  .acc-num{ font-size:11px; font-weight:700; color:#f0d080; min-width:18px; text-align:right; flex-shrink:0; }
   .acc-title{ font-size:13px; font-weight:600; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .acc-sub{ font-size:11px; color:var(--stone); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:160px; }
+  .acc-sub{ font-size:11px; color:#e0e0e0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:160px; }
   .acc-col{ font-size:10px; font-weight:700; padding:1px 5px; border-radius:2px; flex-shrink:0; }
   .acc-col.col-b{ background:linear-gradient(155deg,#d24a3c,#a8291d); color:#fff; }
   .acc-col.col-i{ background:linear-gradient(155deg,#e0912f,#b6691a); color:#fff; }
   .acc-col.col-n{ background:linear-gradient(155deg,#ffd200,#d1a900); color:#222; }
   .acc-col.col-g{ background:linear-gradient(155deg,#3f9d64,#256b3f); color:#fff; }
   .acc-col.col-o{ background:linear-gradient(155deg,#3f77c2,#24518f); color:#fff; }
-  .acc-arrow{ font-size:9px; color:var(--stone-dim); flex-shrink:0; transition:transform 200ms ease; }
+  .acc-arrow{ font-size:9px; color:#d0d0d0; flex-shrink:0; transition:transform 200ms ease; }
   .acc-arrow.open{ transform:rotate(90deg); }
   .acc-body{ display:none; flex-direction:column; gap:10px; padding:12px; border-top:1px solid rgba(200,162,74,0.12); }
   .acc-body.open{ display:flex; }
