@@ -594,7 +594,7 @@
   .cm-cell.called{ background: var(--panel); border-color: rgba(200,162,74,0.3); }
   .cm-cell.free{
     background:#0c0f0c; border-color: rgba(200,162,74,0.4);
-    color: #e8c468; font-weight:800; font-size:11px; letter-spacing:0.06em;
+    color: #e8c468; font-weight:800; font-size:14.3px; letter-spacing:0.06em;
   }
   .cm-cell.online{ box-shadow: 0 0 0 2px #d30019, 0 0 14px rgba(211,0,25,0.5); }
   .cm-thumb{
@@ -648,7 +648,7 @@
   }
   .win-tile-free-label{
     color:#e8c468; font-family:'Playfair Display', serif; font-weight:800;
-    letter-spacing:0.1em; font-size:15px;
+    letter-spacing:0.1em; font-size:19.5px;
   }
   .win-tile .letter-badge{
     position:absolute; top:8px; left:8px; z-index:3;
