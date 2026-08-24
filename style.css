@@ -371,20 +371,13 @@
   .btn-ghost:hover{ color: var(--ivory); border-color: rgba(0,0,0,0.4); }
   .btn-ghost:disabled{ color:#b5b5b0; border-color:rgba(0,0,0,0.08); cursor:not-allowed; }
 
-  /* Controls row: white → black on hover → scale 80% on click */
-  .controls button, .controls .icon-btn{
-    box-sizing:border-box; height:36px; padding-top:0; padding-bottom:0;
-    background:#ffffff; color:#111111; border-color:rgba(0,0,0,0.2);
-    transition: background 150ms ease, color 150ms ease, border-color 150ms ease, transform 120ms ease, filter 150ms ease;
-  }
-  .controls button{ font-size:12.6px; padding-left:18px; padding-right:18px; }
-  .controls button:hover, .controls .icon-btn:hover{
-    background:#111111; color:#ffffff; border-color:transparent; filter:none;
-  }
-  .controls button:active, .controls .icon-btn:active{ transform:scale(0.8); }
-  .controls button:disabled, .controls .icon-btn:disabled{
-    background:#e8e8e6; color:#aaaaaa; border-color:rgba(0,0,0,0.08); opacity:1; filter:none; cursor:not-allowed;
-  }
+  /* Controls row buttons — 25% smaller, all yellow like Draw */
+  .controls button, .controls .icon-btn{ box-sizing:border-box; height:36px; padding-top:0; padding-bottom:0; }
+  .controls button{ font-size:12.6px; padding-left:18px; padding-right:18px; background:linear-gradient(155deg, #3f9d64, #256b3f); color:#fff; border-color:transparent; }
+  .controls button:hover{ filter:brightness(1.1); }
+  .controls button:disabled{ background:linear-gradient(155deg, #3f9d64, #256b3f); color:#fff; opacity:0.5; filter:none; border-color:transparent; cursor:not-allowed; }
+  .btn-danger{ background: transparent; color: var(--chrome-danger); border-color: rgba(165,67,46,0.5); }
+  .btn-danger:hover{ background: rgba(165,67,46,0.15); color: var(--chrome-danger-hover); }
 
   #winnersBtn.winning{
     background: linear-gradient(180deg, #d9b45e, var(--frame));
