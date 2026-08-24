@@ -496,7 +496,7 @@
       const star = document.createElement('span');
       star.className = 'winner-star';
       star.textContent = '★';
-      const angle = 210 + (i / count) * 120 + (Math.random() - 0.5) * (120 / count);
+      const angle = 250 + (Math.random() - 0.5) * 40;
       const rad = angle * Math.PI / 180;
       const dist = 165 + Math.random() * 120;
       const dx = Math.cos(rad) * dist;
@@ -513,7 +513,7 @@
       star.style.setProperty('--mx', mx + 'px');
       star.style.setProperty('--my', my + 'px');
       star.style.setProperty('--spin', spin + 'deg');
-      star.style.animationDelay = (Math.random() * 120) + 'ms';
+      star.style.animationDelay = (i / count * 1000 + Math.random() * 40) + 'ms';
       document.body.appendChild(star);
       star.addEventListener('animationend', ()=> star.remove());
     }
