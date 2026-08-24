@@ -487,7 +487,40 @@
     return { mode:'leading', leaders, leaderCard: leaders[0].cardNum, leaderLineIdx: leaders[0].lineIdx, leaderCount: maxCount };
   }
 
+  function spawnWinnerStars(){
+    const rect = winnersBtn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const count = 6 + Math.floor(Math.random() * 3);
+    for(let i = 0; i < count; i++){
+      const star = document.createElement('span');
+      star.className = 'winner-star';
+      star.textContent = '★';
+      const angle = (i / count) * 360 + (Math.random() - 0.5) * (360 / count);
+      const rad = angle * Math.PI / 180;
+      const dist = 55 + Math.random() * 40;
+      const dx = Math.cos(rad) * dist;
+      const dy = Math.sin(rad) * dist;
+      const perpRad = rad + Math.PI / 2;
+      const curve = (Math.random() < 0.5 ? 1 : -1) * (8 + Math.random() * 12);
+      const mx = dx * 0.5 + Math.cos(perpRad) * curve;
+      const my = dy * 0.5 + Math.sin(perpRad) * curve;
+      const spin = (Math.random() < 0.5 ? 1 : -1) * (300 + Math.random() * 300);
+      star.style.left = (cx - 5) + 'px';
+      star.style.top  = (cy - 5) + 'px';
+      star.style.setProperty('--dx', dx + 'px');
+      star.style.setProperty('--dy', dy + 'px');
+      star.style.setProperty('--mx', mx + 'px');
+      star.style.setProperty('--my', my + 'px');
+      star.style.setProperty('--spin', spin + 'deg');
+      star.style.animationDelay = (Math.random() * 120) + 'ms';
+      document.body.appendChild(star);
+      star.addEventListener('animationend', ()=> star.remove());
+    }
+  }
+
   function renderBingoWinner(){
+    const prevMode = lastBingoStatus ? lastBingoStatus.mode : null;
     const status = computeBingoStatus();
     lastBingoStatus = status;
     leadingBtn.classList.remove('leading');
@@ -521,6 +554,7 @@
 
     if(status.mode === 'winning'){
       const nums = status.winners.map(w=>w.cardNum);
+      if(prevMode !== 'winning') spawnWinnerStars();
       winnersBtn.disabled = false;
       winnersBtn.classList.add('winning');
       winnersBtn.textContent = `🏆 ${nums.length}`;
