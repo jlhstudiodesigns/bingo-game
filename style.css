@@ -688,7 +688,8 @@
   input[type="text"]:focus, textarea:focus, select:focus{ outline: 2px solid var(--frame); outline-offset:1px; }
   textarea{ resize:vertical; min-height:38px; font-family:'Inter',sans-serif; }
 
-  .items-table{ display:flex; flex-direction:column; gap:10px; }
+  .items-table{ display:grid; grid-template-columns:1fr 1fr; gap:0 16px; align-items:start; }
+  .items-col{ display:flex; flex-direction:column; }
   /* Accordion item rows */
   .item-row{ display:flex; flex-direction:column; background:var(--panel); border:1px solid #8d8d8d; border-radius:4px; margin-bottom:4px; overflow:hidden; }
   .acc-header{
@@ -764,9 +765,10 @@
   .toast.show{ opacity:1; }
 
   @media (max-width: 720px){
+    .items-table{ grid-template-columns: 1fr; }
     .item-row-top{ grid-template-columns: 1fr; }
     .item-row-facts{ grid-template-columns: 1fr; }
-.thumb-wrap{ flex-direction:row; }
+    .thumb-wrap{ flex-direction:row; }
   }
   @media (max-width: 720px){
     .reveal-split{ flex-direction:column; gap:12px; }

@@ -920,7 +920,7 @@
       return;
     }
     const colClass = col => col ? `col-${col.toLowerCase()}` : '';
-    itemsTable.innerHTML = items.map((it,idx)=>{
+    const buildRow = (it, idx) => {
       const col = (it.column||'').trim().toUpperCase();
       const colBadge = ['B','I','N','G','O'].includes(col)
         ? `<span class="acc-col ${colClass(col)}">${col}</span>` : '';
@@ -991,7 +991,11 @@
           </div>
         </div>
       </div>`;
-    }).join('');
+    };
+    const half = Math.ceil(items.length / 2);
+    const leftRows  = items.slice(0, half).map((it, idx) => buildRow(it, idx)).join('');
+    const rightRows = items.slice(half).map((it, idx) => buildRow(it, half + idx)).join('');
+    itemsTable.innerHTML = `<div class="items-col">${leftRows}</div><div class="items-col">${rightRows}</div>`;
 
     // Accordion toggle
     itemsTable.querySelectorAll('[data-toggle]').forEach(btn=>{
