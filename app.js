@@ -520,7 +520,7 @@
   }
 
   function renderBingoWinner(){
-    const prevMode = lastBingoStatus ? lastBingoStatus.mode : null;
+    const prevWinCount = (lastBingoStatus && lastBingoStatus.winners) ? lastBingoStatus.winners.length : 0;
     const status = computeBingoStatus();
     lastBingoStatus = status;
     leadingBtn.classList.remove('leading');
@@ -554,7 +554,7 @@
 
     if(status.mode === 'winning'){
       const nums = status.winners.map(w=>w.cardNum);
-      if(prevMode !== 'winning') spawnWinnerStars();
+      if(nums.length > prevWinCount) spawnWinnerStars();
       winnersBtn.disabled = false;
       winnersBtn.classList.add('winning');
       winnersBtn.textContent = `🏆 ${nums.length}`;
