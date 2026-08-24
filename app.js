@@ -496,7 +496,7 @@
       const star = document.createElement('span');
       star.className = 'winner-star';
       star.textContent = '★';
-      const angle = (i / count) * 360 + (Math.random() - 0.5) * (360 / count);
+      const angle = 210 + (i / count) * 120 + (Math.random() - 0.5) * (120 / count);
       const rad = angle * Math.PI / 180;
       const dist = 55 + Math.random() * 40;
       const dx = Math.cos(rad) * dist;
