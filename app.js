@@ -919,66 +919,91 @@
       itemsTable.innerHTML = '<div class="hint" style="text-align:left; color:var(--stone-dim);">No items yet. Use "Add Item" or "Bulk Paste List" above.</div>';
       return;
     }
-    itemsTable.innerHTML = items.map((it,idx)=>`
+    const colClass = col => col ? `col-${col.toLowerCase()}` : '';
+    itemsTable.innerHTML = items.map((it,idx)=>{
+      const col = (it.column||'').trim().toUpperCase();
+      const colBadge = ['B','I','N','G','O'].includes(col)
+        ? `<span class="acc-col ${colClass(col)}">${col}</span>` : '';
+      return `
       <div class="item-row" data-id="${it.id}">
-        <div class="item-row-top">
-          <div class="idx">${idx+1}</div>
-          <div class="thumb-wrap">
-            <div class="thumb" data-thumb="${it.id}">${it.hasImage ? '' : 'No image'}</div>
-            <input type="file" accept="image/*" style="display:none" data-upload="${it.id}">
-            <button class="thumb-btn" data-pick="${it.id}">${it.hasImage?'Replace':'Upload'}</button>
-            ${it.hasImage ? `<button class="thumb-btn" data-remove="${it.id}" style="color:#c98a7a;">Remove</button>` : ''}
-            <a class="thumb-link" href="${imageLinkFor(it)}" target="_blank" rel="noopener">Preview on Google ↗</a>
+        <button class="acc-header" data-toggle="${it.id}">
+          <span class="acc-num">${idx+1}</span>
+          <span class="acc-title" data-acc-title="${it.id}">${escapeHtml(it.title)||'Untitled'}</span>
+          <span class="acc-sub" data-acc-sub="${it.id}">${escapeHtml(it.subtitle||'')}</span>
+          ${colBadge}
+          <span class="acc-arrow">▶</span>
+        </button>
+        <div class="acc-body" data-body="${it.id}">
+          <div class="item-row-top">
+            <div class="thumb-wrap">
+              <div class="thumb" data-thumb="${it.id}">${it.hasImage ? '' : 'No image'}</div>
+              <input type="file" accept="image/*" style="display:none" data-upload="${it.id}">
+              <button class="thumb-btn" data-pick="${it.id}">${it.hasImage?'Replace':'Upload'}</button>
+              ${it.hasImage ? `<button class="thumb-btn" data-remove="${it.id}" style="color:#c98a7a;">Remove</button>` : ''}
+              <a class="thumb-link" href="${imageLinkFor(it)}" target="_blank" rel="noopener">Preview on Google ↗</a>
+            </div>
+            <div>
+              <span class="field-label">Title</span>
+              <input type="text" data-field="title" data-id="${it.id}" value="${escapeHtml(it.title)}">
+              <span class="field-label" style="margin-top:6px;">Column</span>
+              <select data-field="column" data-id="${it.id}" style="width:100%;">
+                <option value="" ${!it.column?'selected':''}>— none —</option>
+                <option value="B" ${it.column==='B'?'selected':''}>B</option>
+                <option value="I" ${it.column==='I'?'selected':''}>I</option>
+                <option value="N" ${it.column==='N'?'selected':''}>N</option>
+                <option value="G" ${it.column==='G'?'selected':''}>G</option>
+                <option value="O" ${it.column==='O'?'selected':''}>O</option>
+              </select>
+            </div>
+            <div>
+              <span class="field-label">Subtitle (optional)</span>
+              <input type="text" data-field="subtitle" data-id="${it.id}" value="${escapeHtml(it.subtitle||'')}">
+              <span class="field-label" style="margin-top:6px;">Born (optional)</span>
+              <input type="text" data-field="subtitleBorn" data-id="${it.id}" value="${escapeHtml(it.subtitleBorn||'')}" placeholder="e.g. April 15, 1452">
+              <span class="field-label" style="margin-top:6px;">Birthplace (optional)</span>
+              <input type="text" data-field="subtitlePlace" data-id="${it.id}" value="${escapeHtml(it.subtitlePlace||'')}" placeholder="e.g. Vinci, Italy">
+              <span class="field-label" style="margin-top:6px;">Died (optional)</span>
+              <input type="text" data-field="subtitleDied" data-id="${it.id}" value="${escapeHtml(it.subtitleDied||'')}" placeholder="e.g. May 2, 1519">
+              <span class="field-label" style="margin-top:6px;">Death Place (optional)</span>
+              <input type="text" data-field="subtitleDiedPlace" data-id="${it.id}" value="${escapeHtml(it.subtitleDiedPlace||'')}" placeholder="e.g. Amboise, France">
+              <span class="field-label" style="margin-top:6px;">Painted In (optional)</span>
+              <input type="text" data-field="paintedPlace" data-id="${it.id}" value="${escapeHtml(it.paintedPlace||'')}" placeholder="e.g. Florence, Italy">
+              <span class="field-label" style="margin-top:6px;">Currently Located (optional)</span>
+              <input type="text" data-field="currentPlace" data-id="${it.id}" value="${escapeHtml(it.currentPlace||'')}" placeholder="e.g. Louvre, Paris, France">
+            </div>
+            <div class="row-actions">
+              <button class="row-del" data-del="${it.id}">Delete</button>
+            </div>
           </div>
-          <div>
-            <span class="field-label">Title</span>
-            <input type="text" data-field="title" data-id="${it.id}" value="${escapeHtml(it.title)}">
-            <span class="field-label" style="margin-top:6px;">Column</span>
-            <select data-field="column" data-id="${it.id}" style="width:100%;">
-              <option value="" ${!it.column?'selected':''}>— none —</option>
-              <option value="B" ${it.column==='B'?'selected':''}>B</option>
-              <option value="I" ${it.column==='I'?'selected':''}>I</option>
-              <option value="N" ${it.column==='N'?'selected':''}>N</option>
-              <option value="G" ${it.column==='G'?'selected':''}>G</option>
-              <option value="O" ${it.column==='O'?'selected':''}>O</option>
-            </select>
-          </div>
-          <div>
-            <span class="field-label">Subtitle (optional)</span>
-            <input type="text" data-field="subtitle" data-id="${it.id}" value="${escapeHtml(it.subtitle||'')}">
-            <span class="field-label" style="margin-top:6px;">Born (optional)</span>
-            <input type="text" data-field="subtitleBorn" data-id="${it.id}" value="${escapeHtml(it.subtitleBorn||'')}" placeholder="e.g. April 15, 1452">
-            <span class="field-label" style="margin-top:6px;">Birthplace (optional)</span>
-            <input type="text" data-field="subtitlePlace" data-id="${it.id}" value="${escapeHtml(it.subtitlePlace||'')}" placeholder="e.g. Vinci, Italy">
-            <span class="field-label" style="margin-top:6px;">Died (optional)</span>
-            <input type="text" data-field="subtitleDied" data-id="${it.id}" value="${escapeHtml(it.subtitleDied||'')}" placeholder="e.g. May 2, 1519">
-            <span class="field-label" style="margin-top:6px;">Death Place (optional)</span>
-            <input type="text" data-field="subtitleDiedPlace" data-id="${it.id}" value="${escapeHtml(it.subtitleDiedPlace||'')}" placeholder="e.g. Amboise, France">
-            <span class="field-label" style="margin-top:6px;">Painted In (optional)</span>
-            <input type="text" data-field="paintedPlace" data-id="${it.id}" value="${escapeHtml(it.paintedPlace||'')}" placeholder="e.g. Florence, Italy">
-            <span class="field-label" style="margin-top:6px;">Currently Located (optional)</span>
-            <input type="text" data-field="currentPlace" data-id="${it.id}" value="${escapeHtml(it.currentPlace||'')}" placeholder="e.g. Louvre, Paris, France">
-          </div>
-          <div class="row-actions">
-            <button class="row-del" data-del="${it.id}">Delete</button>
+          <div class="item-row-facts">
+            <div>
+              <span class="field-label fact-auction">💰 Auction &amp; Value</span>
+              <textarea data-field="factAuction" data-id="${it.id}" rows="3" placeholder="Ever sold? For how much?">${escapeHtml(it.factAuction||'')}</textarea>
+            </div>
+            <div>
+              <span class="field-label fact-period">🕰️ Time Period</span>
+              <textarea data-field="factPeriod" data-id="${it.id}" rows="3" placeholder="When was it made?">${escapeHtml(it.factPeriod||'')}</textarea>
+            </div>
+            <div>
+              <span class="field-label fact-unique">✨ Something Unique</span>
+              <textarea data-field="factUnique" data-id="${it.id}" rows="3" placeholder="What's odd or interesting about it?">${escapeHtml(it.factUnique||'')}</textarea>
+            </div>
           </div>
         </div>
-        <div class="item-row-facts">
-          <div>
-            <span class="field-label fact-auction">💰 Auction &amp; Value</span>
-            <textarea data-field="factAuction" data-id="${it.id}" rows="3" placeholder="Ever sold? For how much?">${escapeHtml(it.factAuction||'')}</textarea>
-          </div>
-          <div>
-            <span class="field-label fact-period">🕰️ Time Period</span>
-            <textarea data-field="factPeriod" data-id="${it.id}" rows="3" placeholder="When was it made?">${escapeHtml(it.factPeriod||'')}</textarea>
-          </div>
-          <div>
-            <span class="field-label fact-unique">✨ Something Unique</span>
-            <textarea data-field="factUnique" data-id="${it.id}" rows="3" placeholder="What's odd or interesting about it?">${escapeHtml(it.factUnique||'')}</textarea>
-          </div>
-        </div>
-      </div>
-    `).join('');
+      </div>`;
+    }).join('');
+
+    // Accordion toggle
+    itemsTable.querySelectorAll('[data-toggle]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.getAttribute('data-toggle');
+        const body = itemsTable.querySelector(`[data-body="${id}"]`);
+        const arrow = btn.querySelector('.acc-arrow');
+        const isOpen = body.classList.contains('open');
+        body.classList.toggle('open', !isOpen);
+        arrow.classList.toggle('open', !isOpen);
+      });
+    });
 
     // load thumbnails lazily
     items.forEach(async it=>{
@@ -997,6 +1022,14 @@
         const item = items.find(i=>i.id===id);
         if(!item) return;
         item[field] = el.value;
+        if(field === 'title'){
+          const accTitle = itemsTable.querySelector(`[data-acc-title="${id}"]`);
+          if(accTitle) accTitle.textContent = el.value || 'Untitled';
+        }
+        if(field === 'subtitle'){
+          const accSub = itemsTable.querySelector(`[data-acc-sub="${id}"]`);
+          if(accSub) accSub.textContent = el.value;
+        }
         clearTimeout(renderItemsTable._t);
         renderItemsTable._t = setTimeout(async ()=>{
           await saveItems();
