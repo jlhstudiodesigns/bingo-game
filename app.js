@@ -491,14 +491,14 @@
     const rect = winnersBtn.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
-    const count = 6 + Math.floor(Math.random() * 3);
+    const count = 18 + Math.floor(Math.random() * 9);
     for(let i = 0; i < count; i++){
       const star = document.createElement('span');
       star.className = 'winner-star';
       star.textContent = '★';
       const angle = 210 + (i / count) * 120 + (Math.random() - 0.5) * (120 / count);
       const rad = angle * Math.PI / 180;
-      const dist = 55 + Math.random() * 40;
+      const dist = 165 + Math.random() * 120;
       const dx = Math.cos(rad) * dist;
       const dy = Math.sin(rad) * dist;
       const perpRad = rad + Math.PI / 2;
