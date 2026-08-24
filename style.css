@@ -85,7 +85,8 @@
   }
   .icon-btn{ color: var(--stone); }
   .icon-btn:hover{ color: var(--ivory); border-color: rgba(0,0,0,0.35); }
-  #setupBtn, #fsBtn{ font-size:22px; line-height:1; }
+  #setupBtn{ font-size:23.5px; line-height:1; }
+  #fsBtn{ font-size:22px; line-height:1; }
 
   /* ---------- stage ---------- */
   main{
