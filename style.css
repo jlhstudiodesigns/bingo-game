@@ -906,7 +906,7 @@
     filter:brightness(1.18);
     box-shadow:0 0 0 7px rgba(200,162,74,0.28), 0 6px 22px rgba(150,114,28,0.35);
   }
-  .tl-era--active .tl-bullets{
+  .tl-era--active .tl-body{
     outline:3px solid rgba(220,180,60,0.95); outline-offset:2px;
     box-shadow:0 0 0 7px rgba(200,162,74,0.2), 0 4px 16px rgba(150,114,28,0.25);
   }
