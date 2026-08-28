@@ -91,6 +91,7 @@
   const resetBtn = $('#resetBtn');
   const leadingBtn = $('#leadingBtn');
   const winnersBtn = $('#winnersBtn');
+  const timelineBtn = $('#timelineBtn');
   const plaque = $('#plaque');
   const plaqueInner = $('#plaqueInner');
   const columnsWrap = $('#columnsWrap');
@@ -1237,6 +1238,265 @@
   }
 
   // ============================================================
+  // Art History Timeline
+  // ============================================================
+  const TIMELINE_DATA = [
+    {
+      date: "c. 40,000 BCE",
+      name: "Prehistoric Art",
+      desc: "Cave paintings, hand stencils, and carved figurines — the earliest known human art. Found in sites like Lascaux (France) and Altamira (Spain), these images of animals and humans reveal ritual and symbolic thinking.",
+      artworks: []
+    },
+    {
+      date: "c. 3100–30 BCE",
+      name: "Ancient Egyptian Art",
+      desc: "Governed by strict canon laws over nearly three millennia. Figures shown in composite view (head in profile, torso frontal), hieroglyphic integration, and monumental sculpture served religious and funerary purposes.",
+      artworks: []
+    },
+    {
+      date: "c. 800–31 BCE",
+      name: "Classical Greek Art",
+      desc: "Idealized the human form through sculpture and pottery. Developed contrapposto (weight-shifting stance) and principles of harmony and proportion that have defined Western art ever since.",
+      artworks: []
+    },
+    {
+      date: "c. 27 BCE–476 CE",
+      name: "Roman Art",
+      desc: "Absorbed Greek influence and added portraiture, civic propaganda, and narrative relief sculpture. Monumental architecture — arches, columns, amphitheaters — expressed imperial power.",
+      artworks: []
+    },
+    {
+      date: "c. 330–1453",
+      name: "Byzantine Art",
+      desc: "Centered in Constantinople. Characterized by gold-ground mosaics, elongated holy figures, and rigid iconographic conventions serving the Orthodox Church. Spiritual and hierarchical rather than naturalistic.",
+      artworks: []
+    },
+    {
+      date: "c. 1000–1200",
+      name: "Romanesque",
+      desc: "Heavy stone architecture, rounded arches, and stylized manuscript illuminations across Christian Europe. Church sculpture and stained glass conveyed Bible stories to a largely illiterate population.",
+      artworks: []
+    },
+    {
+      date: "c. 1100–1400",
+      name: "Gothic",
+      desc: "Soaring cathedrals with pointed arches and flying buttresses. Panel paintings became more naturalistic; gold backgrounds gave way to narrative depth. The International Gothic style spread across Europe by the 14th century.",
+      artworks: []
+    },
+    {
+      date: "c. 1300–1494",
+      name: "Early Renaissance",
+      desc: "Florentine artists rediscovered classical antiquity and introduced linear perspective. Figures gained weight, volume, and individual personality. Giotto, Masaccio, Donatello, and Botticelli transformed painting from devotional symbol to observed reality.",
+      artworks: ["The Birth of Venus — Botticelli, c. 1485"]
+    },
+    {
+      date: "c. 1490–1527",
+      name: "High Renaissance",
+      desc: "The peak of Renaissance idealism. Leonardo, Michelangelo, and Raphael achieved harmony, technical mastery, and monumental grandeur. Centered in Florence, Rome, and the papal court.",
+      artworks: [
+        "Mona Lisa — Leonardo da Vinci, 1503–1517",
+        "The Last Supper — Leonardo da Vinci, 1495–1498",
+        "The Creation of Adam — Michelangelo, 1508–1512",
+        "The School of Athens — Raphael, 1509–1511"
+      ]
+    },
+    {
+      date: "c. 1430–1580",
+      name: "Northern Renaissance",
+      desc: "Flemish and German painters like Van Eyck, Dürer, and Bosch developed extraordinary detail through oil paint. Less idealized than their Italian counterparts — more interested in everyday life, moralizing allegory, and the strange.",
+      artworks: ["The Garden of Earthly Delights — Hieronymus Bosch, c. 1490–1510"]
+    },
+    {
+      date: "c. 1520–1600",
+      name: "Mannerism",
+      desc: "A reaction against High Renaissance harmony. Elongated figures, contorted poses, acidic colors, and compressed pictorial space created a sophisticated, deliberately artificial style. Pontormo, Bronzino, and El Greco are key figures.",
+      artworks: []
+    },
+    {
+      date: "c. 1600–1750",
+      name: "Baroque",
+      desc: "Drama, movement, and emotional intensity in service of the Counter-Reformation Church and absolute monarchies. Caravaggio's tenebrism, Rubens's swirling figures, and the Dutch Golden Age masters defined the era.",
+      artworks: ["The Night Watch — Rembrandt, 1642"]
+    },
+    {
+      date: "c. 1650–1680",
+      name: "Dutch Golden Age",
+      desc: "Prosperous merchant-class patrons funded an explosion of portraiture, still life, landscape, and genre scenes. Vermeer, Rembrandt, and Hals brought intimate realism and psychological depth to everyday subjects.",
+      artworks: ["Girl with a Pearl Earring — Vermeer, c. 1665"]
+    },
+    {
+      date: "c. 1700–1780",
+      name: "Rococo",
+      desc: "Playful, ornate, and pastel-toned — a shift from Baroque grandeur to intimate decoration. Fragonard, Watteau, and Boucher painted aristocratic leisure, mythology, and gallantry for France's pre-Revolutionary elite.",
+      artworks: []
+    },
+    {
+      date: "c. 1750–1850",
+      name: "Neoclassicism",
+      desc: "A sober return to Greco-Roman ideals, spurred by Pompeii's rediscovery and Enlightenment rationalism. David's heroic history paintings and Ingres's precise line opposed Rococo frivolity and championed civic virtue.",
+      artworks: []
+    },
+    {
+      date: "c. 1780–1850",
+      name: "Romanticism",
+      desc: "Emotion, nature, and the sublime over reason. Artists like Delacroix, Géricault, Turner, and Caspar David Friedrich explored crisis, catastrophe, nationalism, and the overwhelming power of the natural world.",
+      artworks: ["The Raft of the Medusa — Théodore Géricault, 1818–1819"]
+    },
+    {
+      date: "c. 1840–1880",
+      name: "Realism",
+      desc: "Rejected idealization in favor of honest depiction of ordinary working people and contemporary life. Courbet, Millet, and later Whistler insisted art should address the present, not mythologized antiquity.",
+      artworks: ["Whistler's Mother — James McNeill Whistler, 1871"]
+    },
+    {
+      date: "c. 1860–1900",
+      name: "Impressionism",
+      desc: "Parisian painters like Monet, Renoir, and Pissarro captured fleeting light and atmosphere through loose, rapid brushwork. Working outdoors and rejecting academic finish, they shook the French Salon establishment.",
+      artworks: []
+    },
+    {
+      date: "c. 1886–1910",
+      name: "Post-Impressionism",
+      desc: "Diverse responses to Impressionism — Cézanne's geometric structure, Seurat's pointillism, Gauguin's primitivism, and Van Gogh's swirling emotional intensity each pushed painting in a different direction.",
+      artworks: [
+        "The Starry Night — Vincent van Gogh, 1889",
+        "Vase with Twelve Sunflowers — Vincent van Gogh, 1888"
+      ]
+    },
+    {
+      date: "c. 1880–1910",
+      name: "Symbolism",
+      desc: "Reacted against Realism and Impressionism by turning inward — toward dreams, myth, spirituality, and the unconscious. Moreau, Redon, and Munch used symbolic imagery to express psychological and metaphysical states.",
+      artworks: ["The Scream — Edvard Munch, 1895"]
+    },
+    {
+      date: "c. 1890–1914",
+      name: "Art Nouveau & Vienna Secession",
+      desc: "Organic, curving forms derived from nature transformed architecture, illustration, and decorative arts across Europe. Vienna's Secessionists — led by Klimt — merged fine and applied arts in a sensuous, gold-laden style.",
+      artworks: ["The Kiss — Gustav Klimt, 1907–1908"]
+    },
+    {
+      date: "c. 1905–1910",
+      name: "Fauvism",
+      desc: "Matisse, Derain, and Vlaminck shocked Paris with pure, non-naturalistic color used for expressive rather than descriptive ends. The name means \"wild beasts\" — a critic's insult that stuck.",
+      artworks: []
+    },
+    {
+      date: "c. 1905–1930",
+      name: "Expressionism",
+      desc: "German and Austrian artists — Kirchner, Kandinsky, Schiele — distorted form and color to externalize inner emotional states. The two main groups were Die Brücke and Der Blaue Reiter.",
+      artworks: []
+    },
+    {
+      date: "c. 1907–1925",
+      name: "Cubism",
+      desc: "Picasso and Braque shattered the single viewpoint, presenting multiple perspectives simultaneously on a flat surface. Analytic Cubism broke objects into facets; Synthetic Cubism introduced collage. It changed the course of modern art.",
+      artworks: ["Les Demoiselles d'Avignon — Pablo Picasso, 1907"]
+    },
+    {
+      date: "c. 1909–1944",
+      name: "Futurism",
+      desc: "Italian movement celebrating speed, technology, industry, and violence. Boccioni, Balla, and Severini used fractured form and dynamic lines to render motion — embracing modernity and rejecting the weight of history.",
+      artworks: []
+    },
+    {
+      date: "c. 1916–1924",
+      name: "Dada",
+      desc: "Born in wartime Zurich, Dada rejected reason and conventional aesthetics in deliberate nonsense, collage, and readymades. Duchamp's urinal as sculpture challenged the very definition of art — and founded Conceptualism.",
+      artworks: []
+    },
+    {
+      date: "c. 1917–1931",
+      name: "De Stijl / Neoplasticism",
+      desc: "Dutch movement founded by Mondrian and van Doesburg. Reduced painting to pure primary colors and right-angle grids, seeking a universal visual language stripped of all personal expression.",
+      artworks: ["Tableau I — Piet Mondrian, c. 1921"]
+    },
+    {
+      date: "c. 1920–1960s",
+      name: "Surrealism",
+      desc: "André Breton's movement harnessed Freudian dream imagery and the unconscious. Dalí, Magritte, Kahlo, and Ernst created disquieting juxtapositions that bypassed rational thought — the most influential avant-garde movement of the 20th century.",
+      artworks: ["The Persistence of Memory — Salvador Dalí, 1931"]
+    },
+    {
+      date: "c. 1930–1945",
+      name: "American Regionalism & Social Realism",
+      desc: "During the Depression, artists like Grant Wood, Thomas Hart Benton, and Edward Hopper depicted rural American life and urban alienation with clear, unsentimental realism — a deliberate turn away from European abstraction.",
+      artworks: ["American Gothic — Grant Wood, 1930"]
+    },
+    {
+      date: "c. 1943–1965",
+      name: "Abstract Expressionism",
+      desc: "New York became the new center of Western art. Pollock's drip paintings, Rothko's luminous color fields, and de Kooning's gestural brushwork foregrounded the act of painting itself as subject matter.",
+      artworks: []
+    },
+    {
+      date: "c. 1950s–1970s",
+      name: "Pop Art",
+      desc: "Warhol, Lichtenstein, and Hockney drew on commercial imagery — advertising, comics, consumer goods — to celebrate and critique mass culture. Blurred the line between fine art and popular media.",
+      artworks: []
+    },
+    {
+      date: "c. 1960s–1970s",
+      name: "Minimalism & Conceptualism",
+      desc: "Minimalism stripped art to geometric form and industrial material. Conceptualism argued the idea itself was the artwork — documentation, performance, and language replaced traditional media.",
+      artworks: []
+    },
+    {
+      date: "c. 1960s–present",
+      name: "Ukiyo-e & Its Legacy",
+      desc: "Japanese woodblock prints flourished in the Edo period (1603–1868) and profoundly influenced Impressionism and Art Nouveau. Hokusai and Hiroshige remain among the most recognizable artists in the world.",
+      artworks: ["The Great Wave off Kanagawa — Katsushika Hokusai, c. 1831"]
+    },
+    {
+      date: "c. 1980s–present",
+      name: "Contemporary & Street Art",
+      desc: "Art today is radically pluralistic — digital media, installation, performance, global perspectives, and the art market itself as subject. Street art brought visual culture off gallery walls and into public space.",
+      artworks: ["Girl with a Balloon — Banksy, 2006"]
+    }
+  ];
+
+  function openTimeline(){
+    const backdrop = document.createElement('div');
+    backdrop.className = 'timeline-backdrop';
+
+    const erasHtml = TIMELINE_DATA.map(era=>{
+      const chips = era.artworks.length
+        ? `<div class="tl-artworks">${era.artworks.map(a=>`<span class="tl-artwork-chip">${escapeHtml(a)}</span>`).join('')}</div>`
+        : '';
+      return `<div class="tl-era">
+        <div class="tl-date">${escapeHtml(era.date)}</div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-body">
+          <div class="tl-era-name">${escapeHtml(era.name)}</div>
+          <div class="tl-era-desc">${escapeHtml(era.desc)}</div>
+          ${chips}
+        </div>
+      </div>`;
+    }).join('');
+
+    backdrop.innerHTML = `
+      <div class="timeline-modal">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-header-title">Art History Timeline</div>
+            <div class="timeline-header-sub">Prehistoric to Contemporary</div>
+          </div>
+          <button class="timeline-close" aria-label="Close">×</button>
+        </div>
+        <div class="timeline-scroll">
+          <div class="timeline-eras">${erasHtml}</div>
+        </div>
+      </div>`;
+
+    backdrop.addEventListener('click', e=>{ if(e.target===backdrop) backdrop.remove(); });
+    backdrop.querySelector('.timeline-close').addEventListener('click', ()=>backdrop.remove());
+    document.addEventListener('keydown', function escTimeline(e){
+      if(e.code==='Escape'){ backdrop.remove(); document.removeEventListener('keydown', escTimeline); }
+    });
+    document.body.appendChild(backdrop);
+  }
+
+  // ============================================================
   // Wire up events
   // ============================================================
   drawBtn.addEventListener('click', draw);
@@ -1245,6 +1505,7 @@
   resetBtn.addEventListener('click', ()=>resetGame(true));
   leadingBtn.addEventListener('click', ()=>openLeaderCardModal('leading'));
   winnersBtn.addEventListener('click', ()=>openLeaderCardModal('winning'));
+  timelineBtn.addEventListener('click', openTimeline);
   document.addEventListener('keydown', (e)=>{
     if(editorView.classList.contains('show')){
       if(e.code === 'Escape'){ closeEditor(); }

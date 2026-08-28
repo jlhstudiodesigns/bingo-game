@@ -788,6 +788,102 @@
   @media (max-width: 520px){
     button{ padding:13px 20px; font-size:13px; }
   }
+  /* ---------- art history timeline modal ---------- */
+  .timeline-backdrop{
+    position:fixed; inset:0; background:rgba(10,14,11,0.82); backdrop-filter:blur(3px);
+    z-index:60; display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  .timeline-modal{
+    background: linear-gradient(160deg, #1e2a24, #141d19);
+    border:1px solid rgba(200,162,74,0.28); border-radius:10px;
+    width:min(94vw,860px); max-height:90vh;
+    display:flex; flex-direction:column; position:relative; overflow:hidden;
+  }
+  .timeline-header{
+    flex-shrink:0; padding:20px 24px 16px;
+    border-bottom:1px solid rgba(200,162,74,0.18);
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .timeline-header-title{
+    font-family:'Playfair Display', serif; font-weight:800;
+    font-size:clamp(18px,2.4vw,26px); color:var(--chrome-text);
+    letter-spacing:0.02em;
+  }
+  .timeline-header-sub{
+    font-size:12px; color:var(--chrome-text-dim); letter-spacing:0.08em;
+    text-transform:uppercase; margin-top:2px;
+  }
+  .timeline-close{
+    background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12);
+    color:var(--chrome-text); font-size:18px; border-radius:50%;
+    width:32px; height:32px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    line-height:1; padding:0;
+  }
+  .timeline-close:hover{ background:rgba(255,255,255,0.14); }
+  .timeline-scroll{
+    flex:1; overflow-y:auto; padding:24px 24px 32px;
+    scrollbar-color: rgba(200,162,74,0.35) transparent;
+  }
+  .timeline-eras{
+    display:flex; flex-direction:column; gap:0;
+    position:relative;
+  }
+  .timeline-eras::before{
+    content:''; position:absolute; left:110px; top:0; bottom:0;
+    width:2px; background: linear-gradient(180deg, transparent 0%, rgba(200,162,74,0.45) 5%, rgba(200,162,74,0.45) 95%, transparent 100%);
+    pointer-events:none;
+  }
+  .tl-era{
+    display:flex; align-items:flex-start; gap:0; position:relative;
+    padding-bottom:28px;
+  }
+  .tl-era:last-child{ padding-bottom:0; }
+  .tl-date{
+    flex-shrink:0; width:100px; text-align:right; padding-right:14px; padding-top:3px;
+    font-size:11px; font-weight:700; letter-spacing:0.08em;
+    color:var(--chrome-frame); line-height:1.3; text-transform:uppercase;
+  }
+  .tl-dot{
+    flex-shrink:0; width:22px; display:flex; justify-content:center; padding-top:5px;
+    position:relative; z-index:1;
+  }
+  .tl-dot-inner{
+    width:12px; height:12px; border-radius:50%;
+    border:2px solid var(--chrome-frame);
+    background: #1e2a24;
+    flex-shrink:0;
+  }
+  .tl-body{
+    flex:1; min-width:0; padding-left:14px;
+  }
+  .tl-era-name{
+    font-family:'Playfair Display', serif; font-weight:700;
+    font-size:clamp(14px,1.8vw,17px); color:var(--chrome-text);
+    line-height:1.25; margin-bottom:5px;
+  }
+  .tl-era-desc{
+    font-size:clamp(11.5px,1.3vw,13px); color:var(--chrome-text-dim);
+    line-height:1.6; margin-bottom:6px;
+  }
+  .tl-artworks{
+    display:flex; flex-wrap:wrap; gap:5px; margin-top:6px;
+  }
+  .tl-artwork-chip{
+    font-size:11px; font-weight:600; color:var(--chrome-frame);
+    background:rgba(200,162,74,0.1); border:1px solid rgba(200,162,74,0.22);
+    border-radius:3px; padding:2px 8px; white-space:nowrap;
+    font-style:italic;
+  }
+  .tl-divider{
+    margin:0 0 0 0;
+  }
+  @media(max-width:580px){
+    .timeline-eras::before{ left:70px; }
+    .tl-date{ width:60px; font-size:9.5px; }
+    .timeline-scroll{ padding:16px 14px 24px; }
+  }
+
   @media (prefers-reduced-motion: reduce){
     .plaque, .frame-corner, .bcard, .reveal-img, .action-row, .view-hint, .fact-panel{ transition:none; animation:none; opacity:1; transform:none; }
     .flip-inner{ transition:none; transform:rotateY(180deg) !important; }
