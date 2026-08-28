@@ -1583,13 +1583,24 @@
     scrollEl.scrollLeft = 0;
     if(matchIdx >= 0){
       const eraEls = backdrop.querySelectorAll('.tl-era');
+      const stepMs = Math.max(180, Math.min(320, 6000 / (matchIdx + 1)));
       setTimeout(()=>{
-        const target = eraEls[matchIdx];
-        if(!target) return;
-        target.classList.add('tl-era--active');
-        const left = target.offsetLeft - scrollEl.clientWidth / 2 + target.offsetWidth / 2;
-        scrollEl.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
-      }, 2000);
+        let step = 0;
+        function scrollToStep(){
+          if(!backdrop.isConnected) return;
+          const target = eraEls[step];
+          if(!target) return;
+          const left = target.offsetLeft - scrollEl.clientWidth / 2 + target.offsetWidth / 2;
+          scrollEl.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+          if(step < matchIdx){
+            step++;
+            setTimeout(scrollToStep, stepMs);
+          } else {
+            target.classList.add('tl-era--active');
+          }
+        }
+        scrollToStep();
+      }, 1000);
     }
   }
 
