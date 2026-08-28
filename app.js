@@ -1581,27 +1581,40 @@
     // start at Prehistoric (scroll = 0), then after 1s slide to matching era
     const scrollEl = backdrop.querySelector('.timeline-scroll');
     scrollEl.scrollLeft = 0;
-    if(matchIdx >= 0){
-      const eraEls = backdrop.querySelectorAll('.tl-era');
-      const stepMs = Math.max(180, Math.min(320, 6000 / (matchIdx + 1)));
-      setTimeout(()=>{
-        let step = 0;
-        function scrollToStep(){
-          if(!backdrop.isConnected) return;
-          const target = eraEls[step];
-          if(!target) return;
-          const left = target.offsetLeft - scrollEl.clientWidth / 2 + target.offsetWidth / 2;
-          scrollEl.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
-          if(step < matchIdx){
-            step++;
-            setTimeout(scrollToStep, stepMs);
-          } else {
-            target.classList.add('tl-era--active');
-          }
-        }
-        scrollToStep();
-      }, 1000);
+    const eraEls = backdrop.querySelectorAll('.tl-era');
+    function smoothSlide(el, targetLeft, durationMs, onDone){
+      const startLeft = el.scrollLeft;
+      const dist = targetLeft - startLeft;
+      if(Math.abs(dist) < 2){ if(onDone) onDone(); return; }
+      const start = performance.now();
+      function step(now){
+        if(!backdrop.isConnected) return;
+        const t = Math.min(1, (now - start) / durationMs);
+        // ease-in-out cubic
+        const ease = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+        el.scrollLeft = startLeft + dist * ease;
+        if(t < 1) requestAnimationFrame(step);
+        else { el.scrollLeft = targetLeft; if(onDone) onDone(); }
+      }
+      requestAnimationFrame(step);
     }
+
+    setTimeout(()=>{
+      if(!backdrop.isConnected) return;
+      if(matchIdx >= 0){
+        const target = eraEls[matchIdx];
+        if(!target) return;
+        const destLeft = Math.max(0, target.offsetLeft - scrollEl.clientWidth / 2 + target.offsetWidth / 2);
+        const totalEras = eraEls.length;
+        const slideDuration = Math.max(1200, Math.min(4000, (matchIdx / totalEras) * 5000));
+        smoothSlide(scrollEl, destLeft, slideDuration, ()=>{
+          if(backdrop.isConnected) target.classList.add('tl-era--active');
+        });
+      } else {
+        // no match — pan to the end so the user can see the whole timeline
+        smoothSlide(scrollEl, scrollEl.scrollWidth, 3500, null);
+      }
+    }, 1000);
   }
 
   // ============================================================

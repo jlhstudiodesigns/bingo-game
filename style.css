@@ -830,7 +830,6 @@
     padding:24px 40px 28px;
     background:#ffffff;
     scrollbar-width:thin; scrollbar-color:rgba(150,114,28,0.4) transparent;
-    scroll-behavior:smooth;
   }
   .timeline-eras{
     display:flex; flex-direction:row; align-items:flex-start;
