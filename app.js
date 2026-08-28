@@ -1589,7 +1589,7 @@
         target.classList.add('tl-era--active');
         const left = target.offsetLeft - scrollEl.clientWidth / 2 + target.offsetWidth / 2;
         scrollEl.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
-      }, 1000);
+      }, 2000);
     }
   }
 
