@@ -1536,13 +1536,32 @@
     }
   ];
 
+  function findEraByPeriodText(periodText){
+    if(!periodText) return -1;
+    const lower = periodText.toLowerCase();
+    let bestIdx = -1, bestLen = 0;
+    TIMELINE_DATA.forEach((era, i) => {
+      // Match the primary part of the era name (before " & " or " / ")
+      const coreName = era.name.split(/\s+[&\/]\s+/)[0].toLowerCase();
+      if(coreName.length > 3 && lower.includes(coreName) && coreName.length > bestLen){
+        bestLen = coreName.length;
+        bestIdx = i;
+      }
+    });
+    return bestIdx;
+  }
+
   function openTimeline(){
     // find which era matches the currently displayed card
     const currentItem = viewIndex >= 0 ? called[viewIndex] : null;
     const currentKey = currentItem ? (currentItem.title + '||' + currentItem.subtitle) : null;
-    const matchIdx = currentKey
+    // 1. try exact artwork key match; 2. fall back to period-text keyword match
+    let matchIdx = currentKey
       ? TIMELINE_DATA.findIndex(era => era.artworks.some(a => a.key === currentKey))
       : -1;
+    if(matchIdx < 0 && currentItem && currentItem.factPeriod){
+      matchIdx = findEraByPeriodText(currentItem.factPeriod);
+    }
 
     const backdrop = document.createElement('div');
     backdrop.className = 'timeline-backdrop';
