@@ -1537,37 +1537,30 @@
   ];
 
   function openTimeline(){
-    const imgs = window.SEED_IMAGES || {};
-    const calledKeys = new Set(called.map(item => item.title + '||' + item.subtitle));
+    // find which era matches the currently displayed card
+    const currentItem = viewIndex >= 0 ? called[viewIndex] : null;
+    const currentKey = currentItem ? (currentItem.title + '||' + currentItem.subtitle) : null;
+    const matchIdx = currentKey
+      ? TIMELINE_DATA.findIndex(era => era.artworks.some(a => a.key === currentKey))
+      : -1;
+
     const backdrop = document.createElement('div');
     backdrop.className = 'timeline-backdrop';
 
-    const erasHtml = TIMELINE_DATA.map(era=>{
-      const artHtml = era.artworks.length
-        ? `<div class="tl-artworks">${era.artworks.map(a=>{
-            const wasCalled = calledKeys.has(a.key);
-            const src = wasCalled ? imgs[a.key] : null;
-            const thumb = src
-              ? `<img class="tl-artwork-img" src="${escapeHtml(src)}" alt="${escapeHtml(a.label)}" loading="lazy">`
-              : `<div class="tl-artwork-img tl-artwork-hidden"></div>`;
-            return `<div class="tl-artwork-item">${thumb}<div class="tl-artwork-caption">${escapeHtml(a.label)}</div></div>`;
-          }).join('')}</div>`
-        : '';
-      return `<div class="tl-era">
+    const erasHtml = TIMELINE_DATA.map(era=>`<div class="tl-era">
         <div class="tl-date">${escapeHtml(era.date)}</div>
         <div class="tl-dot"><div class="tl-dot-inner"></div></div>
         <div class="tl-body">
           <div class="tl-era-name">${escapeHtml(era.name)}</div>
           <div class="tl-era-desc">${escapeHtml(era.desc)}</div>
-          ${artHtml}
         </div>
-      </div>`;
-    }).join('');
+      </div>`).join('');
 
     backdrop.innerHTML = `
       <div class="timeline-modal">
         <div class="timeline-header">
-          <div>
+          <div style="width:32px;flex-shrink:0;"></div>
+          <div class="timeline-header-text">
             <div class="timeline-header-title">Art History Timeline</div>
             <div class="timeline-header-sub">Prehistoric to Contemporary</div>
           </div>
@@ -1584,6 +1577,20 @@
       if(e.code==='Escape'){ backdrop.remove(); document.removeEventListener('keydown', escTimeline); }
     });
     document.body.appendChild(backdrop);
+
+    // start at Prehistoric (scroll = 0), then after 1s slide to matching era
+    const scrollEl = backdrop.querySelector('.timeline-scroll');
+    scrollEl.scrollLeft = 0;
+    if(matchIdx >= 0){
+      const eraEls = backdrop.querySelectorAll('.tl-era');
+      setTimeout(()=>{
+        const target = eraEls[matchIdx];
+        if(!target) return;
+        target.classList.add('tl-era--active');
+        const left = target.offsetLeft - scrollEl.clientWidth / 2 + target.offsetWidth / 2;
+        scrollEl.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+      }, 1000);
+    }
   }
 
   // ============================================================
