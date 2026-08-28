@@ -1538,16 +1538,18 @@
 
   function openTimeline(){
     const imgs = window.SEED_IMAGES || {};
+    const calledKeys = new Set(called.map(item => item.title + '||' + item.subtitle));
     const backdrop = document.createElement('div');
     backdrop.className = 'timeline-backdrop';
 
     const erasHtml = TIMELINE_DATA.map(era=>{
       const artHtml = era.artworks.length
         ? `<div class="tl-artworks">${era.artworks.map(a=>{
-            const src = imgs[a.key];
+            const wasCalled = calledKeys.has(a.key);
+            const src = wasCalled ? imgs[a.key] : null;
             const thumb = src
               ? `<img class="tl-artwork-img" src="${escapeHtml(src)}" alt="${escapeHtml(a.label)}" loading="lazy">`
-              : `<div class="tl-artwork-img tl-artwork-no-img">🖼️</div>`;
+              : `<div class="tl-artwork-img tl-artwork-hidden"></div>`;
             return `<div class="tl-artwork-item">${thumb}<div class="tl-artwork-caption">${escapeHtml(a.label)}</div></div>`;
           }).join('')}</div>`
         : '';
