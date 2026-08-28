@@ -1551,11 +1551,11 @@
     return bestIdx;
   }
 
+  const ERA_COLORS = ['#2d4a7a','#6b7c35','#8b3a22','#c4892a','#4a6a8a','#5a6535'];
+
   function openTimeline(){
-    // find which era matches the currently displayed card
     const currentItem = viewIndex >= 0 ? called[viewIndex] : null;
     const currentKey = currentItem ? (currentItem.title + '||' + currentItem.subtitle) : null;
-    // 1. try exact artwork key match; 2. fall back to period-text keyword match
     let matchIdx = currentKey
       ? TIMELINE_DATA.findIndex(era => era.artworks.some(a => a.key === currentKey))
       : -1;
@@ -1566,14 +1566,22 @@
     const backdrop = document.createElement('div');
     backdrop.className = 'timeline-backdrop';
 
-    const erasHtml = TIMELINE_DATA.map(era=>`<div class="tl-era">
-        <div class="tl-date">${escapeHtml(era.date)}</div>
+    const erasHtml = TIMELINE_DATA.map((era, i) => {
+      const color = ERA_COLORS[i % ERA_COLORS.length];
+      const bullets = era.desc.split(/\.\s+/).map(s => s.trim().replace(/\.$/,'')).filter(s => s.length > 4);
+      const bulletsHtml = bullets.map(b => `<li>${escapeHtml(b)}.</li>`).join('');
+      return `<div class="tl-era" style="--era-color:${color}">
+        <div class="tl-era-header">
+          <div class="tl-era-name">${escapeHtml(era.name)}</div>
+          <div class="tl-date">${escapeHtml(era.date)}</div>
+          <div class="tl-acc-arrow">▼</div>
+        </div>
         <div class="tl-dot"><div class="tl-dot-inner"></div></div>
         <div class="tl-body">
-          <div class="tl-era-name">${escapeHtml(era.name)}</div>
-          <div class="tl-era-desc">${escapeHtml(era.desc)}</div>
+          <ul class="tl-bullets">${bulletsHtml}</ul>
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
 
     backdrop.innerHTML = `
       <div class="timeline-modal">
@@ -1585,10 +1593,22 @@
           </div>
           <button class="timeline-close" aria-label="Close">×</button>
         </div>
+        <div class="timeline-intro">
+          Art has changed throughout history, reflecting the ideas, beliefs, and cultures of each time.
+          This timeline shows the major art periods in order.
+        </div>
         <div class="timeline-scroll">
           <div class="timeline-eras">${erasHtml}</div>
         </div>
       </div>`;
+
+    // accordion toggle
+    backdrop.querySelector('.timeline-eras').addEventListener('click', e => {
+      const hdr = e.target.closest('.tl-era-header');
+      if(!hdr) return;
+      const era = hdr.closest('.tl-era');
+      if(era) era.classList.toggle('tl-era--open');
+    });
 
     backdrop.addEventListener('click', e=>{ if(e.target===backdrop) backdrop.remove(); });
     backdrop.querySelector('.timeline-close').addEventListener('click', ()=>backdrop.remove());
@@ -1597,10 +1617,10 @@
     });
     document.body.appendChild(backdrop);
 
-    // start at Prehistoric (scroll = 0), then after 1s slide to matching era
     const scrollEl = backdrop.querySelector('.timeline-scroll');
     scrollEl.scrollLeft = 0;
     const eraEls = backdrop.querySelectorAll('.tl-era');
+
     function smoothSlide(el, targetLeft, durationMs, onDone){
       const startLeft = el.scrollLeft;
       const dist = targetLeft - startLeft;
@@ -1609,7 +1629,6 @@
       function step(now){
         if(!backdrop.isConnected) return;
         const t = Math.min(1, (now - start) / durationMs);
-        // ease-in-out cubic
         const ease = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
         el.scrollLeft = startLeft + dist * ease;
         if(t < 1) requestAnimationFrame(step);
@@ -1624,13 +1643,11 @@
         const target = eraEls[matchIdx];
         if(!target) return;
         const destLeft = Math.max(0, target.offsetLeft - scrollEl.clientWidth / 2 + target.offsetWidth / 2);
-        const totalEras = eraEls.length;
-        const slideDuration = Math.max(1200, Math.min(4000, (matchIdx / totalEras) * 5000));
+        const slideDuration = Math.max(1200, Math.min(4000, (matchIdx / eraEls.length) * 5000));
         smoothSlide(scrollEl, destLeft, slideDuration, ()=>{
           if(backdrop.isConnected) target.classList.add('tl-era--active');
         });
       } else {
-        // no match — pan to the end so the user can see the whole timeline
         smoothSlide(scrollEl, scrollEl.scrollWidth, 3500, null);
       }
     }, 1000);
