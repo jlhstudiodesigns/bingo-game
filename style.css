@@ -171,7 +171,7 @@
   .placeholder-icon{ font-size:34px; opacity:0.6; }
   .placeholder-text{ font-size:12.5px; letter-spacing:0.04em; }
   .reveal-info{
-    flex:1 1 44%; min-width:0; height:100%;
+    flex:1 1 44%; min-width:0; min-height:0; height:100%;
     display:flex; flex-direction:column; justify-content:flex-start;
     text-align:left; overflow-y:auto; padding-right:4px;
     scrollbar-width:thin; scrollbar-color: rgba(200,162,74,0.5) transparent;
@@ -364,7 +364,7 @@
     animation: img-in 360ms cubic-bezier(.2,.8,.2,1) forwards;
   }
   .fact-label{
-    font-size:20px; letter-spacing:0.22em; text-transform:uppercase; color: var(--frame);
+    font-size:18px; letter-spacing:0.22em; text-transform:uppercase; color: var(--frame);
     font-weight:700; margin-bottom:6px;
     display:flex; align-items:center; gap:6px;
   }
@@ -379,7 +379,7 @@
   }
   .fact-block + .fact-block{ margin-top:12px; }
   .fact-text{
-    font-size: clamp(20px,2.34vw,23.5px); line-height:1.5; color: var(--ivory); opacity:0.92;
+    font-size: clamp(18px,2.1vw,21px); line-height:1.5; color: var(--ivory); opacity:0.92;
   }
 
   .controls{ flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
