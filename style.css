@@ -260,7 +260,7 @@
     letter-spacing:0.05em; color: var(--stone);
     text-transform:uppercase; font-weight:600;
   }
-  .art-subtitle::before{ content:"— "; }
+  .art-subtitle::before{ content:""; }
   .art-subtitle-meta{
     margin-top:4px;
     font-size: clamp(13.5px, 1.42vw, 16px);
