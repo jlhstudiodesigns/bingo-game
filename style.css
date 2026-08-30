@@ -172,9 +172,13 @@
   .placeholder-text{ font-size:12.5px; letter-spacing:0.04em; }
   .reveal-info{
     flex:1 1 44%; min-width:0; height:100%;
-    display:flex; flex-direction:column; justify-content:center;
-    text-align:left; overflow:hidden;
+    display:flex; flex-direction:column; justify-content:flex-start;
+    text-align:left; overflow-y:auto; padding-right:4px;
+    scrollbar-width:thin; scrollbar-color: rgba(200,162,74,0.5) transparent;
   }
+  .reveal-info::-webkit-scrollbar{ width:5px; }
+  .reveal-info::-webkit-scrollbar-track{ background:transparent; }
+  .reveal-info::-webkit-scrollbar-thumb{ background:rgba(200,162,74,0.45); border-radius:3px; }
   .reveal-info .action-row{ justify-content:flex-start; }
   .reveal-info .fact-panel{ max-width:none; }
 
@@ -361,12 +365,12 @@
     animation: img-in 360ms cubic-bezier(.2,.8,.2,1) forwards;
   }
   .fact-label{
-    font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color: var(--frame);
+    font-size:17px; letter-spacing:0.22em; text-transform:uppercase; color: var(--frame);
     font-weight:700; margin-bottom:6px;
   }
   .fact-block + .fact-block{ margin-top:14px; }
   .fact-text{
-    font-size: clamp(13px,1.5vw,15px); line-height:1.5; color: var(--ivory); opacity:0.92;
+    font-size: clamp(17px,1.95vw,19.5px); line-height:1.5; color: var(--ivory); opacity:0.92;
   }
 
   .controls{ flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
