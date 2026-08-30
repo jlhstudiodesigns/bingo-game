@@ -365,7 +365,7 @@
     animation: img-in 360ms cubic-bezier(.2,.8,.2,1) forwards;
   }
   .fact-label{
-    font-size:17px; letter-spacing:0.22em; text-transform:uppercase; color: var(--frame);
+    font-size:20px; letter-spacing:0.22em; text-transform:uppercase; color: var(--frame);
     font-weight:700; margin-bottom:6px;
     display:flex; align-items:center; gap:6px;
   }
@@ -374,7 +374,7 @@
   }
   .fact-block + .fact-block{ margin-top:14px; }
   .fact-text{
-    font-size: clamp(17px,1.95vw,19.5px); line-height:1.5; color: var(--ivory); opacity:0.92;
+    font-size: clamp(20px,2.34vw,23.5px); line-height:1.5; color: var(--ivory); opacity:0.92;
   }
 
   .controls{ flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
