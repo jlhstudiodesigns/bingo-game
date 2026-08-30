@@ -199,8 +199,9 @@
     color: var(--frame); font-weight:700; margin-bottom:14px; opacity:0.9;
   }
   .draw-col-banner{
-    width:100%; border-radius:6px; margin-bottom:18px;
+    width:100%; border-radius:8px; margin-bottom:18px;
     padding:10px 16px;
+    box-shadow: 0 3px 10px -3px rgba(0,0,0,0.3);
     display:flex; align-items:center; justify-content:center;
     font-family:'Playfair Display', serif; font-weight:900;
     font-size:32px; color:#ffffff; letter-spacing:0.06em;
@@ -654,14 +655,16 @@
   .win-tile{
     flex:1 1 0; min-width:130px; max-width:260px;
     display:flex; flex-direction:column;
-    background:#ffffff; border-radius:8px; overflow:hidden;
+    background:#ffffff; border-radius:8px;
     box-shadow: 0 8px 20px -6px rgba(0,0,0,0.28);
+    padding: 8px 8px 0;
   }
   .win-tile-banner{
-    width:100%; padding:11px 10px; flex-shrink:0;
+    border-radius:8px; padding:11px 10px; flex-shrink:0; margin-bottom:8px;
     display:flex; align-items:center; justify-content:center;
     font-family:'Playfair Display', serif; font-weight:900;
     font-size:28px; color:#ffffff; letter-spacing:0.06em;
+    box-shadow: 0 3px 10px -3px rgba(0,0,0,0.3);
   }
   .win-tile-banner.letter-b{ background: linear-gradient(155deg, #d24a3c, #a8291d); }
   .win-tile-banner.letter-i{ background: linear-gradient(155deg, #e0912f, #b6691a); }
@@ -677,6 +680,7 @@
   .win-tile-img-wrap{
     width:100%; aspect-ratio:1/1; background: var(--wall);
     display:flex; align-items:center; justify-content:center; overflow:hidden;
+    border-radius:6px;
   }
   .win-tile-img-wrap img{ width:100%; height:100%; object-fit:contain; display:block; }
   .win-tile-noimg{ font-size:30px; }
