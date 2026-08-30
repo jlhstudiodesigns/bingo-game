@@ -1,5 +1,5 @@
 window.SEED_ART = [
-    ["Mona Lisa","Leonardo da Vinci",
+    ["Nona Lisa","Leonardo da Vinci",
       "Never sold — French law forbids it. It was insured for $100 million for a 1962 U.S. tour, the highest art insurance value ever recorded at the time (roughly $1 billion today).",
       "High Renaissance. Painted 1503–1517 (about 14 years) — Leonardo worked on it on and off for the rest of his life, though most scholars think the core image was done by around 1506.",
       "It was stolen from the Louvre in 1911 by a former employee and stayed missing for two years before being recovered in Italy — the theft helped make it world-famous.",
