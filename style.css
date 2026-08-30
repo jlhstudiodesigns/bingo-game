@@ -374,7 +374,7 @@
   .fact-block{
     background:#ffffff; border-radius:10px;
     border:1px solid rgba(0,0,0,0.08);
-    padding:12px 16px;
+    padding:13px 18px;
     box-shadow:0 2px 6px -2px rgba(0,0,0,0.1);
   }
   .fact-block + .fact-block{ margin-top:12px; }
