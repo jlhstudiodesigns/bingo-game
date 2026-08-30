@@ -773,7 +773,7 @@
     const blocks = [];
     if(item.factAuction) blocks.push(`<div class="fact-block"><div class="fact-label">💰 Auction &amp; Value</div><div class="fact-text">${escapeHtml(item.factAuction)}</div></div>`);
     if(item.factPeriod) blocks.push(`<div class="fact-block"><div class="fact-label">🕰️ Time Period</div><div class="fact-text">${escapeHtml(item.factPeriod)}</div></div>`);
-    if(item.factUnique) blocks.push(`<div class="fact-block"><div class="fact-label">✨ Something Unique</div><div class="fact-text">${escapeHtml(item.factUnique)}</div></div>`);
+    if(item.factUnique) blocks.push(`<div class="fact-block"><div class="fact-label"><span style="color:#cc2222">★</span> Something Unique</div><div class="fact-text">${escapeHtml(item.factUnique)}</div></div>`);
     return blocks.join('');
   }
 
@@ -987,7 +987,7 @@
               <textarea data-field="factPeriod" data-id="${it.id}" rows="3" placeholder="When was it made?">${escapeHtml(it.factPeriod||'')}</textarea>
             </div>
             <div>
-              <span class="field-label fact-unique">✨ Something Unique</span>
+              <span class="field-label fact-unique"><span style="color:#cc2222">★</span> Something Unique</span>
               <textarea data-field="factUnique" data-id="${it.id}" rows="3" placeholder="What's odd or interesting about it?">${escapeHtml(it.factUnique||'')}</textarea>
             </div>
           </div>
