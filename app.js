@@ -806,7 +806,8 @@
           </div>
         </div>
         <div class="reveal-info">
-          <div class="draw-index">${(()=>{const col=(item.column||'').trim().toUpperCase();return ['B','I','N','G','O'].includes(col)?`<div class="draw-col-badge letter-${col.toLowerCase()}">${col}</div>`:''})()}<span>Draw ${drawNum} of ${items.length}</span></div>
+          ${(()=>{const col=(item.column||'').trim().toUpperCase();return ['B','I','N','G','O'].includes(col)?`<div class="draw-col-banner letter-${col.toLowerCase()}">${col}</div>`:''})()}
+          <div class="draw-index">Draw ${drawNum} of ${items.length}</div>
           <div class="art-title">${escapeHtml(item.title)}</div>
           ${(item.dateText || item.mediumText) ? `<div class="art-date">${item.dateText ? escapeHtml(item.dateText) : ''}${item.dateText && item.mediumText ? ' <span class="art-date-dot">·</span> ' : ''}${item.mediumText ? escapeHtml(item.mediumText) : ''}</div>` : ''}
           ${artistBlockHtml(item, false, false)}
