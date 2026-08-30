@@ -649,32 +649,34 @@
     background: rgba(82,61,14,0.1); padding:4px 10px; border-radius:20px;
   }
   .win-modal-row{
-    display:flex; gap: clamp(8px,1.5vw,16px); justify-content:center; align-items:stretch; flex-wrap:wrap;
+    display:flex; gap: clamp(8px,1.5vw,14px); justify-content:center; align-items:stretch; flex-wrap:wrap;
   }
   .win-tile{
-    position:relative;
-    flex:1 1 0; min-width:120px; max-width:280px;
-    display:flex; flex-direction:column; background: var(--panel); border-radius:8px; overflow:hidden;
-    border:1px solid rgba(200,162,74,0.3);
-    box-shadow: 0 8px 20px -6px rgba(0,0,0,0.25);
+    flex:1 1 0; min-width:130px; max-width:260px;
+    display:flex; flex-direction:column;
+    background:#ffffff; border-radius:8px; overflow:hidden;
+    box-shadow: 0 8px 20px -6px rgba(0,0,0,0.28);
   }
-  .win-tile.free-tile{
-    background:#0c0f0c; align-items:center; justify-content:center;
-    aspect-ratio: 3/4;
+  .win-tile-banner{
+    width:100%; padding:11px 10px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display', serif; font-weight:900;
+    font-size:28px; color:#ffffff; letter-spacing:0.06em;
   }
+  .win-tile-banner.letter-b{ background: linear-gradient(155deg, #d24a3c, #a8291d); }
+  .win-tile-banner.letter-i{ background: linear-gradient(155deg, #e0912f, #b6691a); }
+  .win-tile-banner.letter-n{ background: linear-gradient(155deg, #ffd200, #d1a900); color:#222; text-shadow: 0 1px 3px rgba(0,0,0,0.45); }
+  .win-tile-banner.letter-g{ background: linear-gradient(155deg, #3f9d64, #256b3f); }
+  .win-tile-banner.letter-o{ background: linear-gradient(155deg, #3f77c2, #24518f); }
+  .win-tile.free-tile{ background:#0c0f0c; }
   .win-tile-free-label{
+    flex:1; display:flex; align-items:center; justify-content:center;
     color:#e8c468; font-family:'Playfair Display', serif; font-weight:800;
     letter-spacing:0.1em; font-size:19.5px;
   }
-  .win-tile .letter-badge{
-    position:absolute; top:8px; left:8px; z-index:3;
-    width:30px; height:30px; font-size:15px;
-    animation:none; opacity:1; transform:none;
-    box-shadow: 0 3px 8px -2px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(255,255,255,0.25);
-  }
   .win-tile-img-wrap{
     width:100%; aspect-ratio:1/1; background: var(--wall);
-    display:flex; align-items:center; justify-content:center; overflow:hidden; font-size:30px;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
   }
   .win-tile-img-wrap img{ width:100%; height:100%; object-fit:contain; display:block; }
   .win-tile-noimg{ font-size:30px; }

@@ -702,13 +702,13 @@
     const rowEl = backdrop.querySelector('#winModalRow');
     rowEl.innerHTML = lineCells.map(c=>{
       const letter = ['B','I','N','G','O'][c.pos % 5];
-      const badge = `<div class="letter-badge letter-${letter.toLowerCase()}">${letter}</div>`;
+      const banner = `<div class="win-tile-banner letter-${letter.toLowerCase()}">${letter}</div>`;
       if(c.free){
-        return `<div class="win-tile free-tile">${badge}<div class="win-tile-free-label">FREE</div></div>`;
+        return `<div class="win-tile free-tile">${banner}<div class="win-tile-free-label">FREE</div></div>`;
       }
       const thumbAttr = c.item ? ` data-win-thumb="${c.item.id}"` : '';
       return `<div class="win-tile">
-        ${badge}
+        ${banner}
         <div class="win-tile-img-wrap"${thumbAttr}></div>
         <div class="win-tile-title">${escapeHtml(c.title)}</div>
         ${c.subtitle ? `<div class="win-tile-artist">${escapeHtml(c.subtitle)}</div>` : ''}
