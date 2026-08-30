@@ -772,7 +772,7 @@
   function factsBlocksHtml(item){
     const blocks = [];
     if(item.factAuction) blocks.push(`<div class="fact-block"><div class="fact-label">💰 Auction &amp; Value</div><div class="fact-text">${escapeHtml(item.factAuction)}</div></div>`);
-    if(item.factPeriod) blocks.push(`<div class="fact-block"><div class="fact-label">🕰️ Time Period</div><div class="fact-text">${escapeHtml(item.factPeriod)}</div></div>`);
+    if(item.factPeriod) blocks.push(`<div class="fact-block"><div class="fact-label"><svg class="clock-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.6"/><line x1="10" y1="10" x2="10" y2="4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="10" y1="10" x2="13.5" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Time Period</div><div class="fact-text">${escapeHtml(item.factPeriod)}</div></div>`);
     if(item.factUnique) blocks.push(`<div class="fact-block"><div class="fact-label"><span style="color:#cc2222">★</span> Something Unique</div><div class="fact-text">${escapeHtml(item.factUnique)}</div></div>`);
     return blocks.join('');
   }
@@ -983,7 +983,7 @@
               <textarea data-field="factAuction" data-id="${it.id}" rows="3" placeholder="Ever sold? For how much?">${escapeHtml(it.factAuction||'')}</textarea>
             </div>
             <div>
-              <span class="field-label fact-period">🕰️ Time Period</span>
+              <span class="field-label fact-period"><svg class="clock-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.6"/><line x1="10" y1="10" x2="10" y2="4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="10" y1="10" x2="13.5" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Time Period</span>
               <textarea data-field="factPeriod" data-id="${it.id}" rows="3" placeholder="When was it made?">${escapeHtml(it.factPeriod||'')}</textarea>
             </div>
             <div>

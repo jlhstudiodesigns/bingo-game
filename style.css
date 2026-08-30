@@ -367,6 +367,10 @@
   .fact-label{
     font-size:17px; letter-spacing:0.22em; text-transform:uppercase; color: var(--frame);
     font-weight:700; margin-bottom:6px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .clock-icon{
+    width:1em; height:1em; flex-shrink:0; color: var(--frame);
   }
   .fact-block + .fact-block{ margin-top:14px; }
   .fact-text{
