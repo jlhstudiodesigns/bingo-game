@@ -249,21 +249,21 @@
   }
   .art-date{
     margin-top:4px;
-    font-size: clamp(11px, 1.2vw, 13px);
+    font-size: clamp(15px, 1.62vw, 17.5px);
     letter-spacing:0.04em; color: var(--stone-dim);
     font-style:italic;
   }
   .art-date-dot{ opacity:0.45; font-style:normal; }
   .art-subtitle{
     margin-top:12px;
-    font-size: clamp(12.5px, 1.5vw, 16px);
+    font-size: clamp(17px, 2vw, 21.5px);
     letter-spacing:0.05em; color: var(--stone);
     text-transform:uppercase; font-weight:600;
   }
   .art-subtitle::before{ content:"— "; }
   .art-subtitle-meta{
     margin-top:4px;
-    font-size: clamp(10px, 1.05vw, 12px);
+    font-size: clamp(13.5px, 1.42vw, 16px);
     line-height:1.5;
     letter-spacing:0.02em; color: var(--stone-dim);
     text-transform:none; font-weight:400; font-style:italic;
