@@ -757,9 +757,10 @@
   }
 
   // Puts the B/I/N/G/O badge to the left of the artist's name, birth, and death info.
-  function artistBlockHtml(item, immediateBadge, showBadge){
+  function artistBlockHtml(item, immediateBadge, showBadge, showPaletteIcon){
     const badge = (showBadge === false) ? '' : letterBadgeHtml(item, immediateBadge);
-    const subtitleHtml = item.subtitle ? `<div class="art-subtitle">${escapeHtml(item.subtitle)}</div>` : '';
+    const icon = showPaletteIcon && item.subtitle ? '<span class="artist-palette-icon">🎨</span>' : '';
+    const subtitleHtml = item.subtitle ? `<div class="art-subtitle">${icon}${escapeHtml(item.subtitle)}</div>` : '';
     const metaHtml = subtitleMetaHtml(item);
     const textInner = subtitleHtml + metaHtml;
     if(!badge && !textInner) return '';
@@ -810,7 +811,7 @@
           <div class="draw-index">Draw ${drawNum} of ${items.length}</div>
           <div class="art-title">${escapeHtml(item.title)}</div>
           ${(item.dateText || item.mediumText) ? `<div class="art-date">${item.dateText ? escapeHtml(item.dateText) : ''}${item.dateText && item.mediumText ? ' <span class="art-date-dot">·</span> ' : ''}${item.mediumText ? escapeHtml(item.mediumText) : ''}</div>` : ''}
-          ${artistBlockHtml(item, false, false)}
+          ${artistBlockHtml(item, false, false, true)}
           ${hasAnyFact(item) ? `<div class="fact-panel">${factsBlocksHtml(item)}</div>` : ''}
         </div>
       </div>
