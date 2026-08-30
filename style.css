@@ -197,7 +197,22 @@
   .draw-index{
     font-size:11px; letter-spacing:0.28em; text-transform:uppercase;
     color: var(--frame); font-weight:700; margin-bottom:14px; opacity:0.9;
+    display:flex; align-items:center; gap:8px;
   }
+  .draw-col-badge{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:22px; height:22px; border-radius:50%;
+    font-family:'Playfair Display', serif; font-weight:800;
+    font-size:12px; color:#ffffff; flex-shrink:0;
+    box-shadow: 0 3px 8px -2px rgba(0,0,0,0.45), inset 0 0 0 1.5px rgba(255,255,255,0.25);
+    opacity:0; transform:scale(0.8);
+    animation: badge-in 420ms cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  .draw-col-badge.letter-b{ background: linear-gradient(155deg, #d24a3c, #a8291d); }
+  .draw-col-badge.letter-i{ background: linear-gradient(155deg, #e0912f, #b6691a); }
+  .draw-col-badge.letter-n{ background: linear-gradient(155deg, #ffd200, #d1a900); color:#222; text-shadow: 0 1px 2px rgba(0,0,0,0.45); }
+  .draw-col-badge.letter-g{ background: linear-gradient(155deg, #3f9d64, #256b3f); }
+  .draw-col-badge.letter-o{ background: linear-gradient(155deg, #3f77c2, #24518f); }
 
   .letter-badge{
     display:inline-flex; align-items:center; justify-content:center;
