@@ -255,9 +255,10 @@
   }
   .reveal-info .artist-text{ display:flex; flex-direction:column; }
   .reveal-info .art-subtitle{
-    display:flex; align-items:center; gap:6px;
-    font-size:16px; color: var(--frame);
-    letter-spacing:0.22em; text-transform:uppercase; font-weight:700;
+    display:flex; align-items:center; gap:8px;
+    font-size:24px; color:#111111;
+    font-family: system-ui, -apple-system, sans-serif;
+    letter-spacing:0.08em; text-transform:uppercase; font-weight:700;
     margin-top:0;
   }
   .artist-palette-icon{ font-size:1em; line-height:1; }
