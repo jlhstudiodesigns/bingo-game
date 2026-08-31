@@ -379,7 +379,6 @@
 
   .fact-panel{
     margin-top:12px; max-width:520px;
-    padding-top:4px;
     opacity:0; transform: translateY(4px);
     animation: img-in 360ms cubic-bezier(.2,.8,.2,1) forwards;
   }
