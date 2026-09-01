@@ -1248,42 +1248,63 @@
       date: "c. 40,000 BCE",
       name: "Prehistoric Art",
       desc: "Cave paintings, hand stencils, and carved figurines — the earliest known human art. Found in sites like Lascaux (France) and Altamira (Spain), these images reveal ritual and symbolic thinking.",
+      characteristics: "Cave paintings, hand stencils, carved figurines, geometric patterns, animal imagery",
+      chiefArtists: "Unknown artists; Lascaux Cave Paintings (France), Venus of Willendorf, Altamira Bison, Stonehenge",
+      historicalEvents: "Last Ice Age ends (c. 10,000 BCE); first permanent human settlements; invention of agriculture",
       artworks: []
     },
     {
       date: "c. 3100–30 BCE",
       name: "Ancient Egyptian Art",
       desc: "Governed by strict canon laws over nearly three millennia. Figures shown in composite view, hieroglyphic integration, and monumental sculpture served religious and funerary purposes.",
+      characteristics: "Composite-view figures, strict canon proportions, hieroglyphic integration, flat color, monumental scale",
+      chiefArtists: "Anonymous court artists; Bust of Nefertiti, Great Sphinx, Book of the Dead illustrations, Abu Simbel temples",
+      historicalEvents: "Unification of Upper and Lower Egypt (c. 3100 BCE); construction of Great Pyramids (c. 2560 BCE); Cleopatra VII rules (51–30 BCE)",
       artworks: []
     },
     {
       date: "c. 800–31 BCE",
       name: "Classical Greek Art",
       desc: "Idealized the human form through sculpture and pottery. Developed contrapposto and principles of harmony and proportion that have defined Western art ever since.",
+      characteristics: "Idealized human form, contrapposto stance, red-figure pottery, symmetry and harmony, architectural sculpture",
+      chiefArtists: "Phidias (Parthenon sculptures), Myron (Discobolus), Praxiteles (Aphrodite of Knidos), Polykleitos",
+      historicalEvents: "Golden Age of Athens under Pericles; construction of the Parthenon (447–432 BCE); Alexander the Great's conquests",
       artworks: []
     },
     {
       date: "c. 27 BCE–476 CE",
       name: "Roman Art",
       desc: "Absorbed Greek influence and added portraiture, civic propaganda, and narrative relief sculpture. Monumental architecture expressed imperial power.",
+      characteristics: "Realistic portraiture, narrative relief sculpture, triumphal arches, fresco murals, mosaic floors",
+      chiefArtists: "Anonymous imperial workshops; Ara Pacis, Trajan's Column, Pompeii frescoes, Augustus of Prima Porta",
+      historicalEvents: "Pax Romana (27 BCE–180 CE); eruption of Vesuvius preserving Pompeii (79 CE); fall of Western Roman Empire (476 CE)",
       artworks: []
     },
     {
       date: "c. 330–1453",
       name: "Byzantine Art",
       desc: "Centered in Constantinople. Gold-ground mosaics, elongated holy figures, and rigid iconographic conventions served the Orthodox Church — spiritual rather than naturalistic.",
+      characteristics: "Gold-ground mosaics, elongated holy figures, flat hieratic style, reverse perspective, icon paintings",
+      chiefArtists: "Anonymous icon painters; Hagia Sophia mosaics, Ravenna mosaics, Codex Purpureus, Pantocrator icons",
+      historicalEvents: "Founding of Constantinople (330 CE); Great Schism between Rome and Eastern Church (1054); Fall of Constantinople (1453)",
       artworks: []
     },
     {
       date: "c. 1000–1400",
       name: "Romanesque & Gothic",
       desc: "Romanesque heavy stone churches gave way to Gothic soaring cathedrals with pointed arches and flying buttresses. Illuminated manuscripts and stained glass conveyed scripture to largely illiterate congregations.",
+      characteristics: "Pointed arches, flying buttresses, stained glass windows, illuminated manuscripts, narrative stone carvings",
+      chiefArtists: "Master Guglielmo, Cimabue, Duccio di Buoninsegna; Chartres Cathedral, Notre-Dame de Paris, Book of Kells",
+      historicalEvents: "First Crusade (1096); construction of Notre-Dame begins (1163); Black Death (1347–1351); Hundred Years War (1337–1453)",
       artworks: []
     },
     {
       date: "c. 1300–1494",
       name: "Early Renaissance",
       desc: "Florentine artists rediscovered classical antiquity and introduced linear perspective. Giotto, Masaccio, Donatello, and Botticelli transformed painting from devotional symbol to observed reality.",
+      characteristics: "Linear perspective, naturalistic figures, classical architectural settings, secular subjects alongside religious themes",
+      chiefArtists: "Giotto, Masaccio, Donatello, Botticelli; The Birth of Venus, David (bronze), Primavera",
+      historicalEvents: "Medici family rise to power in Florence; invention of the printing press (c. 1450); fall of Constantinople (1453)",
       artworks: [
         { key: "The Birth of Venus||Sandro Botticelli", label: "The Birth of Venus — Botticelli, c. 1485" }
       ]
@@ -1292,6 +1313,9 @@
       date: "c. 1430–1580",
       name: "Northern Renaissance",
       desc: "Flemish and German painters — Van Eyck, Dürer, Bosch — developed extraordinary detail through oil paint, more interested in everyday life, moralizing allegory, and the strange than their Italian counterparts.",
+      characteristics: "Extraordinary oil paint detail, everyday life subjects, moralizing allegory, symbolic objects in domestic scenes",
+      chiefArtists: "Jan van Eyck, Albrecht Dürer, Hieronymus Bosch; Arnolfini Portrait, Garden of Earthly Delights, Young Hare",
+      historicalEvents: "Protestant Reformation begins (1517); Gutenberg Bible printed (1455); Peasants' War in Germany (1524–1525)",
       artworks: [
         { key: "The Arnolfini Portrait||Jan van Eyck", label: "The Arnolfini Portrait — Jan van Eyck, 1434" },
         { key: "Young Hare||Albrecht Dürer", label: "Young Hare — Albrecht Dürer, 1502" },
@@ -1302,6 +1326,9 @@
       date: "c. 1490–1527",
       name: "High Renaissance",
       desc: "Leonardo, Michelangelo, and Raphael achieved harmony, technical mastery, and monumental grandeur. Centered in Florence, Rome, and the papal court — the peak of Renaissance idealism.",
+      characteristics: "Harmonious composition, monumental scale, sfumato technique, idealized beauty, pyramidal figure groupings",
+      chiefArtists: "Leonardo da Vinci, Michelangelo, Raphael; Mona Lisa, Sistine Chapel Ceiling, School of Athens",
+      historicalEvents: "Age of Exploration; Columbus reaches Americas (1492); Sack of Rome ends the era (1527)",
       artworks: [
         { key: "Lady with an Ermine||Leonardo da Vinci", label: "Lady with an Ermine — Leonardo, c. 1489" },
         { key: "The Last Supper||Leonardo da Vinci", label: "The Last Supper — Leonardo, 1495–1498" },
@@ -1317,12 +1344,18 @@
       date: "c. 1520–1600",
       name: "Mannerism",
       desc: "A reaction against High Renaissance harmony. Elongated figures, contorted poses, acidic colors, and compressed pictorial space created a sophisticated, deliberately artificial style. Key figures: Pontormo, Bronzino, El Greco.",
+      characteristics: "Elongated figures, contorted poses, acidic colors, compressed space, artificial elegance over natural beauty",
+      chiefArtists: "Pontormo, Bronzino, El Greco, Parmigianino; Madonna with the Long Neck, Lamentation of Christ",
+      historicalEvents: "Sack of Rome ends High Renaissance (1527); Council of Trent shapes Counter-Reformation art (1545–1563)",
       artworks: []
     },
     {
       date: "c. 1600–1750",
       name: "Baroque",
       desc: "Drama, movement, and emotional intensity in service of the Counter-Reformation and absolute monarchies. Caravaggio's tenebrism, Rubens's swirling figures, and Velázquez's royal portraits defined the era.",
+      characteristics: "Dramatic tenebrism, dynamic movement, emotional intensity, theatrical lighting, large-scale grandeur",
+      chiefArtists: "Caravaggio, Rubens, Velázquez, Rembrandt, Bernini; Las Meninas, Night Watch, Ecstasy of Saint Teresa",
+      historicalEvents: "Counter-Reformation; Thirty Years War (1618–1648); reign of Louis XIV of France (the Sun King)",
       artworks: [
         { key: "Deposition of Christ||Caravaggio", label: "Deposition of Christ — Caravaggio, 1602–1604" },
         { key: "Las Meninas||Diego Velázquez", label: "Las Meninas — Velázquez, 1656" },
@@ -1333,6 +1366,9 @@
       date: "c. 1650–1680",
       name: "Dutch Golden Age",
       desc: "Merchant-class patrons funded portraiture, still life, landscape, and genre scenes. Vermeer, Rembrandt, and Hals brought intimate realism and psychological depth to everyday subjects.",
+      characteristics: "Intimate realism, domestic genre scenes, still life, precise rendering of light and shadow, bourgeois subjects",
+      chiefArtists: "Vermeer, Rembrandt, Frans Hals; Girl with a Pearl Earring, The Milkmaid, The Night Watch",
+      historicalEvents: "Dutch Republic at height of global trade; founding of Dutch East India Company (1602); Tulip Mania (1630s)",
       artworks: [
         { key: "Girl with a Pearl Earring||Johannes Vermeer", label: "Girl with a Pearl Earring — Vermeer, c. 1665" },
         { key: "The Milkmaid||Johannes Vermeer", label: "The Milkmaid — Vermeer, c. 1657" }
@@ -1342,12 +1378,18 @@
       date: "c. 1700–1780",
       name: "Rococo",
       desc: "Playful, ornate, and pastel-toned — a shift from Baroque grandeur to intimate decoration. Fragonard, Watteau, and Boucher painted aristocratic leisure for France's pre-Revolutionary elite.",
+      characteristics: "Pastel colors, ornate decoration, playful scenes, intimate scale, feathery brushwork, curved forms",
+      chiefArtists: "Watteau, Fragonard, Boucher, Tiepolo; The Swing, Pilgrimage to Cythera, Madame de Pompadour",
+      historicalEvents: "French Enlightenment and salon culture; American Revolution (1775–1783); Seven Years War (1756–1763)",
       artworks: []
     },
     {
       date: "c. 1750–1850",
       name: "Neoclassicism",
       desc: "A sober return to Greco-Roman ideals, spurred by Enlightenment rationalism and the discovery of Pompeii. David's heroic history paintings championed civic virtue over Rococo frivolity.",
+      characteristics: "Greco-Roman ideals, heroic subjects, clear outlines, restrained color, civic virtue and moral themes",
+      chiefArtists: "Jacques-Louis David, Jean-Auguste Ingres, Antonio Canova; Oath of the Horatii, Napoleon Crossing the Alps",
+      historicalEvents: "Excavation of Pompeii (1748); French Revolution (1789); Napoleonic Wars across Europe",
       artworks: [
         { key: "Napoleon Crossing the Alps||Jacques-Louis David", label: "Napoleon Crossing the Alps — David, c. 1801" }
       ]
@@ -1356,6 +1398,9 @@
       date: "c. 1780–1850",
       name: "Romanticism",
       desc: "Emotion, nature, and the sublime over reason. Delacroix, Géricault, Turner, and Caspar David Friedrich explored crisis, catastrophe, nationalism, and the overwhelming power of the natural world.",
+      characteristics: "Emotion over reason, sublime landscapes, dramatic scenes, nationalism, exotic and distant subjects",
+      chiefArtists: "Delacroix, Géricault, Turner, Caspar David Friedrich, William Blake; Raft of the Medusa, Liberty Leading the People",
+      historicalEvents: "Napoleonic Wars; Industrial Revolution; revolutions across Europe (1848); Romantic nationalism movements",
       artworks: [
         { key: "The Ancient of Days||William Blake", label: "The Ancient of Days — William Blake, 1794" },
         { key: "The Raft of the Medusa||Théodore Géricault", label: "The Raft of the Medusa — Géricault, 1818–1819" },
@@ -1367,6 +1412,9 @@
       date: "c. 1840–1880",
       name: "Realism",
       desc: "Rejected idealization in favor of honest depiction of ordinary working people. Courbet, Millet, Homer, and Whistler insisted art address the present, not mythologized antiquity.",
+      characteristics: "Honest depiction of everyday life, working-class subjects, plein-air painting, no idealization or heroic narrative",
+      chiefArtists: "Courbet, Millet, Winslow Homer, Whistler; The Gleaners, Whistler's Mother, Breezing Up",
+      historicalEvents: "Industrial Revolution transforms labor; American Civil War (1861–1865); Paris Commune (1871)",
       artworks: [
         { key: "The Gleaners||Jean-François Millet", label: "The Gleaners — Millet, 1857" },
         { key: "The Angelus||Jean-François Millet", label: "The Angelus — Millet, 1857–1859" },
@@ -1379,6 +1427,9 @@
       date: "c. 1603–1868",
       name: "Ukiyo-e",
       desc: "Japanese woodblock prints from the Edo period captured the \"floating world\" of urban pleasure and nature. Hokusai and Hiroshige profoundly influenced Impressionism and Art Nouveau.",
+      characteristics: "Woodblock prints, bold outlines, flat color, scenes of kabuki, landscapes, and courtesans in the floating world",
+      chiefArtists: "Hokusai, Hiroshige, Utamaro; The Great Wave, Thirty-Six Views of Mount Fuji, One Hundred Famous Views of Edo",
+      historicalEvents: "Edo period isolation policy (sakoku); Meiji Restoration (1868) opens Japan to the West",
       artworks: [
         { key: "The Great Wave off Kanagawa||Katsushika Hokusai", label: "The Great Wave off Kanagawa — Hokusai, c. 1831" }
       ]
@@ -1387,6 +1438,9 @@
       date: "c. 1860–1900",
       name: "Impressionism",
       desc: "Parisian painters captured fleeting light and atmosphere through loose, rapid brushwork. Working outdoors and rejecting academic finish, Monet, Renoir, Degas, and Cassatt shook the French Salon establishment.",
+      characteristics: "Loose brushwork, outdoor painting, capturing light and atmosphere, broken color, everyday modern subjects",
+      chiefArtists: "Monet, Renoir, Degas, Cassatt, Manet; Water Lilies, Bal du Moulin de la Galette, The Dance Class",
+      historicalEvents: "First Impressionist exhibition (1874); Franco-Prussian War (1870); Belle Époque prosperity begins",
       artworks: [
         { key: "Impression, Sunrise||Claude Monet", label: "Impression, Sunrise — Monet, 1872" },
         { key: "Bal du Moulin de la Galette||Pierre-Auguste Renoir", label: "Bal du Moulin de la Galette — Renoir, 1876" },
@@ -1403,6 +1457,9 @@
       date: "c. 1880–1910",
       name: "Symbolism",
       desc: "Reacted against Realism by turning inward — toward dreams, myth, and the unconscious. Moreau, Redon, and Munch used symbolic imagery to express psychological and metaphysical states.",
+      characteristics: "Dream imagery, psychological states, myth and allegory, rich decorative surfaces, spiritual and occult themes",
+      chiefArtists: "Gustave Moreau, Odilon Redon, Edvard Munch, Henri Rousseau; The Scream, The Sleeping Gypsy",
+      historicalEvents: "Rise of psychoanalysis (Freud's Interpretation of Dreams, 1899); Decadent literary movement in France and England",
       artworks: [
         { key: "The Sleeping Gypsy||Henri Rousseau", label: "The Sleeping Gypsy — Henri Rousseau, 1897" },
         { key: "The Scream||Edvard Munch", label: "The Scream — Edvard Munch, 1895" }
@@ -1412,6 +1469,9 @@
       date: "c. 1886–1910",
       name: "Post-Impressionism",
       desc: "Diverse responses to Impressionism — Cézanne's geometric structure, Seurat's pointillism, Gauguin's primitivism, and Van Gogh's swirling emotional intensity each pushed painting in a new direction.",
+      characteristics: "Geometric structure, pointillism, bold color, emotional expressiveness, multiple viewpoints, primitive subjects",
+      chiefArtists: "Cézanne, Seurat, Gauguin, Van Gogh; The Starry Night, A Sunday Afternoon, Still Life with Skull",
+      historicalEvents: "Last Impressionist exhibition (1886); Panama Scandal in France; Dreyfus Affair divides French society",
       artworks: [
         { key: "Still Life with Skull||Paul Cézanne", label: "Still Life with Skull — Cézanne, c. 1896" },
         { key: "Card Players||Paul Cézanne", label: "Card Players — Cézanne, 1891–1892" },
@@ -1430,6 +1490,9 @@
       date: "c. 1890–1914",
       name: "Art Nouveau & Vienna Secession",
       desc: "Organic, curving forms derived from nature transformed architecture, illustration, and decorative arts across Europe. Klimt merged fine and applied arts in a sensuous, gold-laden style.",
+      characteristics: "Organic curving lines, floral motifs, gold leaf, decorative unity of fine and applied arts, sinuous female forms",
+      chiefArtists: "Gustav Klimt, Alphonse Mucha, Antoni Gaudí, Charles Rennie Mackintosh; The Kiss, Judith, Sagrada Família",
+      historicalEvents: "Belle Époque in Europe; Vienna Secession founded (1897); Art Nouveau showcased at Paris Exposition (1900)",
       artworks: [
         { key: "The Kiss||Gustav Klimt", label: "The Kiss — Gustav Klimt, 1907–1908" }
       ]
@@ -1438,12 +1501,18 @@
       date: "c. 1905–1910",
       name: "Fauvism",
       desc: "Matisse, Derain, and Vlaminck shocked Paris with pure, non-naturalistic color used for expressive ends. The name means \"wild beasts\" — a critic's insult that stuck.",
+      characteristics: "Non-naturalistic color, bold brushwork, simplified forms, pure expressive color divorced from observed reality",
+      chiefArtists: "Henri Matisse, André Derain, Maurice de Vlaminck; La Joie de Vivre, Woman with a Hat, The Dance",
+      historicalEvents: "1905 Paris Salon d'Automne debut shocks critics; Russian Revolution (1905); Entente Cordiale between Britain and France",
       artworks: []
     },
     {
       date: "c. 1905–1930",
       name: "Expressionism",
       desc: "German and Austrian artists — Kirchner, Kandinsky, Schiele — distorted form and color to externalize inner emotional states. The two main groups were Die Brücke and Der Blaue Reiter.",
+      characteristics: "Distorted form, intense color, psychological anxiety, raw emotion, woodcut revival, non-Western influences",
+      chiefArtists: "Ernst Ludwig Kirchner, Wassily Kandinsky, Egon Schiele; Composition VII, Street, Dresden",
+      historicalEvents: "World War I (1914–1918); Weimar Republic founded; rise of psychoanalysis in Vienna",
       artworks: [
         { key: "Composition VII||Wassily Kandinsky", label: "Composition VII — Kandinsky, 1913" },
         { key: "Composition 8||Wassily Kandinsky", label: "Composition 8 — Kandinsky, 1923" }
@@ -1453,6 +1522,9 @@
       date: "c. 1907–1925",
       name: "Cubism",
       desc: "Picasso and Braque shattered the single viewpoint, presenting multiple perspectives simultaneously. Analytic Cubism broke objects into facets; Synthetic Cubism introduced collage. It changed the course of modern art.",
+      characteristics: "Multiple simultaneous viewpoints, fragmented geometric planes, muted palette, collage and mixed media",
+      chiefArtists: "Pablo Picasso, Georges Braque, Juan Gris; Les Demoiselles d'Avignon, Guernica, Three Musicians",
+      historicalEvents: "World War I; Armory Show introduces modern art to America (1913); Russian Revolution (1917)",
       artworks: [
         { key: "Les Demoiselles d'Avignon||Pablo Picasso", label: "Les Demoiselles d'Avignon — Picasso, 1907" },
         { key: "Violin and Candlestick||Georges Braque", label: "Violin and Candlestick — Braque, 1910" },
@@ -1464,18 +1536,27 @@
       date: "c. 1909–1944",
       name: "Futurism",
       desc: "Italian movement celebrating speed, technology, and industry. Boccioni, Balla, and Severini used fractured form and dynamic lines to render motion — embracing modernity and rejecting the weight of history.",
+      characteristics: "Dynamic motion lines, speed and technology celebration, fragmented simultaneous movement, rejection of tradition",
+      chiefArtists: "Umberto Boccioni, Giacomo Balla, Gino Severini; Dynamism of a Soccer Player, Abstract Speed + Sound",
+      historicalEvents: "Futurist Manifesto published by Marinetti (1909); World War I; rise of Italian Fascism under Mussolini",
       artworks: []
     },
     {
       date: "c. 1916–1924",
       name: "Dada",
       desc: "Born in wartime Zurich, Dada rejected reason and convention in deliberate nonsense, collage, and readymades. Duchamp's urinal as sculpture challenged the very definition of art.",
+      characteristics: "Anti-art philosophy, readymades, collage, absurdist humor, rejection of reason and bourgeois convention",
+      chiefArtists: "Marcel Duchamp, Hannah Höch, Hugo Ball, Man Ray; Fountain, LHOOQ, Cut with the Kitchen Knife",
+      historicalEvents: "World War I horrors inspire anti-war nihilism; Russian Revolution (1917); Zurich Cabaret Voltaire founded (1916)",
       artworks: []
     },
     {
       date: "c. 1917–1944",
       name: "De Stijl / Art Deco",
       desc: "Mondrian reduced painting to pure primary colors and right-angle grids. Simultaneously, Art Deco blended modernist geometry with luxury and glamour across architecture, fashion, and the decorative arts.",
+      characteristics: "Primary colors and right-angle grids (De Stijl); geometric luxury, glamour, and streamlined forms (Art Deco)",
+      chiefArtists: "Piet Mondrian, Theo van Doesburg, Tamara de Lempicka; Broadway Boogie Woogie, Tableau I",
+      historicalEvents: "Bauhaus school founded (1919); Roaring Twenties prosperity; Russian Constructivism; Wall Street Crash (1929)",
       artworks: [
         { key: "Tableau I||Piet Mondrian", label: "Tableau I — Mondrian, c. 1921" },
         { key: "Broadway Boogie Woogie||Piet Mondrian", label: "Broadway Boogie Woogie — Mondrian, 1942–1943" },
@@ -1486,6 +1567,9 @@
       date: "c. 1920–1960s",
       name: "Surrealism",
       desc: "André Breton's movement harnessed Freudian dream imagery and the unconscious. Dalí, Magritte, Kahlo, and Ernst created disquieting juxtapositions that bypassed rational thought.",
+      characteristics: "Dream imagery, unconscious associations, unexpected juxtapositions, psychological fantasy, automatic writing",
+      chiefArtists: "Salvador Dalí, René Magritte, Frida Kahlo, Max Ernst; Persistence of Memory, The Son of Man, Guernica",
+      historicalEvents: "Surrealist Manifesto published (1924); Great Depression; Spanish Civil War (1936–1939); World War II",
       artworks: [
         { key: "The Persistence of Memory||Salvador Dalí", label: "The Persistence of Memory — Dalí, 1931" },
         { key: "The Son of Man||René Magritte", label: "The Son of Man — Magritte, 1964" },
@@ -1498,6 +1582,9 @@
       date: "c. 1930–1950",
       name: "American Regionalism & Social Realism",
       desc: "During the Depression, Grant Wood, Edward Hopper, and Andrew Wyeth depicted rural and urban American life with unsentimental realism — a deliberate turn from European abstraction.",
+      characteristics: "Rural and urban American scenes, unsentimental realism, narrative clarity, social critique and documentary impulse",
+      chiefArtists: "Grant Wood, Edward Hopper, Andrew Wyeth; American Gothic, Nighthawks, Christina's World",
+      historicalEvents: "Great Depression (1929–1939); WPA Federal Art Project employs thousands of artists; World War II (1939–1945)",
       artworks: [
         { key: "American Gothic||Grant Wood", label: "American Gothic — Grant Wood, 1930" },
         { key: "Nighthawks||Edward Hopper", label: "Nighthawks — Edward Hopper, 1942" },
@@ -1508,6 +1595,9 @@
       date: "c. 1943–1965",
       name: "Abstract Expressionism",
       desc: "New York became the new center of Western art. Pollock's drip paintings, Rothko's luminous color fields, and de Kooning's gestural brushwork foregrounded the act of painting itself as subject matter.",
+      characteristics: "Gestural brushwork, large scale, color fields, action painting, emotional directness, the artist's process as subject",
+      chiefArtists: "Jackson Pollock, Mark Rothko, Willem de Kooning, Franz Kline; Convergence, Orange and Yellow, Interchange",
+      historicalEvents: "Post-WWII New York emerges as art capital; Cold War; Abstract Expressionism at MoMA exhibition (1958)",
       artworks: [
         { key: "Convergence||Jackson Pollock", label: "Convergence — Jackson Pollock, 1952" },
         { key: "Interchange||Willem de Kooning", label: "Interchange — de Kooning, 1955" }
@@ -1517,6 +1607,9 @@
       date: "c. 1950s–1970s",
       name: "Pop Art",
       desc: "Warhol, Lichtenstein, and Hockney drew on commercial imagery — advertising, comics, consumer goods — to celebrate and critique mass culture. Blurred the line between fine art and popular media.",
+      characteristics: "Commercial imagery, bold flat color, mass production references, celebrity culture, irony and appropriation",
+      chiefArtists: "Andy Warhol, Roy Lichtenstein, David Hockney; Shot Sage Blue Marilyn, Campbell's Soup Cans, Whaam!",
+      historicalEvents: "Post-war consumerism boom; Kennedy assassination (1963); Vietnam War; civil rights movement",
       artworks: [
         { key: "Shot Sage Blue Marilyn||Andy Warhol", label: "Shot Sage Blue Marilyn — Warhol, 1964" }
       ]
@@ -1525,12 +1618,18 @@
       date: "c. 1960s–1970s",
       name: "Minimalism & Conceptualism",
       desc: "Minimalism stripped art to geometric form and industrial material. Conceptualism argued the idea itself was the artwork — documentation, performance, and language replaced traditional media.",
+      characteristics: "Geometric simplicity, industrial materials, the idea as artwork, language as medium, seriality and repetition",
+      chiefArtists: "Donald Judd, Sol LeWitt, Joseph Kosuth, Dan Flavin; One and Three Chairs, Stack, Untitled (fluorescent lights)",
+      historicalEvents: "Vietnam War protests; moon landing (1969); feminist art movement; Conceptual Art exhibitions emerge worldwide",
       artworks: []
     },
     {
       date: "c. 1980s–present",
       name: "Contemporary & Street Art",
       desc: "Art today is radically pluralistic — digital media, installation, performance, and global perspectives. Street art brought visual culture off gallery walls and into public space.",
+      characteristics: "Radical pluralism, digital media, global perspectives, installation, performance art, public and street art",
+      chiefArtists: "Banksy, Jean-Michel Basquiat, Damien Hirst, Ai Weiwei; Girl with a Balloon, Untitled 1982, The Physical Impossibility",
+      historicalEvents: "Fall of Berlin Wall (1989); rise of internet and digital art; globalization of the art world and art market",
       artworks: [
         { key: "Untitled, 1982||Jean-Michel Basquiat", label: "Untitled, 1982 — Jean-Michel Basquiat" },
         { key: "The Girl with a Balloon||Banksy", label: "Girl with a Balloon — Banksy, 2006" }
@@ -1570,18 +1669,12 @@
 
     const erasHtml = TIMELINE_DATA.map((era, i) => {
       const color = ERA_COLORS[i % ERA_COLORS.length];
-      const bullets = era.desc.split(/\.\s+/).map(s => s.trim().replace(/\.$/,'')).filter(s => s.length > 4);
-      const bulletsHtml = bullets.map(b => `<li>${escapeHtml(b)}.</li>`).join('');
-      return `<div class="tl-era" style="--era-color:${color}">
+      return `<div class="tl-era" data-era-idx="${i}" style="--era-color:${color}">
         <div class="tl-era-header">
           <div class="tl-era-name">${escapeHtml(era.name)}</div>
           <div class="tl-date">${escapeHtml(era.date)}</div>
-          <div class="tl-acc-arrow">▼</div>
         </div>
         <div class="tl-dot"><div class="tl-dot-inner"></div></div>
-        <div class="tl-body">
-          <ul class="tl-bullets">${bulletsHtml}</ul>
-        </div>
       </div>`;
     }).join('');
 
@@ -1603,14 +1696,48 @@
         <div class="timeline-scroll">
           <div class="timeline-eras">${erasHtml}</div>
         </div>
+        <div class="tl-detail-panel" id="tlDetailPanel" hidden></div>
       </div>`;
 
-    // accordion toggle
+    const detailPanel = backdrop.querySelector('#tlDetailPanel');
+
+    function showEraDetail(idx){
+      const era = TIMELINE_DATA[idx];
+      const color = ERA_COLORS[idx % ERA_COLORS.length];
+      const char = era.characteristics || era.desc;
+      const artists = era.chiefArtists || '';
+      const events = era.historicalEvents || '';
+      detailPanel.innerHTML = `
+        <div class="tl-detail-banner" style="background:${color}">
+          <div class="tl-detail-label">ART PERIOD / MOVEMENTS</div>
+          <div class="tl-detail-name">${escapeHtml(era.name)}</div>
+          <div class="tl-detail-date">${escapeHtml(era.date)}</div>
+        </div>
+        <div class="tl-detail-cards">
+          <div class="tl-detail-card">
+            <div class="tl-detail-card-label">CHARACTERISTICS</div>
+            <div class="tl-detail-card-text">${escapeHtml(char)}</div>
+          </div>
+          ${artists ? `<div class="tl-detail-card">
+            <div class="tl-detail-card-label">CHIEF ARTISTS AND MAJOR WORKS</div>
+            <div class="tl-detail-card-text">${escapeHtml(artists)}</div>
+          </div>` : ''}
+          ${events ? `<div class="tl-detail-card">
+            <div class="tl-detail-card-label">HISTORICAL EVENTS</div>
+            <div class="tl-detail-card-text">${escapeHtml(events)}</div>
+          </div>` : ''}
+        </div>`;
+      detailPanel.hidden = false;
+    }
+
+    // era click — select era and show detail panel
     backdrop.querySelector('.timeline-eras').addEventListener('click', e => {
-      const hdr = e.target.closest('.tl-era-header');
-      if(!hdr) return;
-      const era = hdr.closest('.tl-era');
-      if(era) era.classList.toggle('tl-era--open');
+      const eraEl = e.target.closest('.tl-era');
+      if(!eraEl) return;
+      backdrop.querySelectorAll('.tl-era').forEach(el => el.classList.remove('tl-era--active'));
+      eraEl.classList.add('tl-era--active');
+      const idx = parseInt(eraEl.dataset.eraIdx, 10);
+      showEraDetail(idx);
     });
 
     backdrop.addEventListener('click', e=>{ if(e.target===backdrop) backdrop.remove(); });
@@ -1642,18 +1769,18 @@
 
     setTimeout(()=>{
       if(!backdrop.isConnected) return;
-      if(matchIdx >= 0){
-        const target = eraEls[matchIdx];
-        if(!target) return;
-        const destLeft = Math.max(0, target.offsetLeft - scrollEl.clientWidth / 2 + target.offsetWidth / 2);
-        const slideDuration = Math.max(1200, Math.min(4000, (matchIdx / eraEls.length) * 5000));
-        smoothSlide(scrollEl, destLeft, slideDuration, ()=>{
-          if(backdrop.isConnected) target.classList.add('tl-era--active');
-        });
-      } else {
-        smoothSlide(scrollEl, scrollEl.scrollWidth, 3500, null);
-      }
-    }, 1000);
+      const activeIdx = matchIdx >= 0 ? matchIdx : 0;
+      const target = eraEls[activeIdx];
+      if(!target) return;
+      const destLeft = Math.max(0, target.offsetLeft - scrollEl.clientWidth / 2 + target.offsetWidth / 2);
+      const slideDuration = matchIdx >= 0 ? Math.max(1200, Math.min(4000, (activeIdx / eraEls.length) * 5000)) : 0;
+      smoothSlide(scrollEl, destLeft, slideDuration, ()=>{
+        if(backdrop.isConnected){
+          target.classList.add('tl-era--active');
+          showEraDetail(activeIdx);
+        }
+      });
+    }, 400);
   }
 
   // ============================================================
