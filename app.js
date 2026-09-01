@@ -1596,8 +1596,8 @@
           <button class="timeline-close" aria-label="Close">×</button>
         </div>
         <div class="timeline-intro">
-          Art has changed throughout history, reflecting the ideas, beliefs, and cultures of each time.
-          This timeline shows the major art periods in order.
+          Art has evolved through history, shaped by the ideas and cultures of each era.
+          This timeline shows the major periods in order.
           <br><span class="timeline-remember"><b>Remember:</b> These periods overlap and influence each other. Artists build on the past to create the future!</span>
         </div>
         <div class="timeline-scroll">
