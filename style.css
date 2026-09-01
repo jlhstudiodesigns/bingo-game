@@ -845,12 +845,12 @@
   /* ---------- art history timeline modal ---------- */
   .timeline-backdrop{
     position:fixed; inset:0; background:rgba(10,14,11,0.82); backdrop-filter:blur(3px);
-    z-index:60; display:flex; align-items:center; justify-content:center; padding:24px;
+    z-index:60; display:flex; align-items:stretch; justify-content:stretch; padding:0;
   }
   .timeline-modal{
     background:#ffffff;
-    border:1px solid rgba(0,0,0,0.12); border-radius:10px;
-    width:min(96vw,1100px); max-height:80vh;
+    border:none; border-radius:0;
+    width:100%; max-height:100vh;
     display:flex; flex-direction:column; position:relative; overflow:hidden;
   }
   .timeline-header{
@@ -936,7 +936,7 @@
   .tl-detail-panel{
     flex-shrink:0; background:#f2ede4;
     border-top:2px solid rgba(200,162,74,0.35);
-    overflow-y:auto; max-height:340px;
+    overflow-y:auto; max-height:50vh;
   }
   .tl-detail-banner{
     padding:22px 32px 18px; color:#fff;
