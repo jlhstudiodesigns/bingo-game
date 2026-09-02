@@ -880,8 +880,9 @@
   }
   .timeline-close:hover{ background:rgba(0,0,0,0.12); }
   .timeline-scroll{
-    flex:1; overflow-x:auto; overflow-y:hidden;
-    padding:34px 56px 39px;
+    flex-shrink:0; overflow-x:auto; overflow-y:hidden;
+    height:220px;
+    padding:28px 56px 30px;
     background:#ffffff;
     scrollbar-width:thin; scrollbar-color:rgba(150,114,28,0.4) transparent;
   }
@@ -897,7 +898,7 @@
   }
   .timeline-eras::before{
     content:''; position:absolute; left:0; right:0;
-    top:100px; height:2px;
+    top:73px; height:2px;
     background:linear-gradient(90deg, transparent 0%, rgba(200,162,74,0.6) 2%, rgba(200,162,74,0.6) 98%, transparent 100%);
     pointer-events:none;
   }
@@ -929,9 +930,9 @@
   }
   /* detail panel below the scroll strip */
   .tl-detail-panel{
-    flex-shrink:0; background:#f2ede4;
+    flex:1; min-height:0; background:#f2ede4;
     border-top:2px solid rgba(200,162,74,0.35);
-    overflow-y:auto; max-height:50vh;
+    overflow-y:auto;
   }
   .tl-detail-banner{
     padding:22px 32px 18px; color:#fff;
