@@ -1674,7 +1674,7 @@
       const events = era.historicalEvents || '';
       return `<div class="tl-card" data-card-idx="${i}" style="--era-color:${color}">
         <div class="tl-card-banner">
-          <div class="tl-card-label">ART PERIOD / MOVEMENTS</div>
+          <div class="tl-card-label">ART PERIOD / MOVEMENT</div>
           <div class="tl-card-name">${escapeHtml(era.name)}</div>
           <div class="tl-card-date">${escapeHtml(era.date)}</div>
         </div>
