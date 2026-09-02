@@ -1672,7 +1672,6 @@
       return `<div class="tl-era" data-era-idx="${i}" style="--era-color:${color}">
         <div class="tl-era-header">
           <div class="tl-era-name">${escapeHtml(era.name)}</div>
-          <div class="tl-date">${escapeHtml(era.date)}</div>
         </div>
         <div class="tl-dot"><div class="tl-dot-inner"></div></div>
       </div>`;
