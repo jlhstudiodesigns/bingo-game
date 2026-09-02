@@ -1667,13 +1667,31 @@
     const backdrop = document.createElement('div');
     backdrop.className = 'timeline-backdrop';
 
-    const erasHtml = TIMELINE_DATA.map((era, i) => {
+    const cardsHtml = TIMELINE_DATA.map((era, i) => {
       const color = ERA_COLORS[i % ERA_COLORS.length];
-      return `<div class="tl-era" data-era-idx="${i}" style="--era-color:${color}">
-        <div class="tl-era-header">
-          <div class="tl-era-name">${escapeHtml(era.name)}</div>
+      const char = era.characteristics || era.desc || '';
+      const artists = era.chiefArtists || '';
+      const events = era.historicalEvents || '';
+      return `<div class="tl-card" data-card-idx="${i}" style="--era-color:${color}">
+        <div class="tl-card-banner">
+          <div class="tl-card-label">ART PERIOD / MOVEMENTS</div>
+          <div class="tl-card-name">${escapeHtml(era.name)}</div>
+          <div class="tl-card-date">${escapeHtml(era.date)}</div>
         </div>
-        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card-body">
+          ${char ? `<div class="tl-card-section">
+            <div class="tl-card-section-label">CHARACTERISTICS</div>
+            <div class="tl-card-section-text">${escapeHtml(char)}</div>
+          </div>` : ''}
+          ${artists ? `<div class="tl-card-section">
+            <div class="tl-card-section-label">CHIEF ARTISTS AND MAJOR WORKS</div>
+            <div class="tl-card-section-text">${escapeHtml(artists)}</div>
+          </div>` : ''}
+          ${events ? `<div class="tl-card-section">
+            <div class="tl-card-section-label">HISTORICAL EVENTS</div>
+            <div class="tl-card-section-text">${escapeHtml(events)}</div>
+          </div>` : ''}
+        </div>
       </div>`;
     }).join('');
 
@@ -1687,57 +1705,8 @@
           </div>
           <button class="timeline-close" aria-label="Close">×</button>
         </div>
-        <div class="timeline-intro">
-          Art has evolved through history, shaped by the ideas and cultures of each era.
-          The timeline shows the major periods.
-          <br><span class="timeline-remember"><b>Remember:</b> These periods overlap and influence each other. Artists build on the past to create the future!</span>
-        </div>
-        <div class="timeline-scroll">
-          <div class="timeline-eras">${erasHtml}</div>
-        </div>
-        <div class="tl-detail-panel" id="tlDetailPanel" hidden></div>
+        <div class="tl-cards-container">${cardsHtml}</div>
       </div>`;
-
-    const detailPanel = backdrop.querySelector('#tlDetailPanel');
-
-    function showEraDetail(idx){
-      const era = TIMELINE_DATA[idx];
-      const color = ERA_COLORS[idx % ERA_COLORS.length];
-      const char = era.characteristics || era.desc;
-      const artists = era.chiefArtists || '';
-      const events = era.historicalEvents || '';
-      detailPanel.innerHTML = `
-        <div class="tl-detail-banner" style="background:${color}">
-          <div class="tl-detail-label">ART PERIOD / MOVEMENTS</div>
-          <div class="tl-detail-name">${escapeHtml(era.name)}</div>
-          <div class="tl-detail-date">${escapeHtml(era.date)}</div>
-        </div>
-        <div class="tl-detail-cards">
-          <div class="tl-detail-card">
-            <div class="tl-detail-card-label">CHARACTERISTICS</div>
-            <div class="tl-detail-card-text">${escapeHtml(char)}</div>
-          </div>
-          ${artists ? `<div class="tl-detail-card">
-            <div class="tl-detail-card-label">CHIEF ARTISTS AND MAJOR WORKS</div>
-            <div class="tl-detail-card-text">${escapeHtml(artists)}</div>
-          </div>` : ''}
-          ${events ? `<div class="tl-detail-card">
-            <div class="tl-detail-card-label">HISTORICAL EVENTS</div>
-            <div class="tl-detail-card-text">${escapeHtml(events)}</div>
-          </div>` : ''}
-        </div>`;
-      detailPanel.hidden = false;
-    }
-
-    // era click — select era and show detail panel
-    backdrop.querySelector('.timeline-eras').addEventListener('click', e => {
-      const eraEl = e.target.closest('.tl-era');
-      if(!eraEl) return;
-      backdrop.querySelectorAll('.tl-era').forEach(el => el.classList.remove('tl-era--active'));
-      eraEl.classList.add('tl-era--active');
-      const idx = parseInt(eraEl.dataset.eraIdx, 10);
-      showEraDetail(idx);
-    });
 
     backdrop.addEventListener('click', e=>{ if(e.target===backdrop) backdrop.remove(); });
     backdrop.querySelector('.timeline-close').addEventListener('click', ()=>backdrop.remove());
@@ -1746,40 +1715,15 @@
     });
     document.body.appendChild(backdrop);
 
-    const scrollEl = backdrop.querySelector('.timeline-scroll');
-    scrollEl.scrollLeft = 0;
-    const eraEls = backdrop.querySelectorAll('.tl-era');
-
-    function smoothSlide(el, targetLeft, durationMs, onDone){
-      const startLeft = el.scrollLeft;
-      const dist = targetLeft - startLeft;
-      if(Math.abs(dist) < 2){ if(onDone) onDone(); return; }
-      const start = performance.now();
-      function step(now){
+    // scroll to matched era
+    if(matchIdx >= 0){
+      setTimeout(()=>{
         if(!backdrop.isConnected) return;
-        const t = Math.min(1, (now - start) / durationMs);
-        const ease = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
-        el.scrollLeft = startLeft + dist * ease;
-        if(t < 1) requestAnimationFrame(step);
-        else { el.scrollLeft = targetLeft; if(onDone) onDone(); }
-      }
-      requestAnimationFrame(step);
+        const container = backdrop.querySelector('.tl-cards-container');
+        const card = container.children[matchIdx];
+        if(card) card.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+      }, 300);
     }
-
-    setTimeout(()=>{
-      if(!backdrop.isConnected) return;
-      const activeIdx = matchIdx >= 0 ? matchIdx : 0;
-      const target = eraEls[activeIdx];
-      if(!target) return;
-      const destLeft = Math.max(0, target.offsetLeft - scrollEl.clientWidth / 2 + target.offsetWidth / 2);
-      const slideDuration = matchIdx >= 0 ? Math.max(1200, Math.min(4000, (activeIdx / eraEls.length) * 5000)) : 0;
-      smoothSlide(scrollEl, destLeft, slideDuration, ()=>{
-        if(backdrop.isConnected){
-          target.classList.add('tl-era--active');
-          showEraDetail(activeIdx);
-        }
-      });
-    }, 400);
   }
 
   // ============================================================
