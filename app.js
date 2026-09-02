@@ -1715,11 +1715,37 @@
     });
     document.body.appendChild(backdrop);
 
+    const container = backdrop.querySelector('.tl-cards-container');
+
+    function updateActiveCard(){
+      const cRect = container.getBoundingClientRect();
+      const centerX = cRect.left + cRect.width / 2;
+      let bestCard = null, bestDist = Infinity;
+      container.querySelectorAll('.tl-card').forEach(card => {
+        const r = card.getBoundingClientRect();
+        const dist = Math.abs((r.left + r.width / 2) - centerX);
+        if(dist < bestDist){ bestDist = dist; bestCard = card; }
+      });
+      container.querySelectorAll('.tl-card').forEach(card => {
+        card.classList.toggle('tl-card--active', card === bestCard);
+      });
+    }
+
+    // click a faded card to scroll it into center
+    container.addEventListener('click', e => {
+      const card = e.target.closest('.tl-card');
+      if(card && !card.classList.contains('tl-card--active')){
+        card.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+      }
+    });
+
+    container.addEventListener('scroll', updateActiveCard, {passive:true});
+    updateActiveCard();
+
     // scroll to matched era
     if(matchIdx >= 0){
       setTimeout(()=>{
         if(!backdrop.isConnected) return;
-        const container = backdrop.querySelector('.tl-cards-container');
         const card = container.children[matchIdx];
         if(card) card.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
       }, 300);
