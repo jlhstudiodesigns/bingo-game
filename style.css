@@ -843,15 +843,25 @@
     button{ padding:13px 20px; font-size:13px; }
   }
   /* ---------- art history timeline modal ---------- */
+  @keyframes tl-backdrop-in{
+    from{ opacity:0; }
+    to{ opacity:1; }
+  }
+  @keyframes tl-modal-in{
+    from{ opacity:0; transform:translateY(32px) scale(0.96); }
+    to{ opacity:1; transform:translateY(0) scale(1); }
+  }
   .timeline-backdrop{
     position:fixed; inset:0; background:rgba(10,14,11,0.82); backdrop-filter:blur(3px);
     z-index:60; display:flex; align-items:center; justify-content:center; padding:0;
+    animation:tl-backdrop-in 800ms cubic-bezier(0.4,0,0.2,1) both;
   }
   .timeline-modal{
     background:#f2ede4;
     border:1px solid rgba(0,0,0,0.12); border-radius:10px;
     width:min(1180px,94vw); height:100vh; max-height:100vh;
     display:flex; flex-direction:column; position:relative; overflow:hidden;
+    animation:tl-modal-in 1000ms cubic-bezier(0.16,1,0.3,1) both;
   }
   .timeline-header{
     flex-shrink:0; padding:14px 24px 12px;
@@ -891,7 +901,7 @@
     box-shadow:0 3px 14px -4px rgba(0,0,0,0.22);
     background:#f9f6f1;
     opacity:0.25; filter:saturate(0.2);
-    transition:opacity 380ms ease, filter 380ms ease, transform 380ms ease;
+    transition:opacity 600ms cubic-bezier(0.16,1,0.3,1), filter 600ms cubic-bezier(0.16,1,0.3,1), transform 600ms cubic-bezier(0.16,1,0.3,1);
     cursor:pointer;
   }
   .tl-card--active{
