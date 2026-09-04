@@ -1781,7 +1781,11 @@
       const panDuration = Math.max(3000, targetIdx * 600);
       setTimeout(()=>{
         if(!backdrop.isConnected) return;
-        slowScrollTo(Math.max(0, cardCenter(targetCard)), panDuration);
+        slowScrollTo(Math.max(0, cardCenter(targetCard)), panDuration, ()=>{
+          container.classList.add('tl-focus-mode');
+          const tb = backdrop.querySelector('#tlToggleBtn');
+          if(tb){ tb.textContent = 'Show All'; tb.classList.add('tl-toggle-btn--active'); }
+        });
       }, 600); // wait for modal entrance animation to settle
     }
   }
