@@ -1703,6 +1703,7 @@
             <div class="timeline-header-title">Art History Timeline</div>
             <div class="timeline-header-sub">Prehistoric to Contemporary</div>
           </div>
+          <button class="tl-toggle-btn" id="tlToggleBtn" title="Show all periods at full opacity">Show All</button>
           <button class="timeline-close" aria-label="Close">×</button>
         </div>
         <div class="tl-cards-container">${cardsHtml}</div>
@@ -1710,6 +1711,13 @@
 
     backdrop.addEventListener('click', e=>{ if(e.target===backdrop) backdrop.remove(); });
     backdrop.querySelector('.timeline-close').addEventListener('click', ()=>backdrop.remove());
+
+    const toggleBtn = backdrop.querySelector('#tlToggleBtn');
+    toggleBtn.addEventListener('click', ()=>{
+      const isAll = container.classList.toggle('tl-all-visible');
+      toggleBtn.textContent = isAll ? 'Focus Mode' : 'Show All';
+      toggleBtn.classList.toggle('tl-toggle-btn--active', isAll);
+    });
     document.addEventListener('keydown', function escTimeline(e){
       if(e.code==='Escape'){ backdrop.remove(); document.removeEventListener('keydown', escTimeline); }
     });
