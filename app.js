@@ -1731,24 +1731,50 @@
       });
     }
 
-    // click a faded card to scroll it into center
+    function slowScrollTo(targetLeft, durationMs, onDone){
+      const startLeft = container.scrollLeft;
+      const dist = targetLeft - startLeft;
+      if(Math.abs(dist) < 2){ if(onDone) onDone(); return; }
+      const start = performance.now();
+      function step(now){
+        if(!backdrop.isConnected) return;
+        const t = Math.min(1, (now - start) / durationMs);
+        // ease-in-out cubic — slow start, smooth middle, gentle stop
+        const ease = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+        container.scrollLeft = startLeft + dist * ease;
+        if(t < 1) requestAnimationFrame(step);
+        else { container.scrollLeft = targetLeft; if(onDone) onDone(); }
+      }
+      requestAnimationFrame(step);
+    }
+
+    function cardCenter(card){
+      return card.offsetLeft + card.offsetWidth / 2 - container.offsetWidth / 2;
+    }
+
+    // click a faded card to slow-scroll it into center
     container.addEventListener('click', e => {
       const card = e.target.closest('.tl-card');
       if(card && !card.classList.contains('tl-card--active')){
-        card.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+        slowScrollTo(Math.max(0, cardCenter(card)), 1800);
       }
     });
 
     container.addEventListener('scroll', updateActiveCard, {passive:true});
     updateActiveCard();
 
-    // scroll to matched era
-    if(matchIdx >= 0){
+    // on open: slow cinematic pan from start to matched era (or first card)
+    const targetIdx = matchIdx >= 0 ? matchIdx : 0;
+    const targetCard = container.children[targetIdx];
+    if(targetCard){
+      container.scrollLeft = 0;
+      updateActiveCard();
+      // duration scales with distance: ~600ms per card traversed, minimum 3s
+      const panDuration = Math.max(3000, targetIdx * 600);
       setTimeout(()=>{
         if(!backdrop.isConnected) return;
-        const card = container.children[matchIdx];
-        if(card) card.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
-      }, 300);
+        slowScrollTo(Math.max(0, cardCenter(targetCard)), panDuration);
+      }, 600); // wait for modal entrance animation to settle
     }
   }
 
