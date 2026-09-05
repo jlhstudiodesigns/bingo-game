@@ -1764,7 +1764,7 @@
     container.addEventListener('click', e => {
       const card = e.target.closest('.tl-card');
       if(card && !card.classList.contains('tl-card--active')){
-        slowScrollTo(Math.max(0, cardCenter(card)), 576);
+        slowScrollTo(Math.max(0, cardCenter(card)), 288);
       }
     });
 
@@ -1778,7 +1778,7 @@
       container.scrollLeft = 0;
       updateActiveCard();
       // duration scales with distance: ~600ms per card traversed, minimum 3s
-      const panDuration = Math.max(960, targetIdx * 192);
+      const panDuration = Math.max(480, targetIdx * 96);
       setTimeout(()=>{
         if(!backdrop.isConnected) return;
         slowScrollTo(Math.max(0, cardCenter(targetCard)), panDuration, ()=>{
@@ -1786,7 +1786,7 @@
           const tb = backdrop.querySelector('#tlToggleBtn');
           if(tb){ tb.textContent = 'Show All'; tb.classList.add('tl-toggle-btn--active'); }
         });
-      }, 240); // wait for modal entrance animation to settle
+      }, 120); // wait for modal entrance animation to settle
     }
   }
 
