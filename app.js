@@ -1747,8 +1747,8 @@
       function step(now){
         if(!backdrop.isConnected) return;
         const t = Math.min(1, (now - start) / durationMs);
-        // ease-in-out cubic — slow start, smooth middle, gentle stop
-        const ease = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+        // quintic ease-in — slow cinematic start, then rockets to destination
+        const ease = t * t * t * t * t;
         container.scrollLeft = startLeft + dist * ease;
         if(t < 1) requestAnimationFrame(step);
         else { container.scrollLeft = targetLeft; if(onDone) onDone(); }
