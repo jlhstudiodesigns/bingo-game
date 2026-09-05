@@ -1764,7 +1764,7 @@
     container.addEventListener('click', e => {
       const card = e.target.closest('.tl-card');
       if(card && !card.classList.contains('tl-card--active')){
-        slowScrollTo(Math.max(0, cardCenter(card)), 1800);
+        slowScrollTo(Math.max(0, cardCenter(card)), 1440);
       }
     });
 
@@ -1778,7 +1778,7 @@
       container.scrollLeft = 0;
       updateActiveCard();
       // duration scales with distance: ~600ms per card traversed, minimum 3s
-      const panDuration = Math.max(3000, targetIdx * 600);
+      const panDuration = Math.max(2400, targetIdx * 480);
       setTimeout(()=>{
         if(!backdrop.isConnected) return;
         slowScrollTo(Math.max(0, cardCenter(targetCard)), panDuration, ()=>{
