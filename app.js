@@ -1747,8 +1747,8 @@
       function step(now){
         if(!backdrop.isConnected) return;
         const t = Math.min(1, (now - start) / durationMs);
-        // quintic ease-in — slow cinematic start, then rockets to destination
-        const ease = t * t * t * t * t;
+        // ease-in-out cubic — slow start, fast middle, gentle stop
+        const ease = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
         container.scrollLeft = startLeft + dist * ease;
         if(t < 1) requestAnimationFrame(step);
         else { container.scrollLeft = targetLeft; if(onDone) onDone(); }
@@ -1778,7 +1778,7 @@
       container.scrollLeft = 0;
       updateActiveCard();
       // duration scales with distance: ~600ms per card traversed, minimum 3s
-      const panDuration = Math.max(2400, targetIdx * 480);
+      const panDuration = 2000;
       setTimeout(()=>{
         if(!backdrop.isConnected) return;
         slowScrollTo(Math.max(0, cardCenter(targetCard)), panDuration, ()=>{
