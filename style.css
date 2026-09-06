@@ -955,9 +955,9 @@
   }
   .tl-card-carousel{
     flex-shrink:0; position:relative;
-    border-left:1px solid rgba(0,0,0,0.13); border-right:1px solid rgba(0,0,0,0.13);
-    border-bottom:1px solid rgba(0,0,0,0.13);
-    background:#000; overflow:hidden; height:200px;
+    border:1px solid #d5d1cb;
+    border-radius:10px;
+    background:#e5e1dc; overflow:hidden; height:200px;
   }
   .tl-carousel-img{
     width:100%; height:100%; object-fit:contain; display:block;
