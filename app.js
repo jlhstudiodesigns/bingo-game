@@ -1652,26 +1652,30 @@
     return bestIdx;
   }
 
-  // 18 colors from rainbow spectrum 2 (dark/muted palette), cycling for 33 cards
+  // 22 colors from the rainbow spectrum (dark/bright alternating), cycling for 33 cards
   const ERA_COLORS = [
-    '#5a0808', // 1  very dark crimson
-    '#7a2010', // 2  dark red-brown
-    '#7a3a10', // 3  dark brown
-    '#6a5010', // 4  dark amber-brown
-    '#4e5808', // 5  dark olive-brown
-    '#2c4e0a', // 6  dark olive
-    '#0e4020', // 7  dark green
-    '#0a3c38', // 8  dark teal-green
-    '#0a3850', // 9  dark teal
-    '#0a2860', // 10 dark blue-teal
-    '#0a1870', // 11 dark navy
-    '#060814', // 12 near black
-    '#100820', // 13 very dark indigo
-    '#280830', // 14 dark purple
-    '#3c0830', // 15 dark purple-plum
-    '#560838', // 16 dark plum
-    '#6a0848', // 17 dark magenta-plum
-    '#780858', // 18 dark maroon-plum
+    '#780f0f', // 1  dark red
+    '#cc1010', // 2  bright red
+    '#b84010', // 3  dark orange
+    '#f07018', // 4  bright orange
+    '#c08210', // 5  dark amber
+    '#f0dc10', // 6  bright yellow
+    '#88cc10', // 7  bright chartreuse
+    '#1caa1c', // 8  bright green
+    '#0c6a28', // 9  dark green
+    '#10a888', // 10 teal
+    '#18c0c8', // 11 bright cyan
+    '#58b4e8', // 12 sky blue
+    '#2474c8', // 13 medium blue
+    '#10188a', // 14 dark navy
+    '#1a0a88', // 15 deep indigo
+    '#380a78', // 16 dark purple
+    '#6408a8', // 17 medium purple
+    '#9818c8', // 18 bright violet
+    '#c018a8', // 19 magenta
+    '#e818a8', // 20 hot pink
+    '#880858', // 21 dark plum
+    '#0a0a0a', // 22 black
   ];
 
   function openTimeline(){
