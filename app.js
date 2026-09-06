@@ -1459,17 +1459,44 @@
     const backdrop = document.createElement('div');
     backdrop.className = 'timeline-backdrop';
 
-    const erasHtml = TIMELINE_DATA.map(era=>{
-      const chips = era.artworks.length
-        ? `<div class="tl-artworks">${era.artworks.map(a=>`<span class="tl-artwork-chip">${escapeHtml(a)}</span>`).join('')}</div>`
-        : '';
-      return `<div class="tl-era">
-        <div class="tl-date">${escapeHtml(era.date)}</div>
-        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
-        <div class="tl-body">
-          <div class="tl-era-name">${escapeHtml(era.name)}</div>
-          <div class="tl-era-desc">${escapeHtml(era.desc)}</div>
-          ${chips}
+    const cardsHtml = TIMELINE_DATA.map((era, i) => {
+      const color = ERA_COLORS[i % ERA_COLORS.length];
+      const char = era.characteristics || era.desc || '';
+      const artists = era.chiefArtists || '';
+      const events = era.historicalEvents || '';
+      // Build carousel images list (only artworks with a known image)
+      const carouselImgs = (era.artworks || [])
+        .map(a => ({ url: (window.SEED_IMAGES || {})[a.key], label: a.label }))
+        .filter(a => a.url);
+      const carouselHtml = carouselImgs.length > 0 ? `
+        <div class="tl-card-carousel" data-carousel-idx="0" data-carousel-count="${carouselImgs.length}">
+          <img class="tl-carousel-img" src="${escapeHtml(carouselImgs[0].url)}" alt="${escapeHtml(carouselImgs[0].label)}"
+               data-carousel-imgs='${JSON.stringify(carouselImgs).replace(/'/g, "&#39;")}'>
+          <div class="tl-carousel-caption">${escapeHtml(carouselImgs[0].label)}</div>
+          ${carouselImgs.length > 1 ? `<div class="tl-carousel-counter">1 / ${carouselImgs.length}</div>
+          <button class="tl-carousel-btn tl-carousel-btn--prev" aria-label="Previous">&#8249;</button>
+          <button class="tl-carousel-btn tl-carousel-btn--next" aria-label="Next">&#8250;</button>` : ''}
+        </div>` : '';
+      return `<div class="tl-card" data-card-idx="${i}" style="--era-color:${color}">
+        <div class="tl-card-banner">
+          <div class="tl-card-label">ART PERIOD / MOVEMENT</div>
+          <div class="tl-card-name">${escapeHtml(era.name)}</div>
+          <div class="tl-card-date">${escapeHtml(era.date)}</div>
+        </div>
+        ${carouselHtml}
+        <div class="tl-card-body">
+          ${char ? `<div class="tl-card-section">
+            <div class="tl-card-section-label">CHARACTERISTICS</div>
+            <div class="tl-card-section-text">${escapeHtml(char)}</div>
+          </div>` : ''}
+          ${artists ? `<div class="tl-card-section">
+            <div class="tl-card-section-label">CHIEF ARTISTS AND MAJOR WORKS</div>
+            <div class="tl-card-section-text">${escapeHtml(artists)}</div>
+          </div>` : ''}
+          ${events ? `<div class="tl-card-section">
+            <div class="tl-card-section-label">HISTORICAL EVENTS</div>
+            <div class="tl-card-section-text">${escapeHtml(events)}</div>
+          </div>` : ''}
         </div>
       </div>`;
     }).join('');
@@ -1477,23 +1504,131 @@
     backdrop.innerHTML = `
       <div class="timeline-modal">
         <div class="timeline-header">
-          <div>
+          <div style="width:32px;flex-shrink:0;"></div>
+          <div class="timeline-header-text">
             <div class="timeline-header-title">Art History Timeline</div>
             <div class="timeline-header-sub">Prehistoric to Contemporary</div>
           </div>
+          <button class="tl-toggle-btn" id="tlToggleBtn" title="Focus on active card">Focus Mode</button>
           <button class="timeline-close" aria-label="Close">×</button>
         </div>
-        <div class="timeline-scroll">
-          <div class="timeline-eras">${erasHtml}</div>
-        </div>
+        <div class="tl-cards-container">${cardsHtml}</div>
       </div>`;
 
     backdrop.addEventListener('click', e=>{ if(e.target===backdrop) backdrop.remove(); });
     backdrop.querySelector('.timeline-close').addEventListener('click', ()=>backdrop.remove());
+
+    const toggleBtn = backdrop.querySelector('#tlToggleBtn');
+    toggleBtn.addEventListener('click', ()=>{
+      const isFocus = container.classList.toggle('tl-focus-mode');
+      toggleBtn.textContent = isFocus ? 'Show All' : 'Focus Mode';
+      toggleBtn.classList.toggle('tl-toggle-btn--active', isFocus);
+    });
     document.addEventListener('keydown', function escTimeline(e){
       if(e.code==='Escape'){ backdrop.remove(); document.removeEventListener('keydown', escTimeline); }
     });
     document.body.appendChild(backdrop);
+
+    // Wire carousel prev/next buttons
+    backdrop.addEventListener('click', function(e){
+      const btn = e.target.closest('.tl-carousel-btn');
+      if(!btn) return;
+      e.stopPropagation();
+      const carousel = btn.closest('.tl-card-carousel');
+      if(!carousel) return;
+      const imgs = JSON.parse(carousel.querySelector('.tl-carousel-img').dataset.carouselImgs);
+      const count = imgs.length;
+      let idx = parseInt(carousel.dataset.carouselIdx, 10) || 0;
+      if(btn.classList.contains('tl-carousel-btn--prev')){
+        idx = (idx - 1 + count) % count;
+      } else {
+        idx = (idx + 1) % count;
+      }
+      carousel.dataset.carouselIdx = idx;
+      const imgEl = carousel.querySelector('.tl-carousel-img');
+      const capEl = carousel.querySelector('.tl-carousel-caption');
+      const cntEl = carousel.querySelector('.tl-carousel-counter');
+      imgEl.src = imgs[idx].url;
+      imgEl.alt = imgs[idx].label;
+      if(capEl) capEl.textContent = imgs[idx].label;
+      if(cntEl) cntEl.textContent = (idx + 1) + ' / ' + count;
+    });
+
+    const container = backdrop.querySelector('.tl-cards-container');
+
+    function updateActiveCard(){
+      const cRect = container.getBoundingClientRect();
+      const centerX = cRect.left + cRect.width / 2;
+      let bestCard = null, bestDist = Infinity;
+      container.querySelectorAll('.tl-card').forEach(card => {
+        const r = card.getBoundingClientRect();
+        const dist = Math.abs((r.left + r.width / 2) - centerX);
+        if(dist < bestDist){ bestDist = dist; bestCard = card; }
+      });
+      container.querySelectorAll('.tl-card').forEach(card => {
+        card.classList.toggle('tl-card--active', card === bestCard);
+      });
+    }
+
+    function slowScrollTo(targetLeft, durationMs, onDone){
+      const startLeft = container.scrollLeft;
+      const dist = targetLeft - startLeft;
+      if(Math.abs(dist) < 2){ if(onDone) onDone(); return; }
+      const start = performance.now();
+      function step(now){
+        if(!backdrop.isConnected) return;
+        const t = Math.min(1, (now - start) / durationMs);
+        // 3-phase: 4s ease-in → 0.03s fast travel → 4s ease-out (8.03s total)
+        // T1=400/803, T2=403/803; position pivots at 200/403 and 203/403
+        let ease;
+        if(t <= 400/803){
+          const u = t / (400/803);
+          ease = (200/403) * u * u;
+        } else if(t <= 403/803){
+          ease = (200/403) + (3/403) * (t - 400/803) / (3/803);
+        } else {
+          const u = (t - 403/803) / (400/803);
+          ease = (203/403) + (200/403) * (2*u - u*u);
+        }
+        container.scrollLeft = startLeft + dist * ease;
+        if(t < 1) requestAnimationFrame(step);
+        else { container.scrollLeft = targetLeft; if(onDone) onDone(); }
+      }
+      requestAnimationFrame(step);
+    }
+
+    function cardCenter(card){
+      return card.offsetLeft + card.offsetWidth / 2 - container.offsetWidth / 2;
+    }
+
+    // click a faded card to slow-scroll it into center
+    container.addEventListener('click', e => {
+      const card = e.target.closest('.tl-card');
+      if(card && !card.classList.contains('tl-card--active')){
+        slowScrollTo(Math.max(0, cardCenter(card)), 1440);
+      }
+    });
+
+    container.addEventListener('scroll', updateActiveCard, {passive:true});
+    updateActiveCard();
+
+    // on open: slow cinematic pan from start to matched era (or first card)
+    const targetIdx = matchIdx >= 0 ? matchIdx : 0;
+    const targetCard = container.children[targetIdx];
+    if(targetCard){
+      container.scrollLeft = 0;
+      updateActiveCard();
+      // duration scales with distance: ~600ms per card traversed, minimum 3s
+      const panDuration = 8030;
+      setTimeout(()=>{
+        if(!backdrop.isConnected) return;
+        slowScrollTo(Math.max(0, cardCenter(targetCard)), panDuration, ()=>{
+          container.classList.add('tl-focus-mode');
+          const tb = backdrop.querySelector('#tlToggleBtn');
+          if(tb){ tb.textContent = 'Show All'; tb.classList.add('tl-toggle-btn--active'); }
+        });
+      }, 600); // wait for modal entrance animation to settle
+    }
   }
 
   // ============================================================
