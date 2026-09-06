@@ -1737,32 +1737,6 @@
     });
     document.body.appendChild(backdrop);
 
-    // Wire carousel prev/next buttons
-    backdrop.addEventListener('click', function(e){
-      const btn = e.target.closest('.tl-carousel-btn');
-      if(!btn) return;
-      e.stopPropagation();
-      const carousel = btn.closest('.tl-card-carousel');
-      if(!carousel) return;
-      const imgs = JSON.parse(carousel.querySelector('.tl-carousel-img').dataset.carouselImgs);
-      const count = imgs.length;
-      let idx = parseInt(carousel.dataset.carouselIdx, 10) || 0;
-      if(btn.classList.contains('tl-carousel-btn--prev')){
-        idx = (idx - 1 + count) % count;
-      } else {
-        idx = (idx + 1) % count;
-      }
-      carousel.dataset.carouselIdx = idx;
-      const imgEl = carousel.querySelector('.tl-carousel-img');
-      const capEl = carousel.querySelector('.tl-carousel-caption');
-      const cntEl = carousel.querySelector('.tl-carousel-counter');
-      imgEl.src = imgs[idx].url;
-      imgEl.alt = imgs[idx].label;
-      if(capEl) capEl.textContent = imgs[idx].label;
-      if(cntEl) cntEl.textContent = (idx + 1) + ' / ' + count;
-    });
-
-
     const container = backdrop.querySelector('.tl-cards-container');
 
     function updateActiveCard(){
@@ -1810,8 +1784,29 @@
       return card.offsetLeft + card.offsetWidth / 2 - container.offsetWidth / 2;
     }
 
-    // click a faded card to slow-scroll it into center
+    // click a faded card to slow-scroll it into center; carousel buttons handled first
     container.addEventListener('click', e => {
+      const btn = e.target.closest('.tl-carousel-btn');
+      if(btn){
+        e.stopPropagation();
+        const carousel = btn.closest('.tl-card-carousel');
+        if(!carousel) return;
+        const imgs = JSON.parse(carousel.querySelector('.tl-carousel-img').dataset.carouselImgs);
+        const count = imgs.length;
+        let idx = parseInt(carousel.dataset.carouselIdx, 10) || 0;
+        idx = btn.classList.contains('tl-carousel-btn--prev')
+          ? (idx - 1 + count) % count
+          : (idx + 1) % count;
+        carousel.dataset.carouselIdx = idx;
+        const imgEl = carousel.querySelector('.tl-carousel-img');
+        const capEl = carousel.querySelector('.tl-carousel-caption');
+        const cntEl = carousel.querySelector('.tl-carousel-counter');
+        imgEl.src = imgs[idx].url;
+        imgEl.alt = imgs[idx].label;
+        if(capEl) capEl.textContent = imgs[idx].label;
+        if(cntEl) cntEl.textContent = (idx + 1) + ' / ' + count;
+        return;
+      }
       const card = e.target.closest('.tl-card');
       if(card && !card.classList.contains('tl-card--active')){
         slowScrollTo(Math.max(0, cardCenter(card)), 1440);
