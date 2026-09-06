@@ -1747,17 +1747,17 @@
       function step(now){
         if(!backdrop.isConnected) return;
         const t = Math.min(1, (now - start) / durationMs);
-        // 3-phase: 4s ease-in → 0.5s fast travel → 4s ease-out (8.5s total)
-        // T1=8/17, T2=9/17; position pivots at 4/9 and 5/9
+        // 3-phase: 4s ease-in → 0.03s fast travel → 4s ease-out (8.03s total)
+        // T1=400/803, T2=403/803; position pivots at 200/403 and 203/403
         let ease;
-        if(t <= 8/17){
-          const u = t / (8/17);
-          ease = (4/9) * u * u;
-        } else if(t <= 9/17){
-          ease = (4/9) + (1/9) * (t - 8/17) / (1/17);
+        if(t <= 400/803){
+          const u = t / (400/803);
+          ease = (200/403) * u * u;
+        } else if(t <= 403/803){
+          ease = (200/403) + (3/403) * (t - 400/803) / (3/803);
         } else {
-          const u = (t - 9/17) / (8/17);
-          ease = (5/9) + (4/9) * (2*u - u*u);
+          const u = (t - 403/803) / (400/803);
+          ease = (203/403) + (200/403) * (2*u - u*u);
         }
         container.scrollLeft = startLeft + dist * ease;
         if(t < 1) requestAnimationFrame(step);
@@ -1788,7 +1788,7 @@
       container.scrollLeft = 0;
       updateActiveCard();
       // duration scales with distance: ~600ms per card traversed, minimum 3s
-      const panDuration = 8500;
+      const panDuration = 8030;
       setTimeout(()=>{
         if(!backdrop.isConnected) return;
         slowScrollTo(Math.max(0, cardCenter(targetCard)), panDuration, ()=>{
