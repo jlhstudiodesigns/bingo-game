@@ -1652,40 +1652,30 @@
     return bestIdx;
   }
 
+  // 22 colors from the rainbow spectrum, cycling for 33 cards
   const ERA_COLORS = [
-    '#bf2020', // 1  Prehistoric
-    '#c92528', // 2  Egyptian
-    '#d32a28', // 3  Greek
-    '#dc3228', // 4  Roman
-    '#e44030', // 5  Byzantine
-    '#ea5030', // 6  Romanesque & Gothic
-    '#ee6428', // 7  Early Renaissance
-    '#f27820', // 8  Northern Renaissance
-    '#f29018', // 9  High Renaissance
-    '#f2a010', // 10 Mannerism
-    '#f0b00c', // 11 Baroque
-    '#eec00e', // 12 Dutch Golden Age
-    '#eaca10', // 13 Rococo
-    '#dfd418', // 14 Neoclassicism
-    '#c8d028', // 15 Romanticism
-    '#a4c830', // 16 Realism
-    '#78bc38', // 17 Ukiyo-e
-    '#50b040', // 18 Impressionism
-    '#3aa850', // 19 Symbolism
-    '#38a870', // 20 Post-Impressionism
-    '#38a890', // 21 Art Nouveau & Vienna Secession
-    '#38a8b0', // 22 Fauvism
-    '#3898c4', // 23 Expressionism
-    '#4888cc', // 24 Cubism
-    '#4870c8', // 25 Futurism
-    '#3858c0', // 26 Dada
-    '#3040b0', // 27 De Stijl / Art Deco
-    '#2a2ea8', // 28 Surrealism
-    '#4020a0', // 29 American Regionalism & Social Realism
-    '#6020a8', // 30 Abstract Expressionism
-    '#8020a8', // 31 Pop Art
-    '#a020a8', // 32 Minimalism & Conceptualism
-    '#c020a0', // 33 Contemporary & Street Art
+    '#881010', // 1  dark red
+    '#cc1212', // 2  bright red
+    '#c04510', // 3  dark orange
+    '#f07818', // 4  bright orange
+    '#c09010', // 5  dark amber
+    '#f0e018', // 6  bright yellow
+    '#8cce10', // 7  bright chartreuse/lime
+    '#1caa1c', // 8  bright green
+    '#0c7028', // 9  dark green
+    '#10a888', // 10 teal
+    '#18c8cc', // 11 bright cyan
+    '#58b8e8', // 12 sky blue
+    '#2878cc', // 13 medium blue
+    '#10188a', // 14 dark navy
+    '#1c0888', // 15 deep indigo
+    '#380878', // 16 dark purple
+    '#6808a8', // 17 medium purple
+    '#9818c8', // 18 bright violet
+    '#c018a8', // 19 magenta
+    '#e818a8', // 20 hot pink
+    '#880858', // 21 dark plum
+    '#0a0a0a', // 22 black
   ];
 
   function openTimeline(){
