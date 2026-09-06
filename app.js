@@ -1672,12 +1672,26 @@
       const char = era.characteristics || era.desc || '';
       const artists = era.chiefArtists || '';
       const events = era.historicalEvents || '';
+      // Build carousel images list (only artworks with a known image)
+      const carouselImgs = (era.artworks || [])
+        .map(a => ({ url: (window.SEED_IMAGES || {})[a.key], label: a.label }))
+        .filter(a => a.url);
+      const carouselHtml = carouselImgs.length > 0 ? `
+        <div class="tl-card-carousel" data-carousel-idx="0" data-carousel-count="${carouselImgs.length}">
+          <img class="tl-carousel-img" src="${escapeHtml(carouselImgs[0].url)}" alt="${escapeHtml(carouselImgs[0].label)}"
+               data-carousel-imgs='${JSON.stringify(carouselImgs).replace(/'/g, "&#39;")}'>
+          <div class="tl-carousel-caption">${escapeHtml(carouselImgs[0].label)}</div>
+          ${carouselImgs.length > 1 ? `<div class="tl-carousel-counter">1 / ${carouselImgs.length}</div>
+          <button class="tl-carousel-btn tl-carousel-btn--prev" aria-label="Previous">&#8249;</button>
+          <button class="tl-carousel-btn tl-carousel-btn--next" aria-label="Next">&#8250;</button>` : ''}
+        </div>` : '';
       return `<div class="tl-card" data-card-idx="${i}" style="--era-color:${color}">
         <div class="tl-card-banner">
           <div class="tl-card-label">ART PERIOD / MOVEMENT</div>
           <div class="tl-card-name">${escapeHtml(era.name)}</div>
           <div class="tl-card-date">${escapeHtml(era.date)}</div>
         </div>
+        ${carouselHtml}
         <div class="tl-card-body">
           ${char ? `<div class="tl-card-section">
             <div class="tl-card-section-label">CHARACTERISTICS</div>
@@ -1722,6 +1736,32 @@
       if(e.code==='Escape'){ backdrop.remove(); document.removeEventListener('keydown', escTimeline); }
     });
     document.body.appendChild(backdrop);
+
+    // Wire carousel prev/next buttons
+    backdrop.addEventListener('click', function(e){
+      const btn = e.target.closest('.tl-carousel-btn');
+      if(!btn) return;
+      e.stopPropagation();
+      const carousel = btn.closest('.tl-card-carousel');
+      if(!carousel) return;
+      const imgs = JSON.parse(carousel.querySelector('.tl-carousel-img').dataset.carouselImgs);
+      const count = imgs.length;
+      let idx = parseInt(carousel.dataset.carouselIdx, 10) || 0;
+      if(btn.classList.contains('tl-carousel-btn--prev')){
+        idx = (idx - 1 + count) % count;
+      } else {
+        idx = (idx + 1) % count;
+      }
+      carousel.dataset.carouselIdx = idx;
+      const imgEl = carousel.querySelector('.tl-carousel-img');
+      const capEl = carousel.querySelector('.tl-carousel-caption');
+      const cntEl = carousel.querySelector('.tl-carousel-counter');
+      imgEl.src = imgs[idx].url;
+      imgEl.alt = imgs[idx].label;
+      if(capEl) capEl.textContent = imgs[idx].label;
+      if(cntEl) cntEl.textContent = (idx + 1) + ' / ' + count;
+    });
+
 
     const container = backdrop.querySelector('.tl-cards-container');
 
