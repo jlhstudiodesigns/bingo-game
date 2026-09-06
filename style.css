@@ -955,6 +955,7 @@
   }
   .tl-card-carousel{
     flex-shrink:0; position:relative;
+    margin:8px 12px 0;
     border:1px solid #d5d1cb;
     border-radius:10px;
     background:#e5e1dc; overflow:hidden; height:200px;
