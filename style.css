@@ -945,14 +945,17 @@
   .tl-card-label{
     font-size:13px; letter-spacing:0.22em; text-transform:uppercase;
     color:rgba(255,220,120,0.9); font-weight:700; margin-bottom:7px;
+    text-shadow:0 1px 4px rgba(0,0,0,0.55), 0 0 10px rgba(0,0,0,0.35);
   }
   .tl-card-name{
     font-family:'Georgia',serif; font-style:italic;
     font-size:31px; font-weight:700; line-height:1.18;
     color:#fff; margin-bottom:5px;
+    text-shadow:0 1px 5px rgba(0,0,0,0.6), 0 0 14px rgba(0,0,0,0.4);
   }
   .tl-card-date{
-    font-size:16px; color:rgba(255,255,255,0.82); letter-spacing:0.04em;
+    font-size:16px; color:rgba(255,255,255,0.9); letter-spacing:0.04em;
+    text-shadow:0 1px 4px rgba(0,0,0,0.55), 0 0 10px rgba(0,0,0,0.35);
   }
   .tl-card-carousel{
     flex-shrink:0; position:relative;

@@ -1652,7 +1652,41 @@
     return bestIdx;
   }
 
-  const ERA_COLORS = ['#2d4a7a','#6b7c35','#8b3a22','#c4892a','#4a6a8a','#5a6535'];
+  const ERA_COLORS = [
+    '#bf2020', // 1  Prehistoric
+    '#c92528', // 2  Egyptian
+    '#d32a28', // 3  Greek
+    '#dc3228', // 4  Roman
+    '#e44030', // 5  Byzantine
+    '#ea5030', // 6  Romanesque & Gothic
+    '#ee6428', // 7  Early Renaissance
+    '#f27820', // 8  Northern Renaissance
+    '#f29018', // 9  High Renaissance
+    '#f2a010', // 10 Mannerism
+    '#f0b00c', // 11 Baroque
+    '#eec00e', // 12 Dutch Golden Age
+    '#eaca10', // 13 Rococo
+    '#dfd418', // 14 Neoclassicism
+    '#c8d028', // 15 Romanticism
+    '#a4c830', // 16 Realism
+    '#78bc38', // 17 Ukiyo-e
+    '#50b040', // 18 Impressionism
+    '#3aa850', // 19 Symbolism
+    '#38a870', // 20 Post-Impressionism
+    '#38a890', // 21 Art Nouveau & Vienna Secession
+    '#38a8b0', // 22 Fauvism
+    '#3898c4', // 23 Expressionism
+    '#4888cc', // 24 Cubism
+    '#4870c8', // 25 Futurism
+    '#3858c0', // 26 Dada
+    '#3040b0', // 27 De Stijl / Art Deco
+    '#2a2ea8', // 28 Surrealism
+    '#4020a0', // 29 American Regionalism & Social Realism
+    '#6020a8', // 30 Abstract Expressionism
+    '#8020a8', // 31 Pop Art
+    '#a020a8', // 32 Minimalism & Conceptualism
+    '#c020a0', // 33 Contemporary & Street Art
+  ];
 
   function openTimeline(){
     const currentItem = viewIndex >= 0 ? called[viewIndex] : null;
