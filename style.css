@@ -970,16 +970,17 @@
     pointer-events:none;
   }
   .tl-carousel-btn{
-    position:absolute; top:50%; transform:translateY(-50%);
-    width:40px; height:40px; margin:0; padding:0;
+    position:absolute; top:50%; margin-top:-20px;
+    width:40px; height:40px; padding:0;
     background:transparent; border:1px solid rgba(255,255,255,0.45);
     border-radius:50%; color:rgba(255,255,255,0.85);
-    font-size:20px; line-height:40px; cursor:pointer;
+    font-size:22px; cursor:pointer;
     display:flex; align-items:center; justify-content:center;
-    transition:background 150ms, border-color 150ms;
-    z-index:2; flex-shrink:0;
+    transition:background 150ms, border-color 150ms, transform 80ms;
+    z-index:3; pointer-events:all;
   }
   .tl-carousel-btn:hover{ background:rgba(255,255,255,0.18); border-color:rgba(255,255,255,0.85); }
+  .tl-carousel-btn:active{ transform:translateY(1px); }
   .tl-carousel-btn--prev{ left:6px; }
   .tl-carousel-btn--next{ right:6px; }
   .tl-carousel-counter{

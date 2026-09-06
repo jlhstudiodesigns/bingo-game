@@ -1784,29 +1784,31 @@
       return card.offsetLeft + card.offsetWidth / 2 - container.offsetWidth / 2;
     }
 
-    // click a faded card to slow-scroll it into center; carousel buttons handled first
+    // Wire carousel buttons directly (avoids bubbling conflicts with card-scroll)
+    function advanceCarousel(carousel, delta){
+      const imgs = JSON.parse(carousel.querySelector('.tl-carousel-img').dataset.carouselImgs);
+      const count = imgs.length;
+      let idx = (parseInt(carousel.dataset.carouselIdx, 10) || 0) + delta;
+      idx = ((idx % count) + count) % count;
+      carousel.dataset.carouselIdx = idx;
+      const imgEl = carousel.querySelector('.tl-carousel-img');
+      const capEl = carousel.querySelector('.tl-carousel-caption');
+      const cntEl = carousel.querySelector('.tl-carousel-counter');
+      imgEl.src = imgs[idx].url;
+      imgEl.alt = imgs[idx].label;
+      if(capEl) capEl.textContent = imgs[idx].label;
+      if(cntEl) cntEl.textContent = (idx + 1) + ' / ' + count;
+    }
+    container.querySelectorAll('.tl-card-carousel').forEach(carousel => {
+      const prev = carousel.querySelector('.tl-carousel-btn--prev');
+      const next = carousel.querySelector('.tl-carousel-btn--next');
+      if(prev) prev.addEventListener('click', e => { e.stopPropagation(); advanceCarousel(carousel, -1); });
+      if(next) next.addEventListener('click', e => { e.stopPropagation(); advanceCarousel(carousel, +1); });
+    });
+
+    // click a faded card to slow-scroll it into center
     container.addEventListener('click', e => {
-      const btn = e.target.closest('.tl-carousel-btn');
-      if(btn){
-        e.stopPropagation();
-        const carousel = btn.closest('.tl-card-carousel');
-        if(!carousel) return;
-        const imgs = JSON.parse(carousel.querySelector('.tl-carousel-img').dataset.carouselImgs);
-        const count = imgs.length;
-        let idx = parseInt(carousel.dataset.carouselIdx, 10) || 0;
-        idx = btn.classList.contains('tl-carousel-btn--prev')
-          ? (idx - 1 + count) % count
-          : (idx + 1) % count;
-        carousel.dataset.carouselIdx = idx;
-        const imgEl = carousel.querySelector('.tl-carousel-img');
-        const capEl = carousel.querySelector('.tl-carousel-caption');
-        const cntEl = carousel.querySelector('.tl-carousel-counter');
-        imgEl.src = imgs[idx].url;
-        imgEl.alt = imgs[idx].label;
-        if(capEl) capEl.textContent = imgs[idx].label;
-        if(cntEl) cntEl.textContent = (idx + 1) + ' / ' + count;
-        return;
-      }
+      if(e.target.closest('.tl-carousel-btn')) return;
       const card = e.target.closest('.tl-card');
       if(card && !card.classList.contains('tl-card--active')){
         slowScrollTo(Math.max(0, cardCenter(card)), 1440);
