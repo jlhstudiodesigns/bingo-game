@@ -1654,23 +1654,23 @@
 
   // 22 colors from the rainbow spectrum, cycling for 33 cards
   const ERA_COLORS = [
-    '#881010', // 1  dark red
-    '#cc1212', // 2  bright red
-    '#c04510', // 3  dark orange
-    '#f07818', // 4  bright orange
-    '#c09010', // 5  dark amber
-    '#f0e018', // 6  bright yellow
-    '#8cce10', // 7  bright chartreuse/lime
+    '#780f0f', // 1  dark red
+    '#c81010', // 2  bright red
+    '#b84010', // 3  dark orange
+    '#f07018', // 4  bright orange
+    '#c08210', // 5  dark amber
+    '#f0dc10', // 6  bright yellow
+    '#88cc10', // 7  bright chartreuse
     '#1caa1c', // 8  bright green
-    '#0c7028', // 9  dark green
+    '#0c6a28', // 9  dark green
     '#10a888', // 10 teal
-    '#18c8cc', // 11 bright cyan
-    '#58b8e8', // 12 sky blue
-    '#2878cc', // 13 medium blue
+    '#18c0c8', // 11 bright cyan
+    '#58b4e8', // 12 sky blue
+    '#2474c8', // 13 medium blue
     '#10188a', // 14 dark navy
-    '#1c0888', // 15 deep indigo
-    '#380878', // 16 dark purple
-    '#6808a8', // 17 medium purple
+    '#1a0a88', // 15 deep indigo
+    '#380a78', // 16 dark purple
+    '#6408a8', // 17 medium purple
     '#9818c8', // 18 bright violet
     '#c018a8', // 19 magenta
     '#e818a8', // 20 hot pink
