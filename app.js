@@ -1806,6 +1806,21 @@
       if(next) next.addEventListener('click', e => { e.stopPropagation(); advanceCarousel(carousel, +1); });
     });
 
+    // Pre-advance the matched era's carousel to show the current artwork
+    if(matchIdx >= 0 && currentKey){
+      const matchedCard = container.children[matchIdx];
+      const carousel = matchedCard && matchedCard.querySelector('.tl-card-carousel');
+      if(carousel){
+        const imgEl = carousel.querySelector('.tl-carousel-img');
+        if(imgEl && imgEl.dataset.carouselImgs){
+          const imgs = JSON.parse(imgEl.dataset.carouselImgs);
+          const targetUrl = (window.SEED_IMAGES || {})[currentKey];
+          const imgIdx = targetUrl ? imgs.findIndex(img => img.url === targetUrl) : -1;
+          if(imgIdx > 0) advanceCarousel(carousel, imgIdx);
+        }
+      }
+    }
+
     // click a faded card to slow-scroll it into center
     container.addEventListener('click', e => {
       if(e.target.closest('.tl-carousel-btn')) return;
