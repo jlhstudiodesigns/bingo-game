@@ -379,10 +379,10 @@ window.SEED_ART = [
       "Prehistoric Art. Painted c. 17,000 BCE using mineral pigments — red and yellow ochre, manganese oxide — applied by blowing through hollow bones and hand-smearing.",
       "The animals appear to gallop across the ceiling in a continuous frieze stretching nearly 20 feet; the painting uses the natural bulges and curves of the cave wall to give the figures a three-dimensional, breathing quality.",
       "","","","","B"],
-    ["Woman of Willendorf","Unknown Prehistoric",
-      "Priceless — housed in the Naturhistorisches Museum Vienna; it is not for sale and has never been sold at auction.",
-      "Prehistoric Art. Carved c. 25,000–28,000 BCE from oolitic limestone tinted with red ochre; the carving measures only 4.4 inches tall.",
-      "No feet are depicted — the figure cannot stand upright on its own — leading scholars to believe it was held in the hand during rituals rather than displayed standing; the face is entirely hidden beneath a spiral headdress.",
+    ["Chauvet Cave Paintings","Unknown Prehistoric",
+      "Priceless and permanently closed to the public — the Chauvet Cave was sealed the same year it was discovered (1994) to prevent deterioration; a full-scale replica, the Caverne du Pont d'Arc, opened nearby in 2015.",
+      "Prehistoric Art. Painted c. 30,000–32,000 BCE using charcoal and red ochre — among the oldest known cave paintings in the world, more than twice as old as those at Lascaux.",
+      "Unlike most cave art, the Chauvet artists used shading and perspective to give their animals volume and movement — techniques not seen again in Western art for another 30,000 years.",
       "","","","","B"],
     ["Altamira Cave Paintings","Unknown Prehistoric",
       "Priceless and permanently closed to public access since 2002 to preserve the paintings; a visitor cap of five people per week was lifted entirely due to environmental damage risks.",
@@ -473,7 +473,7 @@ window.SEED_ART = [
     "Portrait of Dora Maar||Pablo Picasso": "images/portrait-of-dora.jpg",
     "Shot Sage Blue Marilyn||Andy Warhol": "images/shot-sage-blue-marilyn.jpg",
     "Hall of the Bulls, Lascaux||Unknown Prehistoric": "images/hall-of-the-bulls-lascaux.jpg",
-    "Woman of Willendorf||Unknown Prehistoric": "images/woman-of-willendorf.jpg",
+    "Chauvet Cave Paintings||Unknown Prehistoric": "images/the-chauvet-pont'd-arc-cave.jpg",
     "Altamira Cave Paintings||Unknown Prehistoric": "images/altamira-cave-paintings.jpg"
   };
 
@@ -556,7 +556,7 @@ window.SEED_ART = [
     "Card Players||Paul Cézanne": "1892–1893",
     "Shot Sage Blue Marilyn||Andy Warhol": "1964",
     "Hall of the Bulls, Lascaux||Unknown Prehistoric": "c. 17,000 BCE",
-    "Woman of Willendorf||Unknown Prehistoric": "c. 25,000–28,000 BCE",
+    "Chauvet Cave Paintings||Unknown Prehistoric": "c. 30,000–32,000 BCE",
     "Altamira Cave Paintings||Unknown Prehistoric": "c. 14,000–20,000 BCE"
   };
 
@@ -637,6 +637,6 @@ window.SEED_ART = [
     "Card Players||Paul Cézanne": "Oil on canvas",
     "Shot Sage Blue Marilyn||Andy Warhol": "Silkscreen ink on linen",
     "Hall of the Bulls, Lascaux||Unknown Prehistoric": "Mineral pigment on limestone cave wall",
-    "Woman of Willendorf||Unknown Prehistoric": "Oolitic limestone with red ochre",
+    "Chauvet Cave Paintings||Unknown Prehistoric": "Charcoal and red ochre on limestone cave wall",
     "Altamira Cave Paintings||Unknown Prehistoric": "Charcoal and ochre on limestone cave ceiling"
   };

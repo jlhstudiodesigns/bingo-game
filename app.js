@@ -1254,7 +1254,7 @@
       artworks: [
         { key: "Hall of the Bulls, Lascaux||Unknown Prehistoric", label: "Hall of the Bulls, Lascaux (c. 17,000 BCE)" },
         { key: "Altamira Cave Paintings||Unknown Prehistoric", label: "Altamira Cave Paintings (c. 14,000–20,000 BCE)" },
-        { key: "Woman of Willendorf||Unknown Prehistoric", label: "Woman of Willendorf (c. 25,000–28,000 BCE)" }
+        { key: "Chauvet Cave Paintings||Unknown Prehistoric", label: "Chauvet Cave Paintings (c. 30,000–32,000 BCE)" }
       ]
     },
     {
