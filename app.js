@@ -1652,31 +1652,41 @@
     return bestIdx;
   }
 
-  // 22 final colors from rainbow spectrum 3, cycling for 33 cards
-  const ERA_COLORS = [
-    '#2e0000', // 1
-    '#4a0203', // 2
-    '#4b1300', // 3
-    '#4b2001', // 4
-    '#4c3004', // 5
-    '#5f4902', // 6
-    '#4b4407', // 7
-    '#303f02', // 8
-    '#05360a', // 9
-    '#03291e', // 10
-    '#043a3a', // 11
-    '#023045', // 12
-    '#04153d', // 13
-    '#03032c', // 14
-    '#000122', // 15
-    '#160022', // 16
-    '#1e012d', // 17
-    '#340234', // 18
-    '#4b052f', // 19
-    '#290019', // 20
-    '#140000', // 21
-    '#000000', // 22
-  ];
+  const ERA_COLOR_MAP = {
+    'Prehistoric Art':                       '#2e0000',
+    'Ancient Egyptian Art':                  '#4a0203',
+    'Classical Greek Art':                   '#4b1300',
+    'Roman Art':                             '#4b2001',
+    'Byzantine Art':                         '#4c3004',
+    'Romanesque & Gothic':                   '#5f4902',
+    'Early Renaissance':                     '#4b4407',
+    'Northern Renaissance':                  '#303f02',
+    'High Renaissance':                      '#05360a',
+    'Mannerism':                             '#03291e',
+    'Baroque':                               '#043a3a',
+    'Dutch Golden Age':                      '#023045',
+    'Rococo':                                '#04153d',
+    'Neoclassicism':                         '#03032c',
+    'Romanticism':                           '#000122',
+    'Realism':                               '#160022',
+    'Ukiyo-e':                               '#1e012d',
+    'Impressionism':                         '#340234',
+    'Symbolism':                             '#4b052f',
+    'Post-Impressionism':                    '#290019',
+    'Art Nouveau & Vienna Secession':        '#140000',
+    'Fauvism':                               '#000000',
+    'Expressionism':                         '#2e0000',
+    'Cubism':                                '#4a0203',
+    'Futurism':                              '#4b1300',
+    'Dada':                                  '#4b2001',
+    'De Stijl / Art Deco':                   '#4c3004',
+    'Surrealism':                            '#5f4902',
+    'American Regionalism & Social Realism': '#4b4407',
+    'Abstract Expressionism':                '#303f02',
+    'Pop Art':                               '#05360a',
+    'Minimalism & Conceptualism':            '#03291e',
+    'Contemporary & Street Art':             '#043a3a',
+  };
 
   function openTimeline(){
     const currentItem = viewIndex >= 0 ? called[viewIndex] : null;
@@ -1692,7 +1702,7 @@
     backdrop.className = 'timeline-backdrop';
 
     const cardsHtml = TIMELINE_DATA.map((era, i) => {
-      const color = ERA_COLORS[i % ERA_COLORS.length];
+      const color = ERA_COLOR_MAP[era.name] || '#2e0000';
       const char = era.characteristics || era.desc || '';
       const artists = era.chiefArtists || '';
       const events = era.historicalEvents || '';
