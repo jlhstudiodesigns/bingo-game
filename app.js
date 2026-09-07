@@ -1720,7 +1720,7 @@
           <button class="tl-carousel-btn tl-carousel-btn--next" aria-label="Next">&#8250;</button>` : ''}
         </div>` : '';
       return `<div class="tl-card" data-card-idx="${i}">
-        <div class="tl-card-banner" style="background:${color}">`
+        <div class="tl-card-banner" style="background:${color}">
           <div class="tl-card-label">ART PERIOD / MOVEMENT</div>
           <div class="tl-card-name">${escapeHtml(era.name)}</div>
           <div class="tl-card-date">${escapeHtml(era.date)}</div>
