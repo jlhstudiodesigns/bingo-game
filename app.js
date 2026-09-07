@@ -1386,7 +1386,9 @@
       characteristics: "Pastel colors, ornate decoration, playful scenes, intimate scale, feathery brushwork, curved forms",
       chiefArtists: "Watteau, Fragonard, Boucher, Tiepolo; The Swing, Pilgrimage to Cythera, Madame de Pompadour",
       historicalEvents: "French Enlightenment and salon culture; American Revolution (1775–1783); Seven Years War (1756–1763)",
-      artworks: []
+      artworks: [
+        { key: "The Soap Bubbles||Jean Siméon Chardin", label: "The Soap Bubbles — Chardin, 1734" }
+      ]
     },
     {
       date: "c. 1750–1850",
