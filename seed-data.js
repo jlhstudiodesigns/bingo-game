@@ -373,7 +373,22 @@ window.SEED_ART = [
       "Sold at Christie's in 2022 for $195 million — the most expensive 20th-century artwork ever sold at auction, and the most ever paid for work by an American artist.",
       "Pop Art. Painted (silkscreened) in 1964, likely within days given Warhol's fast studio production methods.",
       "It's named for a real incident: a performance artist once fired a gun through a stack of Warhol's Marilyn canvases in his studio — though this particular blue version wasn't the one struck.",
-      "August 6, 1928","Pittsburgh, Pennsylvania, USA","February 22, 1987","New York City, USA","O"]
+      "August 6, 1928","Pittsburgh, Pennsylvania, USA","February 22, 1987","New York City, USA","O"],
+    ["Hall of the Bulls, Lascaux","Unknown Prehistoric",
+      "Priceless and protected by French law — the cave was closed to the public in 1963 to prevent deterioration from CO₂ and fungal growth; a full-scale replica (Lascaux II) was built nearby for visitors.",
+      "Prehistoric Art. Painted c. 17,000 BCE using mineral pigments — red and yellow ochre, manganese oxide — applied by blowing through hollow bones and hand-smearing.",
+      "The animals appear to gallop across the ceiling in a continuous frieze stretching nearly 20 feet; the painting uses the natural bulges and curves of the cave wall to give the figures a three-dimensional, breathing quality.",
+      "","","","","B"],
+    ["Woman of Willendorf","Unknown Prehistoric",
+      "Priceless — housed in the Naturhistorisches Museum Vienna; it is not for sale and has never been sold at auction.",
+      "Prehistoric Art. Carved c. 25,000–28,000 BCE from oolitic limestone tinted with red ochre; the carving measures only 4.4 inches tall.",
+      "No feet are depicted — the figure cannot stand upright on its own — leading scholars to believe it was held in the hand during rituals rather than displayed standing; the face is entirely hidden beneath a spiral headdress.",
+      "","","","","B"],
+    ["Altamira Cave Paintings","Unknown Prehistoric",
+      "Priceless and permanently closed to public access since 2002 to preserve the paintings; a visitor cap of five people per week was lifted entirely due to environmental damage risks.",
+      "Prehistoric Art. Painted c. 14,000–20,000 BCE using charcoal and ochre; artists exploited the natural rock contours to give bison a rounded, three-dimensional form.",
+      "When they were first announced in 1879, the scientific community widely dismissed them as forgeries — it took over 20 years before experts accepted that prehistoric humans were capable of such sophisticated art.",
+      "","","","","B"]
   ];
 
   // Maps a "Title||Artist" key (matches buildItemKeyMap's convention,
@@ -456,7 +471,10 @@ window.SEED_ART = [
     "Card Players||Paul Cézanne": "images/card-players.jpg",
     "Interchange||Willem de Kooning": "images/interchange.jpg",
     "Portrait of Dora Maar||Pablo Picasso": "images/portrait-of-dora.jpg",
-    "Shot Sage Blue Marilyn||Andy Warhol": "images/shot-sage-blue-marilyn.jpg"
+    "Shot Sage Blue Marilyn||Andy Warhol": "images/shot-sage-blue-marilyn.jpg",
+    "Hall of the Bulls, Lascaux||Unknown Prehistoric": "images/hall-of-the-bulls-lascaux.jpg",
+    "Woman of Willendorf||Unknown Prehistoric": "images/woman-of-willendorf.jpg",
+    "Altamira Cave Paintings||Unknown Prehistoric": "images/altamira-cave-paintings.jpg"
   };
 
   // Same "Title||Artist" keying, giving each seed item a clean display
@@ -536,7 +554,10 @@ window.SEED_ART = [
     "Portrait of Dora Maar||Pablo Picasso": "1937",
     "Interchange||Willem de Kooning": "1955",
     "Card Players||Paul Cézanne": "1892–1893",
-    "Shot Sage Blue Marilyn||Andy Warhol": "1964"
+    "Shot Sage Blue Marilyn||Andy Warhol": "1964",
+    "Hall of the Bulls, Lascaux||Unknown Prehistoric": "c. 17,000 BCE",
+    "Woman of Willendorf||Unknown Prehistoric": "c. 25,000–28,000 BCE",
+    "Altamira Cave Paintings||Unknown Prehistoric": "c. 14,000–20,000 BCE"
   };
 
   window.SEED_MEDIUM = {
@@ -614,5 +635,8 @@ window.SEED_ART = [
     "Portrait of Dora Maar||Pablo Picasso": "Oil on canvas",
     "Interchange||Willem de Kooning": "Oil on canvas",
     "Card Players||Paul Cézanne": "Oil on canvas",
-    "Shot Sage Blue Marilyn||Andy Warhol": "Silkscreen ink on linen"
+    "Shot Sage Blue Marilyn||Andy Warhol": "Silkscreen ink on linen",
+    "Hall of the Bulls, Lascaux||Unknown Prehistoric": "Mineral pigment on limestone cave wall",
+    "Woman of Willendorf||Unknown Prehistoric": "Oolitic limestone with red ochre",
+    "Altamira Cave Paintings||Unknown Prehistoric": "Charcoal and ochre on limestone cave ceiling"
   };

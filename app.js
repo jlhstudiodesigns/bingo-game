@@ -1251,7 +1251,11 @@
       characteristics: "Cave painting, fertility goddesses, megalithic structures",
       chiefArtists: "Lascaux Cave Painting, Woman of Willendorf, Stonehenge",
       historicalEvents: "Ice Age ends (10,000 BCE–8,000 BCE); New Stone Age and first permanent settlements (8000 BCE–2500 BCE)",
-      artworks: []
+      artworks: [
+        { key: "Hall of the Bulls, Lascaux||Unknown Prehistoric", label: "Hall of the Bulls, Lascaux (c. 17,000 BCE)" },
+        { key: "Altamira Cave Paintings||Unknown Prehistoric", label: "Altamira Cave Paintings (c. 14,000–20,000 BCE)" },
+        { key: "Woman of Willendorf||Unknown Prehistoric", label: "Woman of Willendorf (c. 25,000–28,000 BCE)" }
+      ]
     },
     {
       date: "c. 3100–30 BCE",
