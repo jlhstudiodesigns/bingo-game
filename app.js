@@ -1652,41 +1652,40 @@
     return bestIdx;
   }
 
-  const ERA_COLOR_MAP = {
-    'Prehistoric Art':                       '#2e0000',
-    'Ancient Egyptian Art':                  '#4a0203',
-    'Classical Greek Art':                   '#4b1300',
-    'Roman Art':                             '#4b2001',
-    'Byzantine Art':                         '#4c3004',
-    'Romanesque & Gothic':                   '#5f4902',
-    'Early Renaissance':                     '#4b4407',
-    'Northern Renaissance':                  '#303f02',
-    'High Renaissance':                      '#05360a',
-    'Mannerism':                             '#03291e',
-    'Baroque':                               '#043a3a',
-    'Dutch Golden Age':                      '#023045',
-    'Rococo':                                '#04153d',
-    'Neoclassicism':                         '#03032c',
-    'Romanticism':                           '#000122',
-    'Realism':                               '#160022',
-    'Ukiyo-e':                               '#1e012d',
-    'Impressionism':                         '#340234',
-    'Symbolism':                             '#4b052f',
-    'Post-Impressionism':                    '#290019',
-    'Art Nouveau & Vienna Secession':        '#140000',
-    'Fauvism':                               '#000000',
-    'Expressionism':                         '#2e0000',
-    'Cubism':                                '#4a0203',
-    'Futurism':                              '#4b1300',
-    'Dada':                                  '#4b2001',
-    'De Stijl / Art Deco':                   '#4c3004',
-    'Surrealism':                            '#5f4902',
-    'American Regionalism & Social Realism': '#4b4407',
-    'Abstract Expressionism':                '#303f02',
-    'Pop Art':                               '#05360a',
-    'Minimalism & Conceptualism':            '#03291e',
-    'Contemporary & Street Art':             '#043a3a',
-  };
+  // Rainbow spectrum 4 — 18 colors sampled left-to-right from the attached image
+  // dark red → brown-red → sienna → amber → olive → forest green → teal → navy → indigo → purple → wine
+  const SPECTRUM4 = [
+    '#600000', //  1 deep dark red
+    '#7a0a05', //  2 dark crimson
+    '#6e1800', //  3 dark red-brown
+    '#6a2a00', //  4 dark sienna
+    '#5a4200', //  5 dark amber-brown
+    '#585800', //  6 dark olive-yellow
+    '#3a4800', //  7 dark olive-green
+    '#183820', //  8 dark forest green
+    '#003825', //  9 very dark green
+    '#003838', // 10 dark teal
+    '#003550', // 11 dark blue-teal
+    '#001840', // 12 dark navy
+    '#000e35', // 13 deep navy
+    '#0a0028', // 14 dark indigo
+    '#1c0038', // 15 dark purple
+    '#340038', // 16 dark violet
+    '#480030', // 17 dark wine-purple
+    '#380020', // 18 deep wine
+  ];
+  const ERA_NAMES = [
+    'Prehistoric Art', 'Ancient Egyptian Art', 'Classical Greek Art', 'Roman Art',
+    'Byzantine Art', 'Romanesque & Gothic', 'Early Renaissance', 'Northern Renaissance',
+    'High Renaissance', 'Mannerism', 'Baroque', 'Dutch Golden Age', 'Rococo',
+    'Neoclassicism', 'Romanticism', 'Realism', 'Ukiyo-e', 'Impressionism',
+    'Symbolism', 'Post-Impressionism', 'Art Nouveau & Vienna Secession', 'Fauvism',
+    'Expressionism', 'Cubism', 'Futurism', 'Dada', 'De Stijl / Art Deco',
+    'Surrealism', 'American Regionalism & Social Realism', 'Abstract Expressionism',
+    'Pop Art', 'Minimalism & Conceptualism', 'Contemporary & Street Art',
+  ];
+  const ERA_COLOR_MAP = {};
+  ERA_NAMES.forEach((name, i) => { ERA_COLOR_MAP[name] = SPECTRUM4[i % SPECTRUM4.length]; });
 
   function openTimeline(){
     const currentItem = viewIndex >= 0 ? called[viewIndex] : null;
