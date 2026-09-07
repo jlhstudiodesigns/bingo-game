@@ -1771,6 +1771,16 @@
     });
     document.body.appendChild(backdrop);
 
+    // Belt-and-suspenders: directly set backgroundColor on every banner after DOM insertion
+    TIMELINE_DATA.forEach((era, i) => {
+      const color = ERA_COLOR_MAP[era.name] || '#2e0000';
+      const card = backdrop.querySelectorAll('.tl-card')[i];
+      if(card){
+        const banner = card.querySelector('.tl-card-banner');
+        if(banner) banner.style.backgroundColor = color;
+      }
+    });
+
     const container = backdrop.querySelector('.tl-cards-container');
 
     function updateActiveCard(){
