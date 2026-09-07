@@ -1455,12 +1455,66 @@
     }
   ];
 
+<<<<<<< Updated upstream
+=======
+  function findEraByPeriodText(periodText){
+    if(!periodText) return -1;
+    const lower = periodText.toLowerCase();
+    let bestIdx = -1, bestLen = 0;
+    TIMELINE_DATA.forEach((era, i) => {
+      // Match the primary part of the era name (before " & " or " / ")
+      const coreName = era.name.split(/\s+[&\/]\s+/)[0].toLowerCase();
+      if(coreName.length > 3 && lower.includes(coreName) && coreName.length > bestLen){
+        bestLen = coreName.length;
+        bestIdx = i;
+      }
+    });
+    return bestIdx;
+  }
+
+  const ERA_COLOR_MAP = {
+    'Prehistoric Art':                       '#2e0000',
+    'Ancient Egyptian Art':                  '#4a0203',
+    'Classical Greek Art':                   '#4b1300',
+    'Roman Art':                             '#4b2001',
+    'Byzantine Art':                         '#4c3004',
+    'Romanesque & Gothic':                   '#5f4902',
+    'Early Renaissance':                     '#4b4407',
+    'Northern Renaissance':                  '#303f02',
+    'High Renaissance':                      '#05360a',
+    'Mannerism':                             '#03291e',
+    'Baroque':                               '#043a3a',
+    'Dutch Golden Age':                      '#023045',
+    'Rococo':                                '#04153d',
+    'Neoclassicism':                         '#03032c',
+    'Romanticism':                           '#000122',
+    'Realism':                               '#160022',
+    'Ukiyo-e':                               '#1e012d',
+    'Impressionism':                         '#340234',
+    'Symbolism':                             '#4b052f',
+    'Post-Impressionism':                    '#290019',
+    'Art Nouveau & Vienna Secession':        '#140000',
+    'Fauvism':                               '#000000',
+    'Expressionism':                         '#2e0000',
+    'Cubism':                                '#4a0203',
+    'Futurism':                              '#4b1300',
+    'Dada':                                  '#4b2001',
+    'De Stijl / Art Deco':                   '#4c3004',
+    'Surrealism':                            '#5f4902',
+    'American Regionalism & Social Realism': '#4b4407',
+    'Abstract Expressionism':                '#303f02',
+    'Pop Art':                               '#05360a',
+    'Minimalism & Conceptualism':            '#03291e',
+    'Contemporary & Street Art':             '#043a3a',
+  };
+
+>>>>>>> Stashed changes
   function openTimeline(){
     const backdrop = document.createElement('div');
     backdrop.className = 'timeline-backdrop';
 
     const cardsHtml = TIMELINE_DATA.map((era, i) => {
-      const color = ERA_COLORS[i % ERA_COLORS.length];
+      const color = ERA_COLOR_MAP[era.name] || '#2e0000';
       const char = era.characteristics || era.desc || '';
       const artists = era.chiefArtists || '';
       const events = era.historicalEvents || '';
