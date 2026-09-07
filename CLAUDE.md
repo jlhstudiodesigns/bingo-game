@@ -31,8 +31,8 @@ constraint (see "Session/tooling constraints" below). Don't recombine it.
 
 | File | Version tag |
 |------|-------------|
-| `style.css` | `?v=20260824e` |
-| `app.js` | `?v=20260824b` |
+| `style.css` | `?v=20260907c` |
+| `app.js` | `?v=20260907c` |
 | `seed-data.js` | `?v=20260818e` |
 
 When you edit any of these files, bump the corresponding tag in `index.html`
