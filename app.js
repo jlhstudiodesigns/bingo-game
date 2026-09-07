@@ -1253,6 +1253,7 @@
       historicalEvents: "Ice Age ends (10,000 BCE–8,000 BCE); New Stone Age and first permanent settlements (8000 BCE–2500 BCE)",
       artworks: [
         { key: "Hall of the Bulls, Lascaux||Unknown Prehistoric", label: "Hall of the Bulls, Lascaux (c. 17,000 BCE)" },
+        { key: "Neolithic Age Bison||Unknown Prehistoric", label: "Neolithic Age Bison (ca. 8000–3000 BC)" },
         { key: "Altamira Cave Paintings||Unknown Prehistoric", label: "Altamira Cave Paintings (c. 14,000–20,000 BCE)" },
         { key: "Chauvet Cave Paintings||Unknown Prehistoric", label: "Chauvet Cave Paintings (c. 30,000–32,000 BCE)" }
       ]

@@ -379,6 +379,11 @@ window.SEED_ART = [
       "Prehistoric Art. Painted c. 17,000 BCE using mineral pigments — red and yellow ochre, manganese oxide — applied by blowing through hollow bones and hand-smearing.",
       "The animals appear to gallop across the ceiling in a continuous frieze stretching nearly 20 feet; the painting uses the natural bulges and curves of the cave wall to give the figures a three-dimensional, breathing quality.",
       "","","","","B"],
+    ["Neolithic Age Bison","Unknown Prehistoric",
+      "Priceless — prehistoric bison paintings are protected cultural heritage sites; none have ever been sold at auction.",
+      "Prehistoric Art. Painted during the Neolithic period, ca. 8000–3000 BC, using earth pigments including ochre, hematite, and manganese dioxide.",
+      "Neolithic bison paintings mark a shift from Paleolithic hunting imagery — animals begin to appear in more stylized, symbolic forms, reflecting changing human relationships with wildlife as communities transitioned from hunter-gatherers to early farmers.",
+      "","","","","B"],
     ["Chauvet Cave Paintings","Unknown Prehistoric",
       "Priceless and permanently closed to the public — the Chauvet Cave was sealed the same year it was discovered (1994) to prevent deterioration; a full-scale replica, the Caverne du Pont d'Arc, opened nearby in 2015.",
       "Prehistoric Art. Painted c. 30,000–32,000 BCE using charcoal and red ochre — among the oldest known cave paintings in the world, more than twice as old as those at Lascaux.",
@@ -473,6 +478,7 @@ window.SEED_ART = [
     "Portrait of Dora Maar||Pablo Picasso": "images/portrait-of-dora.jpg",
     "Shot Sage Blue Marilyn||Andy Warhol": "images/shot-sage-blue-marilyn.jpg",
     "Hall of the Bulls, Lascaux||Unknown Prehistoric": "images/hall-of-the-bulls-lascaux.jpg",
+    "Neolithic Age Bison||Unknown Prehistoric": "images/neolithic-age-bison.jpg",
     "Chauvet Cave Paintings||Unknown Prehistoric": "images/the-chauvet-pont'd-arc-cave.jpg",
     "Altamira Cave Paintings||Unknown Prehistoric": "images/altamira-cave-paintings.jpg"
   };
@@ -556,6 +562,7 @@ window.SEED_ART = [
     "Card Players||Paul Cézanne": "1892–1893",
     "Shot Sage Blue Marilyn||Andy Warhol": "1964",
     "Hall of the Bulls, Lascaux||Unknown Prehistoric": "c. 17,000 BCE",
+    "Neolithic Age Bison||Unknown Prehistoric": "ca. 8000–3000 BC",
     "Chauvet Cave Paintings||Unknown Prehistoric": "c. 30,000–32,000 BCE",
     "Altamira Cave Paintings||Unknown Prehistoric": "c. 14,000–20,000 BCE"
   };
@@ -637,6 +644,7 @@ window.SEED_ART = [
     "Card Players||Paul Cézanne": "Oil on canvas",
     "Shot Sage Blue Marilyn||Andy Warhol": "Silkscreen ink on linen",
     "Hall of the Bulls, Lascaux||Unknown Prehistoric": "Mineral pigment on limestone cave wall",
+    "Neolithic Age Bison||Unknown Prehistoric": "Ochre and earth pigments on stone",
     "Chauvet Cave Paintings||Unknown Prehistoric": "Charcoal and red ochre on limestone cave wall",
     "Altamira Cave Paintings||Unknown Prehistoric": "Charcoal and ochre on limestone cave ceiling"
   };
