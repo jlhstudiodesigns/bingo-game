@@ -1652,30 +1652,30 @@
     return bestIdx;
   }
 
-  // 22 colors from rainbow spectrum 3 (dark/muted alternating pairs), cycling for 33 cards
+  // 22 final colors from rainbow spectrum 3, cycling for 33 cards
   const ERA_COLORS = [
-    '#4a0808', // 1  darkest red
-    '#8a1010', // 2  dark red
-    '#7a2c0c', // 3  dark burnt orange
-    '#9a4810', // 4  dark orange
-    '#6a5008', // 5  dark amber-brown
-    '#8a6808', // 6  dark amber-gold
-    '#4a5808', // 7  darkest olive
-    '#666808', // 8  dark olive
-    '#163c18', // 9  darkest forest green
-    '#1c5820', // 10 dark forest green
-    '#0c3c30', // 11 darkest teal-green
-    '#0e5050', // 12 dark teal
-    '#0c2848', // 13 darkest blue-teal
-    '#0e2268', // 14 dark navy
-    '#08106a', // 15 darkest navy
-    '#080a54', // 16 dark indigo-navy
-    '#120860', // 17 darkest indigo
-    '#200870', // 18 dark indigo-purple
-    '#300870', // 19 darkest purple
-    '#500870', // 20 dark purple
-    '#5e0848', // 21 dark plum
-    '#0c0810', // 22 near black
+    '#2e0000', // 1
+    '#4a0203', // 2
+    '#4b1300', // 3
+    '#4b2001', // 4
+    '#4c3004', // 5
+    '#5f4902', // 6
+    '#4b4407', // 7
+    '#303f02', // 8
+    '#05360a', // 9
+    '#03291e', // 10
+    '#043a3a', // 11
+    '#023045', // 12
+    '#04153d', // 13
+    '#03032c', // 14
+    '#000122', // 15
+    '#160022', // 16
+    '#1e012d', // 17
+    '#340234', // 18
+    '#4b052f', // 19
+    '#290019', // 20
+    '#140000', // 21
+    '#000000', // 22
   ];
 
   function openTimeline(){
